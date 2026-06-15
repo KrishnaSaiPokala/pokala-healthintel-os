@@ -1,8 +1,8 @@
 {
   "meta": {
-    "runId": "PHI-OS-06150136",
+    "runId": "PHI-OS-06150531",
     "status": "ready",
-    "refresh": "2026-06-15 01:36",
+    "refresh": "2026-06-15 05:31",
     "evidenceRows": 188841,
     "sources": 7,
     "transformer": "rising_opportunity_with_safety_scrutiny"
