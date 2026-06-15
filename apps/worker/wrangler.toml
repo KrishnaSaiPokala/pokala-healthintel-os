@@ -9,7 +9,7 @@ workers_dev = true
 [[d1_databases]]
 binding = "DB"
 database_name = "pokala-healthintel-os-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "241f5f5b-dd91-43e6-ae26-371638fd5d19"
 
 [vars]
 APP_NAME = "Pokala HealthIntel OS"
