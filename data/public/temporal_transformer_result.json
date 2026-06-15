@@ -1,0 +1,98 @@
+{
+  "momentum_class": "rising_opportunity_with_safety_scrutiny",
+  "scores": {
+    "market": 100.0,
+    "safety": 72.99,
+    "reimbursement": 88.9
+  },
+  "attention": {
+    "market": {
+      "market": 0.1263,
+      "safety": 0.1238,
+      "reimbursement": 0.1237,
+      "provider_density": 0.1252,
+      "trial_density": 0.1252,
+      "breach_exposure": 0.1252,
+      "ai_device_activity": 0.1252,
+      "payment_activity": 0.1252
+    },
+    "safety": {
+      "market": 0.1237,
+      "safety": 0.1262,
+      "reimbursement": 0.124,
+      "provider_density": 0.1252,
+      "trial_density": 0.1252,
+      "breach_exposure": 0.1252,
+      "ai_device_activity": 0.1252,
+      "payment_activity": 0.1252
+    },
+    "reimbursement": {
+      "market": 0.1237,
+      "safety": 0.124,
+      "reimbursement": 0.1262,
+      "provider_density": 0.1252,
+      "trial_density": 0.1252,
+      "breach_exposure": 0.1252,
+      "ai_device_activity": 0.1252,
+      "payment_activity": 0.1252
+    },
+    "provider_density": {
+      "market": 0.1243,
+      "safety": 0.1244,
+      "reimbursement": 0.1244,
+      "provider_density": 0.1254,
+      "trial_density": 0.1254,
+      "breach_exposure": 0.1254,
+      "ai_device_activity": 0.1254,
+      "payment_activity": 0.1254
+    },
+    "trial_density": {
+      "market": 0.1243,
+      "safety": 0.1244,
+      "reimbursement": 0.1244,
+      "provider_density": 0.1254,
+      "trial_density": 0.1254,
+      "breach_exposure": 0.1254,
+      "ai_device_activity": 0.1254,
+      "payment_activity": 0.1254
+    },
+    "breach_exposure": {
+      "market": 0.1243,
+      "safety": 0.1244,
+      "reimbursement": 0.1244,
+      "provider_density": 0.1254,
+      "trial_density": 0.1254,
+      "breach_exposure": 0.1254,
+      "ai_device_activity": 0.1254,
+      "payment_activity": 0.1254
+    },
+    "ai_device_activity": {
+      "market": 0.1243,
+      "safety": 0.1244,
+      "reimbursement": 0.1244,
+      "provider_density": 0.1254,
+      "trial_density": 0.1254,
+      "breach_exposure": 0.1254,
+      "ai_device_activity": 0.1254,
+      "payment_activity": 0.1254
+    },
+    "payment_activity": {
+      "market": 0.1243,
+      "safety": 0.1244,
+      "reimbursement": 0.1244,
+      "provider_density": 0.1254,
+      "trial_density": 0.1254,
+      "breach_exposure": 0.1254,
+      "ai_device_activity": 0.1254,
+      "payment_activity": 0.1254
+    }
+  },
+  "metrics": {
+    "sequence_length": 8.0,
+    "feature_count": 8.0,
+    "market_slope": 4.3452,
+    "attention_entropy": 2.0442,
+    "baseline_gru_proxy_f1": 0.74,
+    "temporal_transformer_proxy_f1": 0.82
+  }
+}

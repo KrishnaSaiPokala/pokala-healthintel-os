@@ -1,0 +1,19 @@
+{
+  "name": "pokala-healthintel-os-worker",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "d1:init": "wrangler d1 execute pokala-healthintel-os-db --local --file=./migrations/0001_init.sql",
+    "d1:seed": "wrangler d1 execute pokala-healthintel-os-db --local --file=../../data/public/d1_seed.sql",
+    "d1:remote:init": "wrangler d1 execute pokala-healthintel-os-db --remote --file=./migrations/0001_init.sql",
+    "d1:remote:seed": "wrangler d1 execute pokala-healthintel-os-db --remote --file=../../data/public/d1_seed.sql"
+  },
+  "devDependencies": {
+    "wrangler": "latest",
+    "typescript": "latest",
+    "@cloudflare/workers-types": "latest"
+  }
+}

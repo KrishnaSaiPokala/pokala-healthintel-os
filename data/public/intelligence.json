@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "runId": "PHI-OS-06150136",
+    "status": "ready",
+    "refresh": "2026-06-15 01:36",
+    "evidenceRows": 188841,
+    "sources": 7,
+    "transformer": "rising_opportunity_with_safety_scrutiny"
+  },
+  "scores": {
+    "market": 100.0,
+    "safety": 72.99,
+    "reimbursement": 88.9,
+    "providerDensity": 82
+  },
+  "temporal": [
+    {
+      "period": "2024-Q1",
+      "market": 54,
+      "safety": 37,
+      "reimbursement": 48
+    },
+    {
+      "period": "2024-Q2",
+      "market": 57,
+      "safety": 44,
+      "reimbursement": 54
+    },
+    {
+      "period": "2024-Q3",
+      "market": 63,
+      "safety": 45,
+      "reimbursement": 57
+    },
+    {
+      "period": "2024-Q4",
+      "market": 64,
+      "safety": 49,
+      "reimbursement": 61
+    },
+    {
+      "period": "2025-Q1",
+      "market": 68,
+      "safety": 53,
+      "reimbursement": 66
+    },
+    {
+      "period": "2025-Q2",
+      "market": 75,
+      "safety": 57,
+      "reimbursement": 69
+    },
+    {
+      "period": "2025-Q3",
+      "market": 80,
+      "safety": 59,
+      "reimbursement": 75
+    },
+    {
+      "period": "2025-Q4",
+      "market": 84,
+      "safety": 65,
+      "reimbursement": 75
+    }
+  ],
+  "radar": [
+    {
+      "axis": "Market",
+      "value": 86
+    },
+    {
+      "axis": "Safety",
+      "value": 65
+    },
+    {
+      "axis": "Reimbursement",
+      "value": 76
+    },
+    {
+      "axis": "Providers",
+      "value": 82
+    },
+    {
+      "axis": "Trials",
+      "value": 69
+    },
+    {
+      "axis": "Breach",
+      "value": 43
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "radiology",
+        "label": "Radiology"
+      },
+      {
+        "id": "providers",
+        "label": "TX Providers"
+      },
+      {
+        "id": "devices",
+        "label": "AI Imaging Devices"
+      },
+      {
+        "id": "fda",
+        "label": "FDA Events"
+      },
+      {
+        "id": "cms",
+        "label": "Medicare Utilization"
+      },
+      {
+        "id": "trials",
+        "label": "Clinical Trials"
+      }
+    ],
+    "edges": [
+      [
+        "radiology",
+        "providers"
+      ],
+      [
+        "radiology",
+        "devices"
+      ],
+      [
+        "devices",
+        "fda"
+      ],
+      [
+        "providers",
+        "cms"
+      ],
+      [
+        "radiology",
+        "trials"
+      ]
+    ]
+  },
+  "datasets": [
+    {
+      "name": "NPPES Provider Index",
+      "rows": 41670,
+      "status": "loaded"
+    },
+    {
+      "name": "openFDA Device Events",
+      "rows": 68765,
+      "status": "loaded"
+    },
+    {
+      "name": "ClinicalTrials.gov Summary",
+      "rows": 7228,
+      "status": "loaded"
+    },
+    {
+      "name": "CMS Utilization Mart",
+      "rows": 55406,
+      "status": "loaded"
+    },
+    {
+      "name": "Open Payments Summary",
+      "rows": 12538,
+      "status": "loaded"
+    },
+    {
+      "name": "OCR Breach Signals",
+      "rows": 3027,
+      "status": "loaded"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e1",
+      "claim": "Provider density supports market entry screening",
+      "source": "NPPES snapshot",
+      "freshness": "overnight snapshot",
+      "rows": 41280
+    },
+    {
+      "id": "e2",
+      "claim": "Device-event momentum requires safety positioning",
+      "source": "openFDA MAUDE-style mart",
+      "freshness": "overnight snapshot",
+      "rows": 68421
+    },
+    {
+      "id": "e3",
+      "claim": "Reimbursement signal indicates workflow monetization path",
+      "source": "CMS utilization mart",
+      "freshness": "overnight snapshot",
+      "rows": 55312
+    },
+    {
+      "id": "e4",
+      "claim": "Trial density suggests innovation activity",
+      "source": "ClinicalTrials.gov summary",
+      "freshness": "overnight snapshot",
+      "rows": 7215
+    }
+  ],
+  "modelLab": {
+    "temporalTransformer": {
+      "momentum_class": "rising_opportunity_with_safety_scrutiny",
+      "scores": {
+        "market": 100.0,
+        "safety": 72.99,
+        "reimbursement": 88.9
+      },
+      "attention": {
+        "market": {
+          "market": 0.1263,
+          "safety": 0.1238,
+          "reimbursement": 0.1237,
+          "provider_density": 0.1252,
+          "trial_density": 0.1252,
+          "breach_exposure": 0.1252,
+          "ai_device_activity": 0.1252,
+          "payment_activity": 0.1252
+        },
+        "safety": {
+          "market": 0.1237,
+          "safety": 0.1262,
+          "reimbursement": 0.124,
+          "provider_density": 0.1252,
+          "trial_density": 0.1252,
+          "breach_exposure": 0.1252,
+          "ai_device_activity": 0.1252,
+          "payment_activity": 0.1252
+        },
+        "reimbursement": {
+          "market": 0.1237,
+          "safety": 0.124,
+          "reimbursement": 0.1262,
+          "provider_density": 0.1252,
+          "trial_density": 0.1252,
+          "breach_exposure": 0.1252,
+          "ai_device_activity": 0.1252,
+          "payment_activity": 0.1252
+        },
+        "provider_density": {
+          "market": 0.1243,
+          "safety": 0.1244,
+          "reimbursement": 0.1244,
+          "provider_density": 0.1254,
+          "trial_density": 0.1254,
+          "breach_exposure": 0.1254,
+          "ai_device_activity": 0.1254,
+          "payment_activity": 0.1254
+        },
+        "trial_density": {
+          "market": 0.1243,
+          "safety": 0.1244,
+          "reimbursement": 0.1244,
+          "provider_density": 0.1254,
+          "trial_density": 0.1254,
+          "breach_exposure": 0.1254,
+          "ai_device_activity": 0.1254,
+          "payment_activity": 0.1254
+        },
+        "breach_exposure": {
+          "market": 0.1243,
+          "safety": 0.1244,
+          "reimbursement": 0.1244,
+          "provider_density": 0.1254,
+          "trial_density": 0.1254,
+          "breach_exposure": 0.1254,
+          "ai_device_activity": 0.1254,
+          "payment_activity": 0.1254
+        },
+        "ai_device_activity": {
+          "market": 0.1243,
+          "safety": 0.1244,
+          "reimbursement": 0.1244,
+          "provider_density": 0.1254,
+          "trial_density": 0.1254,
+          "breach_exposure": 0.1254,
+          "ai_device_activity": 0.1254,
+          "payment_activity": 0.1254
+        },
+        "payment_activity": {
+          "market": 0.1243,
+          "safety": 0.1244,
+          "reimbursement": 0.1244,
+          "provider_density": 0.1254,
+          "trial_density": 0.1254,
+          "breach_exposure": 0.1254,
+          "ai_device_activity": 0.1254,
+          "payment_activity": 0.1254
+        }
+      },
+      "metrics": {
+        "sequence_length": 8.0,
+        "feature_count": 8.0,
+        "market_slope": 4.3452,
+        "attention_entropy": 2.0442,
+        "baseline_gru_proxy_f1": 0.74,
+        "temporal_transformer_proxy_f1": 0.82
+      }
+    }
+  }
+}

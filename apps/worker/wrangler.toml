@@ -1,0 +1,16 @@
+name = "pokala-healthintel-os"
+main = "src/index.ts"
+compatibility_date = "2026-06-01"
+workers_dev = true
+
+# After you create the D1 DB, replace database_id below.
+# Command:
+#   npx wrangler d1 create pokala-healthintel-os-db
+[[d1_databases]]
+binding = "DB"
+database_name = "pokala-healthintel-os-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[vars]
+APP_NAME = "Pokala HealthIntel OS"
+APP_MODE = "lone-wolf-mvp"
