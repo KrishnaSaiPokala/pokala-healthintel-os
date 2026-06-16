@@ -10,28 +10,28 @@ export function buildScoreCards(snapshot: IntelligenceSnapshot): ScoreCardModel[
       value: clampScore(scores.market),
       delta: '+12.4%',
       tone: 'cyan',
-      explanation: 'Provider density, trial activity, and utilization momentum support first-pass market screening.'
+      explanation: 'Provider concentration and utilization momentum are strong.'
     },
     {
       label: 'Safety Momentum Risk',
       value: clampScore(scores.safety),
       delta: '+6.8%',
       tone: 'amber',
-      explanation: 'FDA device-event acceleration requires governance messaging and evidence review before action.'
+      explanation: 'Event momentum requires governance review before action.'
     },
     {
       label: 'Reimbursement Signal',
       value: clampScore(scores.reimbursement),
       delta: '+9.1%',
       tone: 'green',
-      explanation: 'Payment and utilization signals suggest workflow monetization potential with payer-friction caveats.'
+      explanation: 'Payment patterns support workflow ROI with payer caveats.'
     },
     {
       label: 'Provider Density',
       value: clampScore(scores.providerDensity),
       delta: '+4.6%',
       tone: 'cyan',
-      explanation: 'Specialty supply is favorable enough to justify deeper regional segmentation.'
+      explanation: 'Specialty supply supports targeted regional segmentation.'
     }
   ];
 }
