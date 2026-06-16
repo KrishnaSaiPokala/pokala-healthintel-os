@@ -1,5 +1,6 @@
 
 export interface Env {
+  ASSETS: Fetcher;
   DB: D1Database;
   APP_NAME: string;
   APP_MODE: string;
@@ -462,6 +463,11 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { headers: jsonHeaders });
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
+
+    const isApiRoute = path === "/api" || path.startsWith("/api/");
+    if (!isApiRoute && request.method === "GET") {
+      return env.ASSETS.fetch(request);
+    }
 
     if (path === "/" || path === "/app" || path === "/command-center") {
       return html(commandCenterPage(await getCommandCenter(env)));

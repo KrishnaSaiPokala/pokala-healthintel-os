@@ -14,3 +14,9 @@ database_id = "241f5f5b-dd91-43e6-ae26-371638fd5d19"
 [vars]
 APP_NAME = "Pokala HealthIntel OS"
 APP_MODE = "lone-wolf-mvp"
+
+
+[assets]
+directory = "../web/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
