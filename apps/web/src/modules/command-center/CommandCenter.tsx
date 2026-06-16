@@ -48,7 +48,7 @@ export function CommandCenter({ snapshot }: { snapshot: IntelligenceSnapshot }) 
       </Panel>
 
       <Panel span={4} title="Pipeline status" eyebrow="Runtime" icon={Database} className="terminalPanel">
-        <pre>{`run: ${snapshot.meta.runId}\nmode: CPU-first static artifacts\nmodel: transformer-ready signal layer\nstatus: ${snapshot.meta.status}\nlineage: evidence-gated`}</pre>
+        <pre>{`run: public-evidence-build\nmode: CPU-first static artifacts\nmodel: transformer-ready signal layer\nstatus: ${snapshot.meta.status}\nlineage: evidence-gated`}</pre>
       </Panel>
 
       {scoreCards.map((card) => <ScoreCard key={card.label} card={card} />)}

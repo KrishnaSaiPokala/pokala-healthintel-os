@@ -31,7 +31,7 @@ export function App() {
         <div className="brandBlock">
           <div className="brandMark">P</div>
           <div>
-            <div className="eyebrow">Pokala Systems</div>
+            <div className="eyebrow">Public Health AI Platform</div>
             <h1>HealthIntel OS</h1>
           </div>
         </div>
@@ -69,9 +69,9 @@ export function App() {
             <h2>{workspace}</h2>
           </div>
           <div className="topActions">
-            <span><Activity size={15} /> {snapshot.meta.status}</span>
-            <span><Zap size={15} /> {snapshot.meta.runId}</span>
-            <span><Lock size={15} /> local-first</span>
+            <span><Activity size={15} /> Evidence ready</span>
+            <span><Zap size={15} /> {snapshot.meta.sources} public sources</span>
+            <span><Lock size={15} /> No PHI</span>
           </div>
         </header>
 

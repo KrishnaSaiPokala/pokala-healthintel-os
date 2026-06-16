@@ -120,3 +120,146 @@ main { padding: 26px 30px 42px; overflow: hidden; }
 .modelCardGrid strong { color: #eaf4ff; }
 .briefHero { display: grid; gap: 14px; }
 @media (max-width: 1100px) { .shell { grid-template-columns: 1fr; } .sidebar { position: relative; height: auto; } .span4,.span5,.span6,.span7,.span8,.span12 { grid-column: span 12; } .builder,.heroPanel,.metricRow,.attentionGrid,.modelCardGrid { grid-template-columns: 1fr; } .topbar { flex-direction: column; align-items: flex-start; } }
+
+/* --- Production polish pass: recruiter/researcher-facing layout fixes --- */
+
+.shell {
+  grid-template-columns: 300px minmax(0, 1fr);
+}
+
+main {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.topbar {
+  align-items: flex-start;
+}
+
+.topbar h2 {
+  max-width: 760px;
+}
+
+.topActions {
+  flex-shrink: 0;
+  max-width: 560px;
+}
+
+.topActions span {
+  white-space: nowrap;
+}
+
+.panel {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.commandGrid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.commandGrid > .score {
+  grid-column: span 3;
+}
+
+.score {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.score span {
+  min-height: 36px;
+}
+
+.score strong {
+  font-size: clamp(30px, 2.7vw, 42px);
+  line-height: 1;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+.score p {
+  margin-top: 14px;
+  max-width: 100%;
+}
+
+.heroPanel {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+}
+
+.metricRow {
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+}
+
+.decisionBadge {
+  min-width: 0;
+}
+
+.terminalPanel pre,
+.code {
+  white-space: pre-wrap;
+}
+
+.recharts-wrapper,
+.recharts-surface {
+  max-width: 100%;
+}
+
+@media (max-width: 1350px) {
+  .shell {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  main {
+    padding: 24px;
+  }
+
+  .commandGrid > .score {
+    grid-column: span 6;
+  }
+
+  .heroPanel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+
+  .topbar {
+    gap: 14px;
+  }
+
+  .topActions {
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+
+  .commandGrid > .score,
+  .span4,
+  .span5,
+  .span6,
+  .span7,
+  .span8,
+  .span12 {
+    grid-column: span 12;
+  }
+
+  .metricRow,
+  .builder,
+  .attentionGrid,
+  .modelCardGrid {
+    grid-template-columns: 1fr;
+  }
+}
