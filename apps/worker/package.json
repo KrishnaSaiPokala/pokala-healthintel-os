@@ -9,11 +9,12 @@
     "d1:init": "wrangler d1 execute pokala-healthintel-os-db --local --file=./migrations/0001_init.sql",
     "d1:seed": "wrangler d1 execute pokala-healthintel-os-db --local --file=../../data/public/d1_seed.sql",
     "d1:remote:init": "wrangler d1 execute pokala-healthintel-os-db --remote --file=./migrations/0001_init.sql",
-    "d1:remote:seed": "wrangler d1 execute pokala-healthintel-os-db --remote --file=../../data/public/d1_seed.sql"
+    "d1:remote:seed": "wrangler d1 execute pokala-healthintel-os-db --remote --file=../../data/public/d1_seed.sql",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
-    "wrangler": "latest",
-    "typescript": "latest",
-    "@cloudflare/workers-types": "latest"
+    "@cloudflare/workers-types": "^4.20260616.1",
+    "typescript": "^6.0.3",
+    "wrangler": "latest"
   }
 }

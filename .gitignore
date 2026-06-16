@@ -27,3 +27,5 @@ data/processed/
 !data/public/
 !data/public/*.json
 !data/public/*.sql
+
+.run/
