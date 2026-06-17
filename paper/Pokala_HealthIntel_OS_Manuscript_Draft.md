@@ -39,5 +39,5 @@ Pokala HealthIntel OS demonstrates a practical architecture for browser-native p
 
 ## Data certification note
 
-The current repository release uses public-source demo summary marts and a claim-linked evidence ledger. The claim-linked evidence count is verified against the static intelligence artifact, while raw source snapshots and deterministic source downloads remain part of the next certification stage. This distinction is intentional: the system demonstrates the architecture, evidence lineage contract, and no-PHI operating boundary without overstating raw-data certification.
+The current repository release uses public-source public-source summary marts and a claim-linked evidence ledger. The claim-linked evidence count is verified against the static intelligence artifact, while raw source snapshots and deterministic source downloads remain part of the next certification stage. This distinction is intentional: the system demonstrates the architecture, evidence lineage contract, and no-PHI operating boundary without overstating raw-data certification.
 

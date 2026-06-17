@@ -147,61 +147,67 @@
     {
       "name": "NPPES Provider Index",
       "rows": 41670,
-      "status": "loaded"
+      "status": "loaded",
+      "freshness": "public demo mart"
     },
     {
       "name": "openFDA Device Events",
       "rows": 68765,
-      "status": "loaded"
+      "status": "loaded",
+      "freshness": "public demo mart"
     },
     {
       "name": "ClinicalTrials.gov Summary",
       "rows": 7228,
-      "status": "loaded"
+      "status": "loaded",
+      "freshness": "public demo mart"
     },
     {
       "name": "CMS Utilization Mart",
       "rows": 55406,
-      "status": "loaded"
+      "status": "loaded",
+      "freshness": "public demo mart"
     },
     {
       "name": "Open Payments Summary",
       "rows": 12538,
-      "status": "loaded"
+      "status": "loaded",
+      "freshness": "public demo mart"
     },
     {
       "name": "OCR Breach Signals",
       "rows": 3027,
-      "status": "loaded"
+      "status": "loaded",
+      "freshness": "public demo mart"
     }
   ],
   "evidence": [
     {
       "id": "e1",
       "claim": "Provider density supports market entry screening",
-      "source": "NPPES snapshot",
-      "freshness": "overnight snapshot",
+      "source": "NPPES public provider registry extract",
+      "freshness": "source-linked public mart",
       "rows": 41280
     },
     {
       "id": "e2",
       "claim": "Device-event momentum requires safety positioning",
-      "source": "openFDA MAUDE-style mart",
-      "freshness": "overnight snapshot",
+      "source": "openFDA device-event public extract",
+      "freshness": "source-linked public mart",
       "rows": 68421
     },
     {
       "id": "e3",
       "claim": "Reimbursement signal indicates workflow monetization path",
-      "source": "CMS utilization mart",
-      "freshness": "overnight snapshot",
+      "source": "CMS utilization public extract",
+      "freshness": "source-linked public mart",
       "rows": 55312
     },
     {
       "id": "e4",
       "claim": "Trial density suggests innovation activity",
-      "source": "ClinicalTrials.gov summary",
-      "freshness": "overnight snapshot",
+      "source": "ClinicalTrials.gov public registry extract",
+      "freshness": "source-linked public mart",
       "rows": 7215
     }
   ],

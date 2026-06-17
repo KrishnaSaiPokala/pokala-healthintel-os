@@ -13,7 +13,7 @@ The current lineaged counts are:
 
 ## Important boundary
 
-These are **public-source demo summary marts**, not a final certified raw-data lake.
+These are **public-source public-source summary marts**, not a final certified raw-data lake.
 
 The project does **not** claim that raw NPPES, CMS, openFDA, ClinicalTrials.gov, Open Payments, or OCR source snapshots have been fully committed and audited in this repository yet.
 

@@ -172,9 +172,9 @@ export function CommandCenter({ snapshot }: { snapshot: IntelligenceSnapshot }) 
 
       <section id="evidence-ledger" className="caseSection evidenceCaseSection">
         <div className="caseSectionHeader">
-          <span className="sectionKicker">Evidence ledger</span>
+          <span className="sectionKicker">Source evidence ledger</span>
           <h3>{evidenceCoverage(snapshot)}</h3>
-          <p>Evidence is shown as a claim ledger, not a decorative dashboard list.</p>
+          <p>Each claim is tied to a public-source mart, row count, and claim boundary.</p>
         </div>
 
         <div className="evidenceLedger">
