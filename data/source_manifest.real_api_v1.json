@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-06-17T12:18:32.894705+00:00",
+  "status": "real_public_api_ingestion_v1",
+  "boundary": "Bounded public API samples for reproducible enterprise demo. Not full raw data lake yet.",
+  "sources": [
+    {
+      "name": "NPPES Texas Radiology API sample",
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&state=TX&taxonomy_description=Radiology&limit=200",
+      "raw_artifact": "data\\raw\\public_api_samples\\nppes_tx_radiology_sample.jsonl",
+      "processed_artifact": "data\\processed\\public_api_marts\\nppes_tx_radiology_provider_mart.csv",
+      "rows": 200,
+      "caveat": "Bounded API sample for reproducible public demo; not full NPPES downloadable file."
+    },
+    {
+      "name": "ClinicalTrials.gov radiology AI API sample",
+      "source_url": "https://clinicaltrials.gov/api/v2/studies?query.term=radiology+artificial+intelligence&pageSize=100&format=json",
+      "raw_artifact": "data\\raw\\public_api_samples\\clinicaltrials_radiology_ai_sample.jsonl",
+      "processed_artifact": "data\\processed\\public_api_marts\\clinicaltrials_radiology_ai_mart.csv",
+      "rows": 100,
+      "caveat": "Bounded API sample for innovation/activity signal; trial registry data is not market adoption proof."
+    },
+    {
+      "name": "openFDA imaging/radiology device-event API sample",
+      "source_url": "https://api.fda.gov/device/event.json?search=device.generic_name%3A%22radiology%22+OR+device.generic_name%3A%22imaging%22+OR+device.generic_name%3A%22x-ray%22&limit=100",
+      "raw_artifact": "data\\raw\\public_api_samples\\openfda_device_imaging_events_sample.jsonl",
+      "processed_artifact": "data\\processed\\public_api_marts\\openfda_device_imaging_event_mart.csv",
+      "rows": 100,
+      "caveat": "MAUDE/openFDA adverse-event reports are passive surveillance and cannot establish causality or incidence alone."
+    }
+  ],
+  "total_processed_rows": 400,
+  "next_steps": [
+    "Add paginated ingestion for larger source extracts.",
+    "Add CMS utilization/public provider data source.",
+    "Generate region-specialty-month feature marts from processed API rows.",
+    "Re-train baselines and transformer on expanded real-source sequences."
+  ]
+}
