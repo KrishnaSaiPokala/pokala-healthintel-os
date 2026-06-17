@@ -51,7 +51,7 @@ export function App() {
 
         <div className="trustCluster" aria-label="System posture">
           <span><Activity size={14} /> Evidence ready</span>
-          <span><Database size={14} /> {snapshot.meta.sources} sources</span>
+          <span><Database size={14} /> {snapshot.meta.sources} evidence sources</span>
           <span><Lock size={14} /> No PHI</span>
         </div>
       </header>

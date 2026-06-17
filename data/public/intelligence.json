@@ -3,9 +3,13 @@
     "runId": "PHI-OS-06150531",
     "status": "ready",
     "refresh": "2026-06-15 05:31",
-    "evidenceRows": 188841,
-    "sources": 7,
-    "transformer": "rising_opportunity_with_safety_scrutiny"
+    "evidenceRows": 172228,
+    "sources": 4,
+    "transformer": "rising_opportunity_with_safety_scrutiny",
+    "datasetMarts": 6,
+    "datasetRows": 188634,
+    "lineageStatus": "claim-linked evidence rows verified against static artifact; raw-source ingestion pending",
+    "dataCertification": "public-demo summary marts; raw source snapshots not yet committed"
   },
   "scores": {
     "market": 100.0,

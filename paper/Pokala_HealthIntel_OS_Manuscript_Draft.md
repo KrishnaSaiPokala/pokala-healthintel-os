@@ -35,3 +35,9 @@ The current MVP uses demonstration artifacts and deterministic scoring. Public a
 ## 8. Conclusion
 
 Pokala HealthIntel OS demonstrates a practical architecture for browser-native public healthcare intelligence with evidence lineage and model-governance controls. The next phase is replacing demonstration marts with reproducible public-data refresh jobs, adding baseline/transformer evaluation, and exporting deterministic executive dossiers.
+
+
+## Data certification note
+
+The current repository release uses public-source demo summary marts and a claim-linked evidence ledger. The claim-linked evidence count is verified against the static intelligence artifact, while raw source snapshots and deterministic source downloads remain part of the next certification stage. This distinction is intentional: the system demonstrates the architecture, evidence lineage contract, and no-PHI operating boundary without overstating raw-data certification.
+

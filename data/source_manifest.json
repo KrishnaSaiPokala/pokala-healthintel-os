@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-06-17T01:36:02.695716+00:00",
+  "status": "data_truth_commit_1",
+  "claim_boundary": "Public-source demo summary marts. No PHI. Raw source snapshots are not yet committed.",
+  "counts": {
+    "claim_linked_evidence_rows": 172228,
+    "claim_linked_evidence_sources": 4,
+    "dataset_marts": 6,
+    "dataset_mart_rows": 188634
+  },
+  "dataset_marts": [
+    {
+      "name": "NPPES Provider Index",
+      "rows": 41670,
+      "status": "loaded",
+      "artifact": "data/public/intelligence.json",
+      "raw_snapshot_committed": false,
+      "certification": "summary_mart_only",
+      "caveat": "Public/open dataset summary mart; raw source snapshot and exact source URL pinning pending."
+    },
+    {
+      "name": "openFDA Device Events",
+      "rows": 68765,
+      "status": "loaded",
+      "artifact": "data/public/intelligence.json",
+      "raw_snapshot_committed": false,
+      "certification": "summary_mart_only",
+      "caveat": "Public/open dataset summary mart; raw source snapshot and exact source URL pinning pending."
+    },
+    {
+      "name": "ClinicalTrials.gov Summary",
+      "rows": 7228,
+      "status": "loaded",
+      "artifact": "data/public/intelligence.json",
+      "raw_snapshot_committed": false,
+      "certification": "summary_mart_only",
+      "caveat": "Public/open dataset summary mart; raw source snapshot and exact source URL pinning pending."
+    },
+    {
+      "name": "CMS Utilization Mart",
+      "rows": 55406,
+      "status": "loaded",
+      "artifact": "data/public/intelligence.json",
+      "raw_snapshot_committed": false,
+      "certification": "summary_mart_only",
+      "caveat": "Public/open dataset summary mart; raw source snapshot and exact source URL pinning pending."
+    },
+    {
+      "name": "Open Payments Summary",
+      "rows": 12538,
+      "status": "loaded",
+      "artifact": "data/public/intelligence.json",
+      "raw_snapshot_committed": false,
+      "certification": "summary_mart_only",
+      "caveat": "Public/open dataset summary mart; raw source snapshot and exact source URL pinning pending."
+    },
+    {
+      "name": "OCR Breach Signals",
+      "rows": 3027,
+      "status": "loaded",
+      "artifact": "data/public/intelligence.json",
+      "raw_snapshot_committed": false,
+      "certification": "summary_mart_only",
+      "caveat": "Public/open dataset summary mart; raw source snapshot and exact source URL pinning pending."
+    }
+  ],
+  "claim_linked_evidence": [
+    {
+      "id": "e1",
+      "claim": "Provider density supports market entry screening",
+      "source": "NPPES snapshot",
+      "freshness": "overnight snapshot",
+      "rows": 41280,
+      "artifact": "apps/web/src/data/intelligence.json",
+      "raw_snapshot_committed": false
+    },
+    {
+      "id": "e2",
+      "claim": "Device-event momentum requires safety positioning",
+      "source": "openFDA MAUDE-style mart",
+      "freshness": "overnight snapshot",
+      "rows": 68421,
+      "artifact": "apps/web/src/data/intelligence.json",
+      "raw_snapshot_committed": false
+    },
+    {
+      "id": "e3",
+      "claim": "Reimbursement signal indicates workflow monetization path",
+      "source": "CMS utilization mart",
+      "freshness": "overnight snapshot",
+      "rows": 55312,
+      "artifact": "apps/web/src/data/intelligence.json",
+      "raw_snapshot_committed": false
+    },
+    {
+      "id": "e4",
+      "claim": "Trial density suggests innovation activity",
+      "source": "ClinicalTrials.gov summary",
+      "freshness": "overnight snapshot",
+      "rows": 7215,
+      "artifact": "apps/web/src/data/intelligence.json",
+      "raw_snapshot_committed": false
+    }
+  ],
+  "next_certification_steps": [
+    "Pin official source URL or reproducible API query for each dataset.",
+    "Commit raw snapshots or deterministic download scripts.",
+    "Generate derived marts from raw/source snapshots.",
+    "Reconcile D1 data_health counts against static intelligence JSON.",
+    "Train/evaluate temporal baselines and transformer on reproducible feature sequences."
+  ]
+}

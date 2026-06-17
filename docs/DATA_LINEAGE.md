@@ -1,34 +1,36 @@
-# Data Lineage and Evidence Contract
+# Data Lineage
 
-HealthIntel OS treats every score as an evidence-backed object. A score is not valid unless it can be traced to source metadata, refresh timing, row counts, feature definitions, and caveats.
+## Current certification status
 
-## Current MVP source families
+This repository currently exposes a public HealthIntel OS demo using static intelligence artifacts and Cloudflare D1 summary tables.
 
-- NPPES Provider Index
-- CMS utilization and reimbursement marts
-- openFDA / MAUDE-style device-event signals
-- ClinicalTrials.gov study-density summaries
-- CMS Open Payments summaries
-- HHS OCR breach signals
+The current lineaged counts are:
 
-## Evidence object contract
+- Claim-linked evidence rows: **172,228**
+- Claim-linked evidence sources: **4**
+- Dataset marts represented in the static artifact: **6**
+- Dataset mart rows represented in the static artifact: **188,634**
 
-Each evidence item must include:
+## Important boundary
 
-```json
-{
-  "id": "stable evidence identifier",
-  "claim": "human-readable claim",
-  "source": "source or mart name",
-  "freshness": "refresh or generation status",
-  "rows": 0
-}
-```
+These are **public-source demo summary marts**, not a final certified raw-data lake.
 
-## Lineage rules
+The project does **not** claim that raw NPPES, CMS, openFDA, ClinicalTrials.gov, Open Payments, or OCR source snapshots have been fully committed and audited in this repository yet.
 
-1. Every visible score must link to at least one evidence item.
-2. Public-source caveats must be shown near interpretation.
-3. Derived artifacts must be reproducible from scripts or documented generation steps.
-4. PHI, patient-level records, and private credentials are prohibited.
-5. Demo data must be labeled as demo, generated, or sample-derived when applicable.
+## What is verified now
+
+- The UI evidence-row count is computed from the evidence ledger.
+- The dataset-mart count is separated from the claim-linked evidence count.
+- The app uses no PHI and no patient-level records.
+- Each score must be interpreted as public intelligence, not clinical decision support.
+
+## What remains before paper-grade data certification
+
+1. Pin official public source URLs or API queries.
+2. Store raw snapshots or deterministic download scripts.
+3. Generate processed marts from raw/source snapshots.
+4. Reconcile static JSON counts, D1 counts, and manifest counts.
+5. Add a signed run manifest for each build.
+6. Train/evaluate baselines and temporal transformer models on reproducible feature sequences.
+
+See `data/source_manifest.json` for machine-readable lineage.
