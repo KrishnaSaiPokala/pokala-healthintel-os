@@ -1,0 +1,11 @@
+{
+  "status": "enterprise_gru_trained",
+  "generated_at": "2026-06-17T14:13:37.599943+00:00",
+  "weights": "data\\models\\enterprise_gru.pt",
+  "final_train_smooth_l1": 1.6e-05,
+  "metrics": {
+    "mae": 0.016487,
+    "rmse": 0.03973,
+    "directional_accuracy": 0.40873
+  }
+}

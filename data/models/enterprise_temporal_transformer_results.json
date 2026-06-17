@@ -1,0 +1,12 @@
+{
+  "status": "enterprise_temporal_transformer_trained",
+  "generated_at": "2026-06-17T14:14:58.739388+00:00",
+  "weights": "data\\models\\enterprise_temporal_transformer.pt",
+  "final_train_smooth_l1": 1.9e-05,
+  "metrics": {
+    "mae": 0.017794,
+    "rmse": 0.049348,
+    "directional_accuracy": 0.496032
+  },
+  "boundary": "Transformer v2 trained on bounded real public API derived temporal feature matrix. This is enterprise demo modeling, not final clinical or paper-scale validation."
+}

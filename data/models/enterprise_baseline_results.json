@@ -1,0 +1,36 @@
+{
+  "status": "enterprise_baselines_trained",
+  "generated_at": "2026-06-17T14:13:05.858869+00:00",
+  "feature_matrix": "data\\features\\enterprise_temporal_sequences.csv",
+  "rows": 2700,
+  "windows": 2568,
+  "train_windows": 2064,
+  "test_windows": 504,
+  "window": 12,
+  "split": {
+    "type": "time_based_holdout",
+    "train_through_period": "2023-04-01"
+  },
+  "metrics": {
+    "persistence_last_value": {
+      "mae": 0.008422,
+      "rmse": 0.016367,
+      "directional_accuracy": 0.095238
+    },
+    "rolling_window_mean": {
+      "mae": 0.012566,
+      "rmse": 0.025962,
+      "directional_accuracy": 0.619048
+    },
+    "ridge": {
+      "mae": 0.011228,
+      "rmse": 0.022097,
+      "directional_accuracy": 0.333333
+    },
+    "random_forest": {
+      "mae": 0.010525,
+      "rmse": 0.023452,
+      "directional_accuracy": 0.474206
+    }
+  }
+}
