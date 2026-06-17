@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-17T13:44:56.535849+00:00",
+  "generated_at": "2026-06-17T16:01:08.229439+00:00",
   "status": "real_public_api_ingestion_v1",
-  "boundary": "Bounded public API samples for reproducible enterprise demo. Not full raw data lake yet.",
+  "boundary": "Bounded public-source samples for reproducible enterprise demo. Not full raw data lake yet.",
   "sources": [
     {
       "name": "NPPES Texas Radiology API sample",
@@ -26,13 +26,23 @@
       "processed_artifact": "data\\processed\\public_api_marts\\openfda_device_imaging_event_mart.csv",
       "rows": 100,
       "caveat": "MAUDE/openFDA adverse-event reports are passive surveillance and cannot establish causality or incidence alone."
+    },
+    {
+      "name": "CMS Program Statistics Medicare Physician Supplier utilization and payment sample",
+      "source_url": "https://data.cms.gov/data.json",
+      "distribution_title": "CMS Program Statistics - Medicare Physician, Non-Physician Practitioner & Supplier : 2023-01-01",
+      "distribution_download_url": "https://data.cms.gov/sites/default/files/2026-01/MDCR%20PHYSSUPP_CPS10UPS_2023.zip",
+      "raw_artifact": "data\\raw\\public_api_samples\\cms_physician_supplier_utilization_sample.jsonl",
+      "processed_artifact": "data\\processed\\public_api_marts\\cms_physician_supplier_utilization_mart.csv",
+      "rows": 2732,
+      "caveat": "Bounded extracted sample from CMS Program Statistics Physician/Supplier workbook; aggregate utilization/payment context, not patient-level data."
     }
   ],
-  "total_processed_rows": 400,
+  "total_processed_rows": 3132,
   "next_steps": [
-    "Add paginated ingestion for larger source extracts.",
-    "Add CMS utilization/public provider data source.",
-    "Generate region-specialty-month feature marts from processed API rows.",
-    "Re-train baselines and transformer on expanded real-source sequences."
+    "Regenerate enterprise temporal feature matrix with CMS utilization/payment pressure.",
+    "Retrain baselines, GRU, and transformer against expanded feature set.",
+    "Wire Model Lab run history to compare model versions.",
+    "Scale source extraction beyond bounded samples."
   ]
 }
