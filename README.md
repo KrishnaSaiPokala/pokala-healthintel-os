@@ -119,3 +119,14 @@ The intended free MVP URL is:
 https://pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev
 ```
 
+
+## Architecture and governance docs
+
+- [Enterprise Architecture](docs/ENTERPRISE_ARCHITECTURE.md)
+- [Deep Learning System Design](docs/DL_SYSTEM_DESIGN.md)
+- [System Status](docs/SYSTEM_STATUS.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Data Lineage](docs/DATA_LINEAGE.md)
+- [Claim Boundary](docs/CLAIM_BOUNDARY.md)
+- [Model Card](docs/MODEL_CARD.md)
+
