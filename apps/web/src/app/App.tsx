@@ -74,7 +74,7 @@ export function App() {
         {view === 'graph' && <EntityGraphView snapshot={snapshot} />}
         {view === 'safety' && <SafetyRadar snapshot={snapshot} />}
         {view === 'reimbursement' && <ReimbursementRadar snapshot={snapshot} />}
-        {view === 'model' && <ModelLab snapshot={snapshot} />}
+        {view === 'model' && <ModelLab />}
         {view === 'data' && <DataHealth snapshot={snapshot} />}
         {view === 'brief' && <ExecutiveBrief snapshot={snapshot} />}
       </main>
