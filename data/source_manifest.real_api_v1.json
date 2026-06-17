@@ -35,7 +35,8 @@
       "raw_artifact": "data\\raw\\public_api_samples\\cms_physician_supplier_utilization_sample.jsonl",
       "processed_artifact": "data\\processed\\public_api_marts\\cms_physician_supplier_utilization_mart.csv",
       "rows": 2732,
-      "caveat": "Bounded extracted sample from CMS Program Statistics Physician/Supplier workbook; aggregate utilization/payment context, not patient-level data."
+      "caveat": "Bounded extracted sample from CMS Program Statistics Physician/Supplier workbook; aggregate utilization/payment context, not patient-level data.",
+      "data_year": 2023
     }
   ],
   "total_processed_rows": 3132,

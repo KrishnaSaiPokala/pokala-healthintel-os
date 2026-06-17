@@ -183,7 +183,7 @@ def main() -> int:
     distribution = select_latest_zip(dataset)
     download_url = distribution["downloadURL"]
     selected_title = str(distribution.get("title", ""))
-    selected_year = distribution_year(distribution)
+    selected_year = 2023  # data vintage from selected CMS 2023 workbook/distribution
 
     zip_path = CACHE_DIR / f"cms_physician_supplier_{selected_year}.zip"
     extract_dir = CACHE_DIR / f"cms_physician_supplier_{selected_year}"
