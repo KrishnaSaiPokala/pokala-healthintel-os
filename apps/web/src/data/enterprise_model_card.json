@@ -1,0 +1,85 @@
+{
+  "model_family": "Enterprise temporal market-safety intelligence",
+  "generated_at": "2026-06-17T14:14:58.743425+00:00",
+  "feature_manifest": "data\\features\\enterprise_temporal_manifest.json",
+  "source_manifest": "data/source_manifest.real_api_v1.json",
+  "training_rows": 2700,
+  "windows": 2568,
+  "entities": 12,
+  "periods": 225,
+  "feature_columns": [
+    "provider_count",
+    "provider_share",
+    "trial_starts_month",
+    "trial_starts_3mo",
+    "trial_starts_6mo",
+    "trial_velocity",
+    "device_events_month",
+    "device_events_3mo",
+    "device_events_6mo",
+    "safety_velocity",
+    "provider_density_norm",
+    "trial_momentum_norm",
+    "safety_pressure_norm",
+    "reimbursement_proxy_norm",
+    "market_signal",
+    "safety_signal",
+    "composite_opportunity"
+  ],
+  "target": "target_next_composite_opportunity",
+  "models_compared": [
+    "persistence_last_value",
+    "rolling_window_mean",
+    "ridge",
+    "random_forest",
+    "gru",
+    "temporal_transformer"
+  ],
+  "best_model_by_rmse": "persistence_last_value",
+  "metrics": {
+    "persistence_last_value": {
+      "mae": 0.008422,
+      "rmse": 0.016367,
+      "directional_accuracy": 0.095238
+    },
+    "rolling_window_mean": {
+      "mae": 0.012566,
+      "rmse": 0.025962,
+      "directional_accuracy": 0.619048
+    },
+    "ridge": {
+      "mae": 0.011228,
+      "rmse": 0.022097,
+      "directional_accuracy": 0.333333
+    },
+    "random_forest": {
+      "mae": 0.010525,
+      "rmse": 0.023452,
+      "directional_accuracy": 0.474206
+    },
+    "gru": {
+      "mae": 0.016487,
+      "rmse": 0.03973,
+      "directional_accuracy": 0.40873
+    },
+    "temporal_transformer": {
+      "mae": 0.017794,
+      "rmse": 0.049348,
+      "directional_accuracy": 0.496032
+    }
+  },
+  "artifacts": {
+    "baselines": "data\\models\\enterprise_baseline_results.json",
+    "gru_results": "data\\models\\enterprise_gru_results.json",
+    "gru_weights": "data\\models\\enterprise_gru.pt",
+    "transformer_results": "data\\models\\enterprise_temporal_transformer_results.json",
+    "transformer_weights": "data\\models\\enterprise_temporal_transformer.pt"
+  },
+  "claim_boundary": [
+    "Uses bounded public API samples and derived temporal feature engineering.",
+    "Does not use PHI or patient-level records.",
+    "Does not provide clinical decision support.",
+    "Passive device-event reports cannot establish causality or incidence.",
+    "Current results are enterprise-demo validation, not final paper-scale claims."
+  ]
+}
