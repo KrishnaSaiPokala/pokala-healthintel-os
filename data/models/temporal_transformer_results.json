@@ -1,0 +1,34 @@
+{
+  "status": "temporal_transformer_trained",
+  "boundary": "Prototype transformer trained on static demo temporal features. Requires raw-source generated sequences before paper-grade claims.",
+  "rows": 8,
+  "windows": 5,
+  "train_windows": 3,
+  "test_windows": 2,
+  "window": 4,
+  "feature_columns": [
+    "market",
+    "safety",
+    "reimbursement",
+    "provider_density",
+    "market_delta",
+    "safety_delta",
+    "reimbursement_delta"
+  ],
+  "target": "target_next_market",
+  "metrics": {
+    "mae": 8.71038818359375,
+    "rmse": 8.71038818359375,
+    "final_train_l1": 4.0639190673828125
+  },
+  "artifacts": {
+    "weights": "data\\models\\temporal_transformer.pt",
+    "results": "data\\models\\temporal_transformer_results.json"
+  },
+  "next_steps": [
+    "Generate region-specialty-month feature sequences from real source marts.",
+    "Add GRU/LSTM baselines.",
+    "Add temporal holdout evaluation.",
+    "Export attention/feature attribution for Model Lab."
+  ]
+}

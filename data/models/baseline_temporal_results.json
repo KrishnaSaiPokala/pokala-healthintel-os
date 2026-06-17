@@ -1,0 +1,34 @@
+{
+  "status": "baseline_evaluation_complete",
+  "boundary": "Prototype temporal benchmark on static demo feature sequence; not final paper-grade model yet.",
+  "rows": 8,
+  "train_rows": 5,
+  "test_rows": 3,
+  "target": "target_next_market",
+  "feature_columns": [
+    "market",
+    "safety",
+    "reimbursement",
+    "provider_density",
+    "market_delta",
+    "safety_delta",
+    "reimbursement_delta"
+  ],
+  "results": [
+    {
+      "model": "persistence_mean",
+      "mae": 17.266664505004883,
+      "rmse": 17.36931972825262
+    },
+    {
+      "model": "ridge",
+      "mae": 3.435002565383911,
+      "rmse": 3.5282854447488323
+    },
+    {
+      "model": "random_forest",
+      "mae": 11.566666666666663,
+      "rmse": 11.73447112144386
+    }
+  ]
+}

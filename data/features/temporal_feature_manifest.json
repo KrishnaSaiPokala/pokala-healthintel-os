@@ -1,0 +1,24 @@
+{
+  "artifact": "data\\features\\temporal_market_sequences.csv",
+  "rows": 8,
+  "case_id": "tx_radiology_ai_workflow",
+  "status": "prototype_temporal_sequence",
+  "boundary": "Feature sequence currently derived from static public-demo intelligence artifact. Real raw-source generated sequences are next.",
+  "features": [
+    "case_id",
+    "region",
+    "specialty",
+    "period",
+    "t",
+    "market",
+    "safety",
+    "reimbursement",
+    "provider_density",
+    "dataset_rows_log",
+    "evidence_rows_log",
+    "market_delta",
+    "safety_delta",
+    "reimbursement_delta"
+  ],
+  "target": "target_next_market"
+}
