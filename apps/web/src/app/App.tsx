@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Activity, Lock, ShieldCheck, Zap } from 'lucide-react';
+import { Activity, Database, Lock, ShieldCheck } from 'lucide-react';
 import rawSnapshot from '../data/intelligence.json';
 import { CommandCenter } from '../modules/command-center/CommandCenter';
 import { Investigations } from '../modules/investigations/Investigations';
@@ -12,68 +12,62 @@ import { ExecutiveBrief } from '../modules/executive-brief/ExecutiveBrief';
 import { navItems } from './navigation';
 import type { IntelligenceSnapshot, IntelligenceView } from '../types/intelligence';
 
+const raw = rawSnapshot as any;
+
 const snapshot: IntelligenceSnapshot = {
-  ...rawSnapshot,
+  ...raw,
   graph: {
-    ...rawSnapshot.graph,
-    edges: rawSnapshot.graph.edges.map((edge) => [edge[0] ?? "", edge[1] ?? ""] as [string, string]),
+    ...raw.graph,
+    edges: (raw.graph?.edges ?? []).map((edge: string[]) => [edge[0] ?? '', edge[1] ?? ''] as [string, string]),
   },
 };
 
 export function App() {
   const [view, setView] = useState<IntelligenceView>('command');
-  const [workspace, setWorkspace] = useState('Texas Radiology AI Market');
   const activeLabel = useMemo(() => navItems.find((item) => item.id === view)?.label ?? 'Command Center', [view]);
 
   return (
-    <div className="shell">
-      <aside className="sidebar">
-        <div className="brandBlock">
-          <div className="brandMark">P</div>
+    <div className="productShell">
+      <header className="productHeader">
+        <div className="brandLockup">
+          <div className="brandSeal">P</div>
           <div>
-            <div className="eyebrow">Public Health AI Platform</div>
-            <h1>HealthIntel OS</h1>
+            <span>Pokala HealthIntel OS</span>
+            <strong>Public healthcare intelligence workspace</strong>
           </div>
         </div>
 
-        <div className="workspace">
-          <div className="eyebrow">Active Workspace</div>
-          <input value={workspace} onChange={(event) => setWorkspace(event.target.value)} aria-label="Active workspace" />
-        </div>
-
-        <nav aria-label="Product navigation">
+        <nav className="productNav" aria-label="Product navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
               <button key={item.id} className={view === item.id ? 'active' : ''} onClick={() => setView(item.id)}>
-                <Icon size={18} />
+                <Icon size={16} />
                 {item.label}
               </button>
             );
           })}
         </nav>
 
-        <div className="opsCard">
-          <ShieldCheck size={18} />
-          <div>
-            <strong>No-PHI intelligence boundary</strong>
-            <p>Public data only. No login. No patient data. No clinical decision support claims.</p>
-          </div>
+        <div className="trustCluster" aria-label="System posture">
+          <span><Activity size={14} /> Evidence ready</span>
+          <span><Database size={14} /> {snapshot.meta.sources} sources</span>
+          <span><Lock size={14} /> No PHI</span>
         </div>
-      </aside>
+      </header>
 
-      <main>
-        <header className="topbar">
+      <main className="productMain">
+        <section className="workspaceHeader">
           <div>
-            <div className="eyebrow">{activeLabel}</div>
-            <h2>{workspace}</h2>
+            <span className="sectionKicker">{activeLabel}</span>
+            <h1>Texas Radiology AI Market</h1>
           </div>
-          <div className="topActions">
-            <span><Activity size={15} /> Evidence ready</span>
-            <span><Zap size={15} /> {snapshot.meta.sources} public sources</span>
-            <span><Lock size={15} /> No PHI</span>
+          <div className="workspacePosture">
+            <span><ShieldCheck size={15} /> Public-source demo</span>
+            <span>No account required</span>
+            <span>No patient-level data</span>
           </div>
-        </header>
+        </section>
 
         {view === 'command' && <CommandCenter snapshot={snapshot} />}
         {view === 'investigations' && <Investigations snapshot={snapshot} />}
