@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-06-17T14:00:58.798805+00:00",
+  "status": "enterprise_temporal_matrix_v1",
+  "boundary": "Feature matrix derived from bounded real public API marts. Suitable for enterprise demo modeling, not final paper-scale claims.",
+  "input_marts": [
+    "data\\processed\\public_api_marts\\nppes_tx_radiology_provider_mart.csv",
+    "data\\processed\\public_api_marts\\clinicaltrials_radiology_ai_mart.csv",
+    "data\\processed\\public_api_marts\\openfda_device_imaging_event_mart.csv"
+  ],
+  "output": "data\\features\\enterprise_temporal_sequences.csv",
+  "rows": 2700,
+  "entities": 12,
+  "periods": 225,
+  "feature_columns": [
+    "provider_count",
+    "provider_share",
+    "trial_starts_month",
+    "trial_starts_3mo",
+    "trial_starts_6mo",
+    "trial_velocity",
+    "device_events_month",
+    "device_events_3mo",
+    "device_events_6mo",
+    "safety_velocity",
+    "provider_density_norm",
+    "trial_momentum_norm",
+    "safety_pressure_norm",
+    "reimbursement_proxy_norm",
+    "market_signal",
+    "safety_signal",
+    "composite_opportunity"
+  ],
+  "target": "target_next_composite_opportunity",
+  "source_boundary": "NPPES provider rows are static supply signals; trial and event rows provide temporal movement; passive safety reports cannot establish causality or incidence."
+}
