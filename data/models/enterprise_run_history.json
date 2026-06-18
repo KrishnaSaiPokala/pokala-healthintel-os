@@ -1,0 +1,239 @@
+[
+  {
+    "run_id": "basecamp3_v3_20260617_200429",
+    "generated_at": "2026-06-18T01:28:16.524841+00:00",
+    "device": "cpu",
+    "cuda_available": false,
+    "cuda_device": null,
+    "status": "basecamp3_v3_full_power_cpu_gpu_aware_run_complete",
+    "boundary": "Longer multi-seed model comparison over bounded public-source temporal features. Still not paper-grade or enterprise production.",
+    "source_manifest": "data\\source_manifest.real_api_v1.json",
+    "feature_manifest_v3": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\enterprise_temporal_manifest_v3.json",
+    "training_rows": 2700,
+    "windows": 2496,
+    "train_windows": 2004,
+    "test_windows": 492,
+    "entities": 12,
+    "periods": 225,
+    "feature_count": 54,
+    "window": 18,
+    "epochs": 650,
+    "seeds": [
+      7,
+      17,
+      29,
+      42,
+      71
+    ],
+    "split": {
+      "type": "time_based_holdout",
+      "train_through_period": "2023-05-01"
+    },
+    "leaderboard": [
+      {
+        "model": "persistence_last_value",
+        "seed": null,
+        "mae": 0.00862693,
+        "rmse": 0.01656573,
+        "directional_accuracy": 0.07317073
+      },
+      {
+        "model": "elastic_net",
+        "seed": null,
+        "mae": 0.00829746,
+        "rmse": 0.01708084,
+        "directional_accuracy": 0.64837398,
+        "seconds": 3.073
+      },
+      {
+        "model": "rolling_window_mean",
+        "seed": null,
+        "mae": 0.01228575,
+        "rmse": 0.02455977,
+        "directional_accuracy": 0.6097561
+      },
+      {
+        "mae": 0.0126813,
+        "rmse": 0.02475391,
+        "directional_accuracy": 0.45121951,
+        "seconds": 335.22,
+        "seed": 71,
+        "model": "tcn",
+        "final_train_smooth_l1": 1.3685e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\tcn_seed_71.pt"
+      },
+      {
+        "mae": 0.0128059,
+        "rmse": 0.02513928,
+        "directional_accuracy": 0.44308943,
+        "seconds": 327.018,
+        "seed": 42,
+        "model": "tcn",
+        "final_train_smooth_l1": 1.1775e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\tcn_seed_42.pt"
+      },
+      {
+        "mae": 0.01203479,
+        "rmse": 0.0251797,
+        "directional_accuracy": 0.45325203,
+        "seconds": 318.137,
+        "seed": 17,
+        "model": "tcn",
+        "final_train_smooth_l1": 1.4448e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\tcn_seed_17.pt"
+      },
+      {
+        "mae": 0.01318936,
+        "rmse": 0.02650722,
+        "directional_accuracy": 0.46747967,
+        "seconds": 338.702,
+        "seed": 7,
+        "model": "tcn",
+        "final_train_smooth_l1": 1.2935e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\tcn_seed_7.pt"
+      },
+      {
+        "mae": 0.01267574,
+        "rmse": 0.02824418,
+        "directional_accuracy": 0.49390244,
+        "seconds": 949.242,
+        "seed": 71,
+        "model": "gru",
+        "final_train_smooth_l1": 8.3819e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\gru_seed_71.pt"
+      },
+      {
+        "mae": 0.01404622,
+        "rmse": 0.02844597,
+        "directional_accuracy": 0.45528455,
+        "seconds": 335.917,
+        "seed": 29,
+        "model": "tcn",
+        "final_train_smooth_l1": 9.431e-07,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\tcn_seed_29.pt"
+      },
+      {
+        "model": "extra_trees",
+        "seed": null,
+        "mae": 0.01239624,
+        "rmse": 0.02853736,
+        "directional_accuracy": 0.55284553,
+        "seconds": 36.969
+      },
+      {
+        "mae": 0.01345633,
+        "rmse": 0.0287589,
+        "directional_accuracy": 0.48373984,
+        "seconds": 818.869,
+        "seed": 42,
+        "model": "gru",
+        "final_train_smooth_l1": 6.1068e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\gru_seed_42.pt"
+      },
+      {
+        "mae": 0.01455913,
+        "rmse": 0.03078353,
+        "directional_accuracy": 0.53861789,
+        "seconds": 832.615,
+        "seed": 17,
+        "model": "gru",
+        "final_train_smooth_l1": 5.272e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\gru_seed_17.pt"
+      },
+      {
+        "mae": 0.0138314,
+        "rmse": 0.03132392,
+        "directional_accuracy": 0.5,
+        "seconds": 854.949,
+        "seed": 29,
+        "model": "gru",
+        "final_train_smooth_l1": 6.9213e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\gru_seed_29.pt"
+      },
+      {
+        "mae": 0.01502061,
+        "rmse": 0.0329394,
+        "directional_accuracy": 0.46138211,
+        "seconds": 907.308,
+        "seed": 7,
+        "model": "gru",
+        "final_train_smooth_l1": 5.9344e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\gru_seed_7.pt"
+      },
+      {
+        "model": "random_forest",
+        "seed": null,
+        "mae": 0.01386763,
+        "rmse": 0.0331699,
+        "directional_accuracy": 0.54065041,
+        "seconds": 54.143
+      },
+      {
+        "mae": 0.01550084,
+        "rmse": 0.03327706,
+        "directional_accuracy": 0.51626016,
+        "seconds": 2374.431,
+        "seed": 17,
+        "model": "temporal_transformer",
+        "final_train_smooth_l1": 9.674e-06,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\temporal_transformer_seed_17.pt"
+      },
+      {
+        "mae": 0.01692902,
+        "rmse": 0.03551914,
+        "directional_accuracy": 0.56910569,
+        "seconds": 2428.228,
+        "seed": 29,
+        "model": "temporal_transformer",
+        "final_train_smooth_l1": 2.79808e-05,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\temporal_transformer_seed_29.pt"
+      },
+      {
+        "mae": 0.01746465,
+        "rmse": 0.03879633,
+        "directional_accuracy": 0.56504065,
+        "seconds": 2484.794,
+        "seed": 71,
+        "model": "temporal_transformer",
+        "final_train_smooth_l1": 6.35368e-05,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\temporal_transformer_seed_71.pt"
+      },
+      {
+        "model": "ridge",
+        "seed": null,
+        "mae": 0.01974308,
+        "rmse": 0.04067553,
+        "directional_accuracy": 0.36585366,
+        "seconds": 0.072
+      },
+      {
+        "mae": 0.02572067,
+        "rmse": 0.05079534,
+        "directional_accuracy": 0.47154472,
+        "seconds": 3627.616,
+        "seed": 42,
+        "model": "temporal_transformer",
+        "final_train_smooth_l1": 2.44795e-05,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\temporal_transformer_seed_42.pt"
+      },
+      {
+        "mae": 0.02742914,
+        "rmse": 0.06115734,
+        "directional_accuracy": 0.44918699,
+        "seconds": 2393.208,
+        "seed": 7,
+        "model": "temporal_transformer",
+        "final_train_smooth_l1": 2.05392e-05,
+        "weights": "data\\models\\run_history\\basecamp3_v3_20260617_200429\\temporal_transformer_seed_7.pt"
+      }
+    ],
+    "best_model_by_rmse": "persistence_last_value",
+    "claim_boundary": [
+      "No PHI or patient-level records.",
+      "Public-source bounded marts only.",
+      "CMS workbook signal is aggregate utilization/payment context.",
+      "Passive openFDA/MAUDE reports cannot establish causality or incidence.",
+      "Current v3 run is stronger than the previous quick run but still not paper-scale validation."
+    ]
+  }
+]
