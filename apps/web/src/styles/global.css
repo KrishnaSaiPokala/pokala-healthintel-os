@@ -874,3 +874,216 @@ pre,
     grid-template-columns: 1fr;
   }
 }
+
+
+/* === MODEL LAB V4 POLISH START === */
+
+.modelLabPolished {
+  color: #111827;
+}
+
+.modelLabPolished .panel,
+.modelLabPolished [class*="Panel"] {
+  backdrop-filter: blur(16px);
+}
+
+.modelVerdict {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.modelVerdictCopy h2 {
+  max-width: 920px;
+  margin: 10px 0 12px;
+  color: #0b1220;
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: .92;
+  letter-spacing: -.06em;
+  overflow-wrap: anywhere;
+}
+
+.modelVerdictCopy p {
+  max-width: 900px;
+  color: #46556b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.verdictBanner {
+  display: grid;
+  gap: 6px;
+  max-width: 900px;
+  margin-top: 22px;
+  border: 1px solid rgba(15, 23, 42, .12);
+  background: linear-gradient(135deg, rgba(15, 23, 42, .07), rgba(255,255,255,.7));
+  border-radius: 20px;
+  padding: 16px 18px;
+}
+
+.verdictBanner strong {
+  color: #0b1220;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.verdictBanner span {
+  color: #334155;
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+.modelScoreboard {
+  display: grid;
+  gap: 12px;
+}
+
+.modelScoreboard article,
+.modelMetricGrid article,
+.runDesignStack article {
+  border: 1px solid rgba(15, 23, 42, .12);
+  background: rgba(255, 255, 255, .72);
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, .055);
+}
+
+.modelScoreboard span,
+.modelMetricGrid span,
+.runDesignStack span {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.modelScoreboard strong {
+  display: block;
+  margin-top: 7px;
+  color: #0f172a;
+  font-size: 22px;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.modelMetricGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.modelMetricGrid strong,
+.runDesignStack strong {
+  display: block;
+  margin-top: 8px;
+  color: #0f172a;
+  font-size: 18px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.runDesignStack {
+  display: grid;
+  gap: 12px;
+}
+
+.compactBoundary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.compactBoundary span {
+  color: #1f2937 !important;
+  background: rgba(255,255,255,.78) !important;
+  border: 1px solid rgba(15, 23, 42, .12) !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .04);
+}
+
+.leaderboardNote {
+  margin-bottom: 14px;
+  color: #475569;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.modelTableWrap {
+  overflow-x: auto;
+}
+
+.polishedTable {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+}
+
+.polishedTable th,
+.polishedTable td {
+  border-bottom: 1px solid rgba(15, 23, 42, .1);
+  padding: 13px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.polishedTable th {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.polishedTable td {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.polishedTable td strong {
+  display: block;
+  color: #0f172a;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.polishedTable td small {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.runHistoryLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.runHistoryLine span {
+  border: 1px solid rgba(15, 23, 42, .12);
+  background: rgba(255,255,255,.74);
+  border-radius: 999px;
+  padding: 10px 13px;
+  color: #1f2937;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .modelVerdict {
+    grid-template-columns: 1fr;
+  }
+
+  .modelMetricGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === MODEL LAB V4 POLISH END === */
