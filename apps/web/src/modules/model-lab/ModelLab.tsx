@@ -1,4 +1,4 @@
-import { Brain, Cpu, Database, GitBranch, ShieldCheck } from 'lucide-react';
+﻿import { Brain, Cpu, Database, GitBranch, ShieldCheck } from 'lucide-react';
 import { Panel } from '../../components/Panel';
 import modelCardRaw from '../../data/enterprise_model_card.json';
 import featureManifestRaw from '../../data/enterprise_temporal_manifest.json';
@@ -135,10 +135,11 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
       <Panel span={12} title="Run history" eyebrow="Reproducibility">
         <div className="runHistoryLine">
           <span>{runHistory.length} saved run{runHistory.length === 1 ? '' : 's'}</span>
-          <span>Latest: {fmt(runHistory.at(-1)?.run_id ?? card.run_id)}</span>
+          <span>Latest: {fmt((runHistory.length ? runHistory[runHistory.length - 1]?.run_id : card.run_id))}</span>
           <span>Generated: {fmt(card.generated_at ?? manifest.generated_at)}</span>
         </div>
       </Panel>
     </section>
   );
 }
+
