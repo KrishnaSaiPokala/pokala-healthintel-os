@@ -46,7 +46,6 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
   const bestModel = card.best_model_by_rmse ?? card.best_model_by_roc_auc ?? best.model ?? 'Not reported';
   const target = card.target ?? manifest.target ?? 'target_next_composite_opportunity';
   const boundary = card.boundary ?? manifest.boundary ?? manifest.source_boundary ?? 'Bounded public-source model artifact.';
-  const isClassification = rows.some((row) => row.roc_auc !== undefined || row.pr_auc !== undefined || row.f1 !== undefined);
 
   return (
     <section className="gridPage modelLab modelLabPolished">
@@ -58,9 +57,9 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
             <p>{boundary}</p>
 
             <div className="verdictBanner">
-              <strong>Honest read:</strong>
+              <strong>Honest read</strong>
               <span>
-                The harder v4 target is now live. Best reported run is a temporal transformer, but the signal is still weak-to-moderate and should be treated as an experimental benchmark, not a validated prediction engine.
+                The harder v4 shock target is live. Best reported run is a temporal transformer, but the signal is still weak-to-moderate. Treat this as an experimental public-source benchmark, not a validated prediction engine.
               </span>
             </div>
           </div>
@@ -105,7 +104,7 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
           </article>
           <article>
             <span>Task type</span>
-            <strong>{isClassification ? 'Classification / shock detection' : 'Regression'}</strong>
+            <strong>Classification / shock detection</strong>
           </article>
           <article>
             <span>Window / horizon</span>
@@ -137,7 +136,7 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
 
       <Panel span={12} title="Leaderboard" eyebrow="Top reported runs" icon={GitBranch}>
         <div className="leaderboardNote">
-          Classification runs use ROC-AUC, PR-AUC, F1, and balanced accuracy. RMSE/MAE are intentionally blank for v4.
+          Classification runs use ROC-AUC, PR-AUC, F1, precision, recall, and balanced accuracy. RMSE/MAE are intentionally removed for v4.
         </div>
 
         <div className="modelTableWrap">

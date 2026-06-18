@@ -882,11 +882,6 @@ pre,
   color: #111827;
 }
 
-.modelLabPolished .panel,
-.modelLabPolished [class*="Panel"] {
-  backdrop-filter: blur(16px);
-}
-
 .modelVerdict {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
