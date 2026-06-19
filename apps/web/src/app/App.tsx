@@ -7,6 +7,7 @@ import { EntityGraphView } from '../modules/entity-graph/EntityGraphView';
 import { SafetyRadar } from '../modules/safety-radar/SafetyRadar';
 import { ReimbursementRadar } from '../modules/reimbursement/ReimbursementRadar';
 import { ModelLab } from '../modules/model-lab/ModelLab';
+import { MarketEntryBrief } from '../modules/market-entry/MarketEntryBrief';
 import { DataHealth } from '../modules/data-health/DataHealth';
 import { ExecutiveBrief } from '../modules/executive-brief/ExecutiveBrief';
 import { navItems } from './navigation';
@@ -69,6 +70,7 @@ export function App() {
           </div>
         </section>
 
+        {view === 'market' && <MarketEntryBrief snapshot={snapshot} />}
         {view === 'command' && <CommandCenter snapshot={snapshot} />}
         {view === 'investigations' && <Investigations snapshot={snapshot} />}
         {view === 'graph' && <EntityGraphView snapshot={snapshot} />}

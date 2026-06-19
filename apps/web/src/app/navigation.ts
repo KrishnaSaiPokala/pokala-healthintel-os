@@ -18,6 +18,7 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
+  { id: 'market', label: 'Market Brief', icon: MapPinned },
   { id: 'command', label: 'Command Center', icon: Terminal },
   { id: 'investigations', label: 'Investigations', icon: Search },
   { id: 'graph', label: 'Entity Graph', icon: GitBranch },
