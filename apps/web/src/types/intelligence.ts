@@ -10,6 +10,7 @@ export type IntelligenceView =
   | 'data';
 
 
+
 export interface IntelligenceMeta {
   runId: string;
   status: string;

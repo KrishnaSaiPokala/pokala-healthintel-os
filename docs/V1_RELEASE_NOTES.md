@@ -1,20 +1,21 @@
 # Pokala HealthIntel OS v1.0 Candidate
 
-## What this version is
+## Product position
 
-Pokala HealthIntel OS v1.0 Candidate is a public-data healthcare intelligence artifact focused on market diligence, evidence discipline, and transparent model benchmarking.
+Pokala HealthIntel OS v1.0 Candidate is a public-data healthcare intelligence SaaS artifact for evidence-backed market diligence.
 
-The flagship workflow is the Texas Radiology AI Market Entry Brief. It combines public-source evidence, bounded model artifacts, and explicit claim boundaries to support diligence prioritization.
+The flagship workflow is the Texas Radiology AI Market Entry Brief. It is designed to show a decision, supporting evidence, counterarguments, model caveats, and claim boundaries.
 
-## What this version does
+## What v1.0 does
 
-- Presents a market-entry decision brief.
-- Shows public-source evidence boundaries.
-- Provides a model lab with v4 shock benchmark artifacts.
+- Presents a market-entry intelligence brief.
+- Shows bounded public-source evidence context.
+- Provides an artifact-backed Model Lab.
 - Maintains no-PHI and no patient-level constraints.
-- Separates evidence-backed intelligence from clinical or causal claims.
+- Separates public-data intelligence from clinical, causal, or patient-care claims.
+- Deploys as a browser-native Cloudflare Worker SaaS experience.
 
-## What this version does not do
+## What v1.0 does not do
 
 - It is not clinical decision support.
 - It does not process PHI.
@@ -25,12 +26,12 @@ The flagship workflow is the Texas Radiology AI Market Entry Brief. It combines 
 
 ## Current model position
 
-The v4 shock benchmark is useful as an experimental public-source signal test. The current model evidence is weak-to-moderate and should be interpreted as a research benchmark, not as validated forecasting performance.
+The v4 shock benchmark is an experimental public-source signal test. The current model evidence is weak-to-moderate and should be interpreted as a benchmark artifact, not as validated forecasting performance.
 
-## Next summit after v1.0
+## Next summit
 
-- Add calibrated v4.1 benchmark reporting.
-- Strengthen claim-to-evidence traceability.
-- Add more independent public data sources.
-- Build v5 multi-source target and transformer evaluation.
+- Add calibrated v4.1 reporting.
+- Add stronger claim-to-evidence traceability.
 - Add exportable decision memo and evidence package.
+- Add more independent public sources.
+- Build a v5 multi-source target and transformer evaluation.
