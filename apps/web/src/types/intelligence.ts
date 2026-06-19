@@ -1,5 +1,6 @@
 export type IntelligenceView =
   | 'market'
+  | 'brief'
   | 'command'
   | 'investigations'
   | 'graph'
@@ -8,6 +9,7 @@ export type IntelligenceView =
   | 'model'
   | 'evidence'
   | 'data';
+
 
 
 

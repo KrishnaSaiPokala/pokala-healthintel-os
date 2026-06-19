@@ -10,7 +10,8 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   
-  { id: 'market', label: 'Market Brief', icon: Building2 },{ id: 'graph', label: 'Entity Graph', icon: GitBranch },
+  { id: 'market', label: 'Market Brief', icon: Building2 },
+  { id: 'graph', label: 'Entity Graph', icon: GitBranch },
   { id: 'safety', label: 'Safety Radar', icon: Radar },
   { id: 'reimbursement', label: 'Reimbursement', icon: BarChart3 },
   { id: 'model', label: 'Model Lab', icon: BrainCircuit },
