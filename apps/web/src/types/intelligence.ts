@@ -1,4 +1,5 @@
 export type IntelligenceView =
+  | 'market'
   | 'command'
   | 'investigations'
   | 'graph'
