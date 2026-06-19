@@ -6,8 +6,9 @@ export type IntelligenceView =
   | 'safety'
   | 'reimbursement'
   | 'model'
-  | 'data'
-  | 'brief';
+  | 'evidence'
+  | 'data';
+
 
 export interface IntelligenceMeta {
   runId: string;

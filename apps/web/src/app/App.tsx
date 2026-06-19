@@ -24,7 +24,7 @@ const snapshot: IntelligenceSnapshot = {
 };
 
 export function App() {
-  const [view, setView] = useState<IntelligenceView>('command');
+  const [view, setView] = useState<IntelligenceView>('market');
   const activeLabel = useMemo(() => navItems.find((item) => item.id === view)?.label ?? 'Command Center', [view]);
 
   return (
@@ -69,7 +69,6 @@ export function App() {
             <span>No patient-level data</span>
           </div>
         </section>
-
         {view === 'market' && <MarketEntryBrief snapshot={snapshot} />}
         {view === 'command' && <CommandCenter snapshot={snapshot} />}
         {view === 'investigations' && <Investigations snapshot={snapshot} />}

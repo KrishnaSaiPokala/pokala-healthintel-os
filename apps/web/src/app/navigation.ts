@@ -1,13 +1,11 @@
-import {
-  BarChart3,
+import { BarChart3,
   BrainCircuit,
   Database,
   FileText,
   GitBranch,
   Radar,
   Search,
-  Terminal
-} from 'lucide-react';
+  Terminal, Building2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { IntelligenceView } from '../types/intelligence';
 
@@ -18,8 +16,8 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { id: 'market', label: 'Market Brief', icon: Building2 },
-  { id: 'command', label: 'Command Center', icon: Terminal },
+  
+  { id: 'market', label: 'Market Brief', icon: Building2 },{ id: 'command', label: 'Command Center', icon: Terminal },
   { id: 'investigations', label: 'Investigations', icon: Search },
   { id: 'graph', label: 'Entity Graph', icon: GitBranch },
   { id: 'safety', label: 'Safety Radar', icon: Radar },
