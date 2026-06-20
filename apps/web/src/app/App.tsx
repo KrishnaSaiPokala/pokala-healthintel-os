@@ -1,1 +1,100 @@
-import { useMemo, useState } from 'react';\nimport { Activity, Database, Lock, ShieldCheck } from 'lucide-react';\nimport rawSnapshot from '../data/intelligence.json';\nimport { CommandCenter } from '../modules/command-center/CommandCenter';\nimport { Investigations } from '../modules/investigations/Investigations';\nimport { EntityGraphView } from '../modules/entity-graph/EntityGraphView';\nimport { SafetyRadar } from '../modules/safety-radar/SafetyRadar';\nimport { ReimbursementRadar } from '../modules/reimbursement/ReimbursementRadar';\nimport { ModelLab } from '../modules/model-lab/ModelLab';\nimport { MarketEntryBrief } from '../modules/market-entry/MarketEntryBrief';\nimport { EvidenceLedger } from '../modules/evidence/EvidenceLedger';\nimport { DataHealth } from '../modules/data-health/DataHealth';\nimport { ExecutiveBrief } from '../modules/executive-brief/ExecutiveBrief';\nimport { navItems } from './navigation';\nimport type { IntelligenceSnapshot, IntelligenceView } from '../types/intelligence';\n\nconst raw = rawSnapshot as any;\n\nconst snapshot: IntelligenceSnapshot = {\n  ...raw,\n  graph: {\n    ...raw.graph,\n    edges: (raw.graph?.edges ?? []).map((edge: string[]) => [edge[0] ?? '', edge[1] ?? ''] as [string, string]),\n  },\n};\n\nexport function App() {\n  const [view, setView] = useState<IntelligenceView>('market');\n  const activeLabel = useMemo(() => navItems.find((item) => item.id === view)?.label ?? 'Command Center', [view]);\n\n  return (\n    <div className="productShell">\n      <header className="productHeader">\n        <div className="brandLockup">\n          <div className="brandSeal">P</div>\n          <div>\n            <span>Pokala HealthIntel OS</span>\n            <strong>Public healthcare intelligence workspace</strong>\n          </div>\n        </div>\n\n        <nav className="productNav" aria-label="Product navigation">\n          {navItems.map((item) => {\n            const Icon = item.icon;\n            return (\n              <button key={item.id} className={view === item.id ? 'active' : ''} onClick={() => setView(item.id)}>\n                <Icon size={16} />\n                {item.label}\n              </button>\n            );\n          })}\n        </nav>\n\n        <div className="trustCluster" aria-label="System posture">\n          <span><Activity size={14} /> Evidence ready</span>\n          <span><Database size={14} /> {snapshot.meta.sources} evidence sources</span>\n          <span><Lock size={14} /> No PHI</span>\n        </div>\n      </header>\n      <main className="productMain">\n        <section className="workspaceHeader">\n          <div>\n            <span className="sectionKicker">{activeLabel}</span>\n            <h1>Texas Radiology AI Market</h1>\n          </div>\n          <div className="workspacePosture">\n            <span><ShieldCheck size={15} /> Public-source demo</span>\n            <span>No account required</span>\n            <span>No patient-level data</span>\n          </div>\n        </section>\n        {view === 'market' && <MarketEntryBrief snapshot={snapshot} />}\n        {view === 'command' && <CommandCenter snapshot={snapshot} />}\n        {view === 'investigations' && <Investigations snapshot={snapshot} />}\n        {view === 'graph' && <EntityGraphView snapshot={snapshot} />}\n        {view === 'safety' && <SafetyRadar snapshot={snapshot} />}\n        {view === 'reimbursement' && <ReimbursementRadar snapshot={snapshot} />}\n        {view === 'evidence' && <EvidenceLedger snapshot={snapshot} />}\n        {view === 'model' && <ModelLab />}\n        {view === 'data' && <DataHealth snapshot={snapshot} />}\n        {view === 'brief' && <ExecutiveBrief snapshot={snapshot} />}\n      </main>\n    </div>\n  );\n}\n
+import { useMemo, useState } from 'react';
+import { Activity, Database, Lock, ShieldCheck } from 'lucide-react';
+import rawSnapshot from '../data/intelligence.json';
+import { CommandCenter } from '../modules/command-center/CommandCenter';
+import { Investigations } from '../modules/investigations/Investigations';
+import { EntityGraphView } from '../modules/entity-graph/EntityGraphView';
+import { SafetyRadar } from '../modules/safety-radar/SafetyRadar';
+import { ReimbursementRadar } from '../modules/reimbursement/ReimbursementRadar';
+import { ModelLab } from '../modules/model-lab/ModelLab';
+import { MarketEntryBrief } from '../modules/market-entry/MarketEntryBrief';
+import { EvidenceLedger } from '../modules/evidence/EvidenceLedger';
+import { DataHealth } from '../modules/data-health/DataHealth';
+import { ExecutiveBrief } from '../modules/executive-brief/ExecutiveBrief';
+import { navItems } from './navigation';
+import type { IntelligenceSnapshot, IntelligenceView } from '../types/intelligence';
+
+const raw = rawSnapshot as any;
+
+const snapshot: IntelligenceSnapshot = {
+  ...raw,
+  graph: {
+    ...raw.graph,
+    edges: (raw.graph?.edges ?? []).map((edge: string[]) => [edge[0] ?? '', edge[1] ?? ''] as [string, string]),
+  },
+};
+
+export function App() {
+  const [view, setView] = useState<IntelligenceView>('market');
+
+  const activeLabel = useMemo(
+    () => navItems.find((item) => item.id === view)?.label ?? 'Market Brief',
+    [view]
+  );
+
+  return (
+    <div className="productShell">
+      <header className="productHeader">
+        <div className="brandLockup">
+          <div className="brandSeal">P</div>
+          <div>
+            <span>Pokala HealthIntel OS</span>
+            <strong>Public healthcare intelligence workspace</strong>
+          </div>
+        </div>
+
+        <nav className="productNav" aria-label="Product navigation">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <button
+                key={item.id}
+                className={view === item.id ? 'active' : ''}
+                onClick={() => setView(item.id)}
+                type="button"
+              >
+                <Icon size={16} />
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="trustCluster" aria-label="System posture">
+          <span><Activity size={14} /> Evidence ready</span>
+          <span><Database size={14} /> {snapshot.meta.sources} evidence sources</span>
+          <span><Lock size={14} /> No PHI</span>
+        </div>
+      </header>
+
+      <main className="productMain">
+        <section className="workspaceHeader">
+          <div>
+            <span className="sectionKicker">{activeLabel}</span>
+            <h1>Texas Radiology AI Market</h1>
+          </div>
+
+          <div className="workspacePosture">
+            <span><ShieldCheck size={15} /> Public-source demo</span>
+            <span>No account required</span>
+            <span>No patient-level data</span>
+          </div>
+        </section>
+
+        {view === 'market' && <MarketEntryBrief snapshot={snapshot} />}
+        {view === 'evidence' && <EvidenceLedger snapshot={snapshot} />}
+        {view === 'model' && <ModelLab />}
+        {view === 'data' && <DataHealth snapshot={snapshot} />}
+
+        {/* Hidden from focused v1 navigation, retained so legacy routes remain type-safe. */}
+        {view === 'command' && <CommandCenter snapshot={snapshot} />}
+        {view === 'investigations' && <Investigations snapshot={snapshot} />}
+        {view === 'graph' && <EntityGraphView snapshot={snapshot} />}
+        {view === 'safety' && <SafetyRadar snapshot={snapshot} />}
+        {view === 'reimbursement' && <ReimbursementRadar snapshot={snapshot} />}
+        {view === 'brief' && <ExecutiveBrief snapshot={snapshot} />}
+      </main>
+    </div>
+  );
+}
