@@ -2550,9 +2550,7 @@ tbody tr:hover {
 }
 
 .LIVE_BUILD_PROOF_V1,
-.saasBuildBadge {
-  display: none !important;
-}
+
 
 @media (max-width: 900px) {
   .evidenceHero {
@@ -2569,6 +2567,4 @@ tbody tr:hover {
 
 /* Ensure proof banners stay gone */
 .LIVE_BUILD_PROOF_V1,
-.saasBuildBadge {
-  display: none !important;
-}
+
