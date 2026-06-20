@@ -2,7 +2,6 @@
 import {
   Activity,
   ArrowRight,
-  BarChart3,
   BrainCircuit,
   Building2,
   CheckCircle2,
@@ -102,11 +101,11 @@ function MarketBrief() {
     <section className="pageStack">
       <div className="heroGrid">
         <article className="heroCard heroPrimary">
-          <span className="eyebrow"><Sparkles size={15} /> Decision intelligence</span>
+          <span className="eyebrow"><Sparkles size={15} /> Healthcare intelligence demo</span>
           <h1>Texas Radiology AI market entry brief.</h1>
           <p>
-            A premium public-source diligence surface for evaluating radiology AI workflow opportunity,
-            evidence strength, reimbursement context, safety posture, and model limitations.
+            A public-source diligence workspace for evaluating radiology AI market context,
+            evidence strength, reimbursement context, safety posture, and model boundaries.
           </p>
 
           <div className="heroActions">
@@ -150,7 +149,7 @@ function MarketBrief() {
           <span className="eyebrow"><Gauge size={15} /> Opportunity posture</span>
           <h2>Useful market signal, not proof of demand.</h2>
           <p>
-            The app is strongest when it behaves like a diligence operating system: it shows what the public evidence supports,
+            The workspace is designed to support structured diligence: it shows what the public evidence supports,
             what is missing, and where a founder or analyst should investigate next.
           </p>
           <div className="meter"><i style={{ width: '78%' }} /></div>
@@ -159,7 +158,7 @@ function MarketBrief() {
         <article className="bentoTile">
           <span>Strongest asset</span>
           <strong>Evidence spine</strong>
-          <p>Claim-linked public evidence is the product’s real moat.</p>
+          <p>Claim-linked public evidence is the core technical asset.</p>
         </article>
 
         <article className="bentoTile warning">
@@ -279,10 +278,10 @@ function ModelLab() {
 
       <article className="bentoTile large">
         <span className="eyebrow"><ShieldAlert size={15} /> Model boundary</span>
-        <h2>The model is useful only because the caveat is visible.</h2>
+        <h2>The model layer is useful only when its limitations are visible.</h2>
         <p>
           A ROC-AUC around 0.60 can support research prioritization, but it cannot support clinical, causal,
-          or production forecasting claims. That honesty is what makes the product credible.
+          or production forecasting claims. The interface keeps this boundary visible.
         </p>
       </article>
     </section>
@@ -312,9 +311,9 @@ function DataHealth() {
 
       <article className="bentoTile dark">
         <span>System boundary</span>
-        <strong>Bounded public-source demo</strong>
+        <strong>Bounded public-source workspace</strong>
         <p>
-          Raw source certification is pending. The product is not a full raw data lake yet, and it does not process PHI.
+          Raw source certification is pending. This is a bounded public-data workspace and does not process PHI.
         </p>
       </article>
     </section>
@@ -354,7 +353,7 @@ export function App() {
         </nav>
 
         <div className="trustPills">
-          <span><Activity size={14} /> Live workspace</span>
+          <span><Activity size={14} /> Public demo</span>
           <span><Database size={14} /> {sourceCount} sources</span>
           <span><Lock size={14} /> No PHI</span>
         </div>
@@ -364,7 +363,7 @@ export function App() {
         <section className="workspaceIntro">
           <div>
             <span className="eyebrow"><Zap size={15} /> {activeTab.label}</span>
-            <h1>Founder-grade healthcare intelligence, without patient data.</h1>
+            <h1>Public-source healthcare intelligence for market diligence, evidence tracking, and model transparency.</h1>
           </div>
           <div className="postureCard">
             <ShieldCheck size={18} />
@@ -381,3 +380,4 @@ export function App() {
     </div>
   );
 }
+
