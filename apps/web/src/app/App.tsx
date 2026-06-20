@@ -56,8 +56,6 @@ export function App() {
           <span><Lock size={14} /> No PHI</span>
         </div>
       </header>
-
-      <div className="LIVE_BUILD_PROOF_V1">LIVE BUILD PROOF ? SaaS v1 candidate ? if you see this, deployment changed</div>
       <main className="productMain">
         <section className="workspaceHeader">
           <div>

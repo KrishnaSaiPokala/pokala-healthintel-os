@@ -1534,21 +1534,7 @@ body {
   color: var(--pro-ink) !important;
 }
 
-.saasBuildBadge {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  margin: 0;
-  padding: 10px 18px;
-  border-bottom: 1px solid rgba(37, 99, 235, .20);
-  background: linear-gradient(90deg, #0f172a, #1d4ed8, #0284c7);
-  color: white;
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  box-shadow: 0 16px 42px rgba(15,23,42,.18);
-}
+
 
 .gridPage > section,
 .gridPage > article,
@@ -2030,21 +2016,7 @@ tbody tr:hover {
 
 /* === TRUE ENTERPRISE SAAS V1 END === */
 
-/* === LIVE BUILD PROOF V1 === */
-.LIVE_BUILD_PROOF_V1 {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  padding: 12px 18px;
-  background: linear-gradient(90deg, #020617, #1d4ed8, #0891b2);
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  box-shadow: 0 18px 50px rgba(15,23,42,.24);
-}
-/* === END LIVE BUILD PROOF V1 === */
+
 
 
 /* === PREMIUM MOTION BENTO V1 START === */
@@ -2375,3 +2347,221 @@ tbody tr:hover {
 }
 
 /* === PREMIUM MOTION BENTO V1 END === */
+
+
+/* === EVIDENCE CONSOLE V1 START === */
+
+.evidenceHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 22px;
+  align-items: stretch;
+  border: 1px solid rgba(15,23,42,.12);
+  border-radius: 26px;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 0 0, rgba(37,99,235,.12), transparent 28rem),
+    linear-gradient(135deg, #ffffff, #f8fbff 55%, #eef6ff);
+}
+
+.evidenceHero h2 {
+  max-width: 900px;
+  margin: 10px 0 14px;
+  color: #020617;
+  font-size: clamp(36px, 4.8vw, 62px);
+  line-height: .92;
+  letter-spacing: -.065em;
+}
+
+.evidenceHero p {
+  max-width: 860px;
+  color: #334155;
+  font-weight: 650;
+  line-height: 1.62;
+}
+
+.evidenceTrustCard {
+  display: grid;
+  align-content: space-between;
+  min-height: 220px;
+  border-radius: 22px;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(34,197,94,.22), transparent 18rem),
+    linear-gradient(145deg, #020617, #0f172a 58%, #123524);
+  color: white;
+  box-shadow: 0 26px 70px rgba(15,23,42,.24);
+}
+
+.evidenceTrustCard span {
+  color: rgba(255,255,255,.68);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.evidenceTrustCard strong {
+  color: white;
+  font-size: 34px;
+  line-height: .95;
+  letter-spacing: -.05em;
+}
+
+.evidenceTrustCard small {
+  color: rgba(255,255,255,.72);
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.evidenceFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.evidenceFilters button {
+  border: 1px solid rgba(15,23,42,.12);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(15,23,42,.045);
+}
+
+.evidenceFilters button.active,
+.evidenceFilters button:hover {
+  background: #0f172a;
+  color: white;
+  border-color: #0f172a;
+}
+
+.evidenceClaimGrid {
+  display: grid;
+  grid-column: span 12;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.evidenceClaimCard {
+  border: 1px solid rgba(15,23,42,.12);
+  border-radius: 24px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 14px 38px rgba(15,23,42,.065);
+  cursor: pointer;
+}
+
+.evidenceClaimCard.open {
+  border-color: rgba(37,99,235,.28);
+  box-shadow: 0 22px 62px rgba(37,99,235,.12);
+}
+
+.claimTopline,
+.claimMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.claimTopline span,
+.claimTopline strong,
+.claimMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(15,23,42,.10);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.claimTopline strong {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.evidenceClaimCard h3 {
+  margin: 16px 0 14px;
+  color: #0f172a;
+  font-size: 21px;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+
+.claimDetails {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.claimDetails section {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  border: 1px solid rgba(15,23,42,.08);
+  border-radius: 16px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.claimDetails section svg {
+  color: #1d4ed8;
+  margin-top: 2px;
+}
+
+.claimDetails strong {
+  display: block;
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.claimDetails p {
+  margin: 4px 0 0;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.claimDetails button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  border: 1px solid rgba(15,23,42,.12);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #0f172a;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.LIVE_BUILD_PROOF_V1,
+.saasBuildBadge {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .evidenceHero {
+    grid-template-columns: 1fr;
+  }
+
+  .evidenceClaimGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === EVIDENCE CONSOLE V1 END === */

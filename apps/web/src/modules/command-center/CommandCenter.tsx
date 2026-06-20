@@ -1,211 +1,224 @@
-import { Activity, Database, FileText, ShieldCheck } from 'lucide-react';
-import { evidenceCoverage } from '../../lib/evidence';
-import { formatNumber } from '../../lib/format';
-import { computeCompositeOpportunity } from '../../lib/scoring';
+﻿import { useMemo, useState } from 'react';
+import {
+  CheckCircle2,
+  Clipboard,
+  Database,
+  FileSearch,
+  Filter,
+  LockKeyhole,
+  ShieldAlert,
+  ShieldCheck
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Panel } from '../../components/Panel';
 import type { IntelligenceSnapshot } from '../../types/intelligence';
 
-function classify(value: number) {
-  if (value >= 85) return 'Strong';
-  if (value >= 75) return 'Favorable';
-  if (value >= 65) return 'Governed review';
-  return 'Needs diligence';
-}
+type SourceGroup = 'Provider' | 'Payment' | 'Safety' | 'Research' | 'Governance';
 
-export function CommandCenter({ snapshot }: { snapshot: IntelligenceSnapshot }) {
-  const composite = Math.round(computeCompositeOpportunity(snapshot));
-  const rows = [
-    {
-      factor: 'Market demand',
-      reading: classify(snapshot.scores.market),
-      score: Math.round(snapshot.scores.market),
-      basis: 'Provider concentration and utilization momentum support a first-pass Texas radiology screen.',
-      control: 'Segment by region, specialty concentration, and workflow setting.'
-    },
-    {
-      factor: 'Safety momentum',
-      reading: classify(snapshot.scores.safety),
-      score: Math.round(snapshot.scores.safety),
-      basis: 'Device-event acceleration should shape governance, review, and claims discipline.',
-      control: 'Position as workflow intelligence with human review, not autonomous diagnosis.'
-    },
-    {
-      factor: 'Reimbursement pressure',
-      reading: classify(snapshot.scores.reimbursement),
-      score: Math.round(snapshot.scores.reimbursement),
-      basis: 'Payment and utilization patterns suggest workflow ROI potential with payer-friction caveats.',
-      control: 'Tie commercial claims to measurable operating leverage and auditability.'
-    },
-    {
-      factor: 'Provider density',
-      reading: classify(snapshot.scores.providerDensity),
-      score: Math.round(snapshot.scores.providerDensity),
-      basis: 'Specialty supply is sufficient for deeper account prioritization and regional targeting.',
-      control: 'Use evidence-backed prioritization rather than broad market generalization.'
+type EvidenceClaim = {
+  id: string;
+  title: string;
+  source: SourceGroup;
+  mart: string;
+  supports: string;
+  doesNotProve: string;
+  boundary: string;
+  confidence: 'High' | 'Medium' | 'Exploratory';
+  rows?: string;
+};
+
+const claims: EvidenceClaim[] = [
+  {
+    id: 'provider-density',
+    title: 'Texas radiology diligence is supported by provider/entity context.',
+    source: 'Provider',
+    mart: 'provider_core + temporal feature matrix',
+    supports: 'Market structure and entity-density context for prioritizing outreach.',
+    doesNotProve: 'Actual buyer intent, adoption probability, or patient-level demand.',
+    boundary: 'Public NPI/entity context only. No PHI.',
+    confidence: 'Medium',
+    rows: 'public mart'
+  },
+  {
+    id: 'cms-pressure',
+    title: 'CMS utilization and payment signals provide reimbursement context.',
+    source: 'Payment',
+    mart: 'cms_physician_supplier_utilization_mart',
+    supports: 'Aggregate service/payment pressure useful for diligence framing.',
+    doesNotProve: 'Provider profitability, negotiated rates, or patient economics.',
+    boundary: 'Aggregate public CMS context only.',
+    confidence: 'Medium',
+    rows: '2,732 CMS rows'
+  },
+  {
+    id: 'maude-safety',
+    title: 'openFDA/MAUDE signals are treated as safety-pressure context.',
+    source: 'Safety',
+    mart: 'device_event_monthly',
+    supports: 'Passive reporting pressure and category-level safety posture.',
+    doesNotProve: 'Incidence, causality, comparative safety, or clinical risk rate.',
+    boundary: 'Passive adverse-event reports are not causal evidence.',
+    confidence: 'High',
+    rows: 'public API mart'
+  },
+  {
+    id: 'trial-momentum',
+    title: 'ClinicalTrials.gov activity contributes research momentum context.',
+    source: 'Research',
+    mart: 'trial_density',
+    supports: 'Public research activity and category momentum.',
+    doesNotProve: 'Commercial adoption, clinical efficacy, or purchasing readiness.',
+    boundary: 'Trial registry activity is a market signal, not outcome proof.',
+    confidence: 'Medium',
+    rows: 'public API mart'
+  },
+  {
+    id: 'model-caveat',
+    title: 'V4 model evidence is a benchmark artifact, not validated forecasting.',
+    source: 'Governance',
+    mart: 'enterprise_model_card + run_history_v4',
+    supports: 'Transparent weak/moderate signal testing and reproducibility.',
+    doesNotProve: 'Production-grade predictive validity or clinical utility.',
+    boundary: 'Model Lab is experimental public-source benchmarking.',
+    confidence: 'Exploratory',
+    rows: '2,388 windows'
+  }
+];
+
+const filters: Array<SourceGroup | 'All'> = ['All', 'Provider', 'Payment', 'Safety', 'Research', 'Governance'];
+
+const cardMotion = {
+  initial: { opacity: 0, y: 14, scale: 0.985 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] }
+};
+
+export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
+  const [filter, setFilter] = useState<SourceGroup | 'All'>('All');
+  const [openId, setOpenId] = useState<string>('provider-density');
+
+  const visibleClaims = useMemo(() => {
+    return filter === 'All' ? claims : claims.filter((claim) => claim.source === filter);
+  }, [filter]);
+
+  const copyClaim = async (claim: EvidenceClaim) => {
+    const text = [
+      `Claim: ${claim.title}`,
+      `Source family: ${claim.source}`,
+      `Mart: ${claim.mart}`,
+      `Supports: ${claim.supports}`,
+      `Does not prove: ${claim.doesNotProve}`,
+      `Boundary: ${claim.boundary}`
+    ].join('\\n');
+
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Clipboard can be blocked; no-op.
     }
-  ];
+  };
 
   return (
-    <section className="casefile">
-      <section className="caseHero">
-        <div className="caseHeroCopy">
-          <span className="sectionKicker">Enterprise public demo ? no-PHI evidence workspace</span>
-          <h2>Should an AI imaging workflow company enter the Texas radiology market?</h2>
-          <p>
-            HealthIntel OS turns public healthcare data into a structured decision brief: market motion,
-            reimbursement pressure, safety momentum, and evidence lineage. The product is intentionally
-            accountless, public-data-only, and safe for recruiter/researcher review.
-          </p>
-
-          <div className="caseHeroActions">
-            <a href="#decision-ledger">View decision ledger</a>
-            <a href="#evidence-ledger">Inspect evidence</a>
-            <a href="#system-posture">System posture</a>
-          </div>
-        </div>
-
-        <aside className="decisionPanel">
-          <span>Recommended motion</span>
-          <strong>Proceed to governed diligence</strong>
-          <p>
-            The market is attractive enough for pilot screening. Safety acceleration should become a
-            governance workstream, not an ignored risk.
-          </p>
-          <div className="decisionIndex">
-            <small>Opportunity index</small>
-            <b>{composite}</b>
-            <em>/100</em>
-          </div>
-        </aside>
-      </section>
-
-      <section className="whiteboardStrip" aria-label="Method plan">
-        <article>
-          <span>01</span>
-          <strong>Frame the market question</strong>
-          <p>Texas radiology AI workflow expansion, not clinical diagnosis automation.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <strong>Collect public evidence</strong>
-          <p>NPPES, CMS utilization, FDA-style safety events, trials, and source-health metadata.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <strong>Score with caveats</strong>
-          <p>Every signal is presented with uncertainty, source lineage, and claim boundaries.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <strong>Export the dossier</strong>
-          <p>Decision-ready memo for market, safety, reimbursement, and governance review.</p>
-        </article>
-      </section>
-
-      <section id="decision-ledger" className="caseSection">
-        <div className="caseSectionHeader">
-          <span className="sectionKicker">Decision ledger</span>
-          <h3>Four-factor executive readout</h3>
-          <p>No oversized dashboard cards. The score is secondary to the interpretation and control path.</p>
-        </div>
-
-        <div className="ledgerTable">
-          <div className="ledgerHead">
-            <span>Factor</span>
-            <span>Read</span>
-            <span>Basis</span>
-            <span>Control</span>
+    <motion.section className="gridPage evidenceConsole" initial="initial" animate="animate">
+      <Panel span={12} title="Evidence Ledger" eyebrow="Trust spine" icon={ShieldCheck}>
+        <motion.div className="evidenceHero" {...cardMotion}>
+          <div>
+            <span className="sectionKicker">Claim-to-source discipline</span>
+            <h2>Every serious claim needs a source, a boundary, and a “does not prove.”</h2>
+            <p>
+              The ledger turns the product from a dashboard into a defensible intelligence artifact. It separates public-data support
+              from clinical, causal, patient-level, or incidence claims.
+            </p>
           </div>
 
-          {rows.map((row) => (
-            <article key={row.factor} className="ledgerRow">
-              <div>
-                <strong>{row.factor}</strong>
-                <small>{row.score}/100</small>
-              </div>
-              <div><mark>{row.reading}</mark></div>
-              <p>{row.basis}</p>
-              <p>{row.control}</p>
-            </article>
+          <div className="evidenceTrustCard">
+            <span>Evidence posture</span>
+            <strong>Bounded public-source</strong>
+            <small>No PHI · No CDS · No causality · No incidence claims</small>
+          </div>
+        </motion.div>
+      </Panel>
+
+      <Panel span={12} title="Source filters" eyebrow="Evidence families" icon={Filter}>
+        <div className="evidenceFilters">
+          {filters.map((item) => (
+            <button
+              key={item}
+              type="button"
+              className={filter === item ? 'active' : ''}
+              onClick={() => setFilter(item)}
+            >
+              {item}
+            </button>
           ))}
         </div>
-      </section>
+      </Panel>
 
-      <section className="caseGrid">
-        <article className="narrativeCard">
-          <span className="sectionKicker">Momentum narrative</span>
-          <h3>Signals rise together, but not with the same risk profile.</h3>
-          <p>
-            Market and reimbursement movement are favorable. Safety movement needs a separate governance lane.
-            The product story should focus on workflow intelligence, auditability, and human-supervised adoption.
-          </p>
+      <div className="evidenceClaimGrid">
+        {visibleClaims.map((claim, index) => {
+          const isOpen = openId === claim.id;
 
-          <div className="timelineStack">
-            {snapshot.temporal.map((point) => (
-              <div key={point.period}>
-                <span>{point.period}</span>
-                <i style={{ width: `${point.market}%` }} />
-                <i style={{ width: `${point.reimbursement}%` }} />
-                <i style={{ width: `${point.safety}%` }} />
+          return (
+            <motion.article
+              key={claim.id}
+              className={`evidenceClaimCard ${isOpen ? 'open' : ''}`}
+              {...cardMotion}
+              transition={{ ...cardMotion.transition, delay: index * 0.04 }}
+              onClick={() => setOpenId(isOpen ? '' : claim.id)}
+            >
+              <div className="claimTopline">
+                <span>{claim.source}</span>
+                <strong>{claim.confidence}</strong>
               </div>
-            ))}
-          </div>
-        </article>
 
-        <article className="narrativeCard">
-          <span className="sectionKicker">Public demo posture</span>
-          <h3>Enterprise feel without accounts or PHI.</h3>
-          <p>
-            This is a public, no-login artifact. The enterprise posture comes from transparency, lineage,
-            model boundaries, system status, and exportable evidence?not user accounts.
-          </p>
+              <h3>{claim.title}</h3>
 
-          <div className="postureGrid" id="system-posture">
-            <span>Cloudflare Worker</span>
-            <span>Static React assets</span>
-            <span>D1 demo API</span>
-            <span>Public-source data</span>
-            <span>No patient data</span>
-            <span>No clinical claims</span>
-          </div>
-        </article>
-      </section>
-
-      <section id="evidence-ledger" className="caseSection evidenceCaseSection">
-        <div className="caseSectionHeader">
-          <span className="sectionKicker">Source evidence ledger</span>
-          <h3>{evidenceCoverage(snapshot)}</h3>
-          <p>Each claim is tied to a public-source mart, row count, and claim boundary.</p>
-        </div>
-
-        <div className="evidenceLedger">
-          {snapshot.evidence.slice(0, 6).map((item) => (
-            <article key={item.id}>
-              <div>
-                <strong>{item.claim}</strong>
-                <span>{item.source}</span>
+              <div className="claimMeta">
+                <span><Database size={13} /> {claim.mart}</span>
+                {claim.rows && <span><FileSearch size={13} /> {claim.rows}</span>}
               </div>
-              <small>{item.freshness}</small>
-              <em>{formatNumber(item.rows)} rows</em>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className="caseFooterBrief">
-        <FileText size={18} />
-        <div>
-          <strong>Boundary statement</strong>
-          <p>
-            HealthIntel OS is a public-data intelligence system. It does not ingest PHI, does not identify patients,
-            and does not provide medical advice or clinical decision support.
-          </p>
-        </div>
-        <div className="footerBadges">
-          <span><ShieldCheck size={14} /> Evidence-gated</span>
-          <span><Database size={14} /> {formatNumber(snapshot.meta.evidenceRows)} rows</span>
-          <span><Activity size={14} /> {snapshot.meta.status}</span>
-        </div>
-      </section>
-    </section>
+              {isOpen && (
+                <motion.div
+                  className="claimDetails"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.22 }}
+                >
+                  <section>
+                    <CheckCircle2 size={15} />
+                    <div>
+                      <strong>Supports</strong>
+                      <p>{claim.supports}</p>
+                    </div>
+                  </section>
+
+                  <section>
+                    <ShieldAlert size={15} />
+                    <div>
+                      <strong>Does not prove</strong>
+                      <p>{claim.doesNotProve}</p>
+                    </div>
+                  </section>
+
+                  <section>
+                    <LockKeyhole size={15} />
+                    <div>
+                      <strong>Boundary</strong>
+                      <p>{claim.boundary}</p>
+                    </div>
+                  </section>
+
+                  <button type="button" onClick={(event) => { event.stopPropagation(); copyClaim(claim); }}>
+                    <Clipboard size={14} />
+                    Copy evidence note
+                  </button>
+                </motion.div>
+              )}
+            </motion.article>
+          );
+        })}
+      </div>
+    </motion.section>
   );
 }
