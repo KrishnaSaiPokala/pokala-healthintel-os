@@ -25,6 +25,7 @@ import {
   Zap
 } from 'lucide-react';
 import rawSnapshot from '../data/intelligence.json';
+import modelBenchmark from '../data/model_benchmark.json';
 
 type TabKey = 'market' | 'evidence' | 'model' | 'data' | 'architecture' | 'case';
 
@@ -451,11 +452,16 @@ function EvidenceLedger() {
 }
 
 function ModelLab() {
+  const benchmark = modelBenchmark as any;
+  const baselineRows = benchmark?.benchmark_results ?? [];
+  const deepRows = benchmark?.deep_results ?? [];
+  const plannedRows = benchmark?.planned_deep_models ?? [];
+
   return (
     <div className="pageStack">
-      <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Deep learning maturity means transparent evaluation, not inflated claims.">
-        The model layer evaluates whether public healthcare signals contain usable temporal structure.
-        Results are framed as an experimental benchmark, not validated forecasting.
+      <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Real benchmark outputs are now connected to the public interface.">
+        Basecamp7 syncs actual Basecamp6 baseline results into the frontend and adds a first MLP baseline attempt with early stopping.
+        The model layer remains a research benchmark, not validated forecasting.
       </SectionIntro>
 
       <section className="modelGrid">
@@ -468,27 +474,64 @@ function ModelLab() {
         ))}
       </section>
 
+      <section className="benchmarkPanel">
+        <div className="benchmarkHeader">
+          <div>
+            <span className="eyebrow"><BarChart3 size={15} /> Synced benchmark table</span>
+            <h2>Baseline and early neural results</h2>
+            <p>
+              Dataset: <strong>{benchmark?.dataset_used ?? 'not available'}</strong> / Target:{' '}
+              <strong>{benchmark?.target_used ?? 'not available'}</strong>
+            </p>
+          </div>
+          <aside>
+            <span>Run</span>
+            <strong>{benchmark?.run_id ?? 'basecamp7_model_lab_sync'}</strong>
+          </aside>
+        </div>
+
+        <div className="benchmarkTable">
+          <div className="benchmarkRow benchmarkHead">
+            <span>Model</span><span>Status</span><span>ROC-AUC</span><span>PR-AUC</span><span>Balanced acc.</span><span>F1</span><span>Notes</span>
+          </div>
+          {[...baselineRows, ...deepRows].map((row: any) => {
+            const m = row.metrics ?? {};
+            return (
+              <div className="benchmarkRow" key={`${row.model}-${row.status}`}>
+                <strong>{row.model}</strong>
+                <span>{row.status}</span>
+                <span>{formatMetric(m.roc_auc)}</span>
+                <span>{formatMetric(m.pr_auc)}</span>
+                <span>{formatMetric(m.balanced_accuracy)}</span>
+                <span>{formatMetric(m.f1)}</span>
+                <p>{row.notes}</p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       <section className="twoPanel">
         <article>
-          <span className="eyebrow"><BarChart3 size={15} /> What this proves</span>
-          <h2>Benchmark discipline</h2>
-          <p>
-            Reproducible temporal benchmark construction, metric tracking, baseline awareness,
-            seed evaluation, and the ability to communicate weak-to-moderate signal honestly.
-          </p>
+          <span className="eyebrow"><BrainCircuit size={15} /> Next deep models</span>
+          <h2>LSTM, GRU, TCN, transformers</h2>
+          <p>{plannedRows.join(' / ')}</p>
         </article>
         <article className="warningPanel">
-          <span className="eyebrow"><ShieldAlert size={15} /> What this does not prove</span>
-          <h2>No clinical or causal claim</h2>
-          <p>
-            The benchmark does not prove clinical value, patient-level prediction, causality,
-            incidence, or production forecasting readiness.
-          </p>
+          <span className="eyebrow"><ShieldAlert size={15} /> Boundary</span>
+          <h2>Research benchmark only</h2>
+          <p>{benchmark?.claim_boundary ?? 'No PHI. Not clinical decision support. No patient-level prediction.'}</p>
         </article>
       </section>
     </div>
   );
 }
+
+function formatMetric(value: unknown) {
+  if (typeof value !== 'number' || Number.isNaN(value)) return '-';
+  return value.toFixed(3);
+}
+
 
 function DataHealth() {
   return (
