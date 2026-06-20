@@ -2565,3 +2565,10 @@ tbody tr:hover {
 }
 
 /* === EVIDENCE CONSOLE V1 END === */
+
+
+/* Ensure proof banners stay gone */
+.LIVE_BUILD_PROOF_V1,
+.saasBuildBadge {
+  display: none !important;
+}

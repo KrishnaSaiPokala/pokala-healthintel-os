@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   CheckCircle2,
   Clipboard,
@@ -9,7 +10,6 @@ import {
   ShieldAlert,
   ShieldCheck
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { Panel } from '../../components/Panel';
 import type { IntelligenceSnapshot } from '../../types/intelligence';
 
@@ -24,7 +24,7 @@ type EvidenceClaim = {
   doesNotProve: string;
   boundary: string;
   confidence: 'High' | 'Medium' | 'Exploratory';
-  rows?: string;
+  rows: string;
 };
 
 const claims: EvidenceClaim[] = [
@@ -34,21 +34,21 @@ const claims: EvidenceClaim[] = [
     source: 'Provider',
     mart: 'provider_core + temporal feature matrix',
     supports: 'Market structure and entity-density context for prioritizing outreach.',
-    doesNotProve: 'Actual buyer intent, adoption probability, or patient-level demand.',
+    doesNotProve: 'Buyer intent, adoption probability, revenue, or patient-level demand.',
     boundary: 'Public NPI/entity context only. No PHI.',
     confidence: 'Medium',
-    rows: 'public mart'
+    rows: '41k+ provider-context rows'
   },
   {
     id: 'cms-pressure',
-    title: 'CMS utilization and payment signals provide reimbursement context.',
+    title: 'CMS utilization/payment signals provide reimbursement context.',
     source: 'Payment',
     mart: 'cms_physician_supplier_utilization_mart',
-    supports: 'Aggregate service/payment pressure useful for diligence framing.',
-    doesNotProve: 'Provider profitability, negotiated rates, or patient economics.',
+    supports: 'Aggregate service/payment pressure useful for market diligence framing.',
+    doesNotProve: 'Provider profitability, negotiated rates, patient economics, or individual claims.',
     boundary: 'Aggregate public CMS context only.',
     confidence: 'Medium',
-    rows: '2,732 CMS rows'
+    rows: 'CMS utilization mart'
   },
   {
     id: 'maude-safety',
@@ -59,7 +59,7 @@ const claims: EvidenceClaim[] = [
     doesNotProve: 'Incidence, causality, comparative safety, or clinical risk rate.',
     boundary: 'Passive adverse-event reports are not causal evidence.',
     confidence: 'High',
-    rows: 'public API mart'
+    rows: 'openFDA device-event mart'
   },
   {
     id: 'trial-momentum',
@@ -70,7 +70,7 @@ const claims: EvidenceClaim[] = [
     doesNotProve: 'Commercial adoption, clinical efficacy, or purchasing readiness.',
     boundary: 'Trial registry activity is a market signal, not outcome proof.',
     confidence: 'Medium',
-    rows: 'public API mart'
+    rows: 'trial-density mart'
   },
   {
     id: 'model-caveat',
@@ -81,7 +81,7 @@ const claims: EvidenceClaim[] = [
     doesNotProve: 'Production-grade predictive validity or clinical utility.',
     boundary: 'Model Lab is experimental public-source benchmarking.',
     confidence: 'Exploratory',
-    rows: '2,388 windows'
+    rows: '2,388 model windows'
   }
 ];
 
@@ -90,7 +90,7 @@ const filters: Array<SourceGroup | 'All'> = ['All', 'Provider', 'Payment', 'Safe
 const cardMotion = {
   initial: { opacity: 0, y: 14, scale: 0.985 },
   animate: { opacity: 1, y: 0, scale: 1 },
-  transition: { duration: 0.38 }
+  transition: { duration: 0.34 }
 };
 
 export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
@@ -109,12 +109,12 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
       `Supports: ${claim.supports}`,
       `Does not prove: ${claim.doesNotProve}`,
       `Boundary: ${claim.boundary}`
-    ].join('\\n');
+    ].join('\n');
 
     try {
       await navigator.clipboard.writeText(text);
     } catch {
-      // Clipboard can be blocked; no-op.
+      // Clipboard may be blocked in some browser contexts.
     }
   };
 
@@ -124,7 +124,7 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
         <motion.div className="evidenceHero" {...cardMotion}>
           <div>
             <span className="sectionKicker">Claim-to-source discipline</span>
-            <h2>Every serious claim needs a source, a boundary, and a “does not prove.”</h2>
+            <h2>Every serious claim needs a source, a boundary, and a ?does not prove.?</h2>
             <p>
               The ledger turns the product from a dashboard into a defensible intelligence artifact. It separates public-data support
               from clinical, causal, patient-level, or incidence claims.
@@ -134,7 +134,7 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
           <div className="evidenceTrustCard">
             <span>Evidence posture</span>
             <strong>Bounded public-source</strong>
-            <small>No PHI · No CDS · No causality · No incidence claims</small>
+            <small>No PHI ? No CDS ? No causality ? No incidence claims</small>
           </div>
         </motion.div>
       </Panel>
@@ -162,8 +162,9 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
             <motion.article
               key={claim.id}
               className={`evidenceClaimCard ${isOpen ? 'open' : ''}`}
-              {...cardMotion}
-              transition={{ ...cardMotion.transition, delay: index * 0.04 }}
+              initial={cardMotion.initial}
+              animate={cardMotion.animate}
+              transition={{ duration: 0.32, delay: index * 0.04 }}
               onClick={() => setOpenId(isOpen ? '' : claim.id)}
             >
               <div className="claimTopline">
@@ -175,7 +176,7 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
 
               <div className="claimMeta">
                 <span><Database size={13} /> {claim.mart}</span>
-                {claim.rows && <span><FileSearch size={13} /> {claim.rows}</span>}
+                <span><FileSearch size={13} /> {claim.rows}</span>
               </div>
 
               {isOpen && (
@@ -221,9 +222,4 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
       </div>
     </motion.section>
   );
-}
-
-
-export function CommandCenter(props: { snapshot?: IntelligenceSnapshot }) {
-  return <EvidenceLedger {...props} />;
 }
