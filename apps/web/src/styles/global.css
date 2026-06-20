@@ -1515,114 +1515,7 @@ tbody tr:hover {
 /* === SAAS LEVEL V1 POLISH END === */
 
 
-/* === SAAS VISIBLE V1 START === */
 
-:root {
-  --pro-bg: #f4f7fb;
-  --pro-ink: #07111f;
-  --pro-muted: #475569;
-  --pro-line: rgba(15, 23, 42, .12);
-  --pro-card: rgba(255,255,255,.86);
-  --pro-shadow: 0 22px 70px rgba(15,23,42,.10);
-}
-
-body {
-  background:
-    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, .16), transparent 34rem),
-    radial-gradient(circle at 90% 6%, rgba(14, 165, 233, .12), transparent 34rem),
-    linear-gradient(180deg, #fbfdff 0%, var(--pro-bg) 100%) !important;
-  color: var(--pro-ink) !important;
-}
-
-
-
-.gridPage > section,
-.gridPage > article,
-.panel,
-[class*="Panel"] {
-  background: var(--pro-card) !important;
-  border: 1px solid var(--pro-line) !important;
-  border-radius: 28px !important;
-  box-shadow: 0 14px 42px rgba(15,23,42,.07);
-  backdrop-filter: blur(18px);
-}
-
-.gridPage > section:hover,
-.gridPage > article:hover,
-.panel:hover,
-[class*="Panel"]:hover {
-  box-shadow: var(--pro-shadow);
-}
-
-h1, h2, h3 {
-  color: #020617 !important;
-  letter-spacing: -.045em;
-}
-
-p {
-  color: var(--pro-muted) !important;
-}
-
-.sectionKicker,
-[class*="eyebrow"],
-[class*="kicker"] {
-  color: #2563eb !important;
-  font-size: 11px !important;
-  font-weight: 950 !important;
-  letter-spacing: .16em !important;
-  text-transform: uppercase !important;
-}
-
-.marketBrief .briefHero,
-.modelLabPolished .modelVerdict {
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.92), rgba(239,246,255,.74)),
-    radial-gradient(circle at 0% 0%, rgba(37,99,235,.13), transparent 30rem) !important;
-  border: 1px solid rgba(15,23,42,.10) !important;
-  border-radius: 28px !important;
-  padding: 24px !important;
-}
-
-.briefDecisionCard,
-.modelScoreboard article,
-.briefStack article,
-.briefQuestions article,
-.briefMetricGrid article,
-.modelMetricGrid article,
-.runDesignStack article {
-  background: rgba(255,255,255,.86) !important;
-  border: 1px solid rgba(15,23,42,.12) !important;
-  box-shadow: 0 12px 34px rgba(15,23,42,.055) !important;
-}
-
-table th {
-  color: #64748b !important;
-  font-size: 11px !important;
-  font-weight: 950 !important;
-  letter-spacing: .13em !important;
-  text-transform: uppercase !important;
-}
-
-table td {
-  color: #1f2937 !important;
-  font-weight: 750;
-}
-
-tbody tr:hover {
-  background: rgba(37,99,235,.045) !important;
-}
-
-.briefEvidenceList span,
-.briefBoundary span,
-.runHistoryLine span,
-.boundaryList span {
-  border: 1px solid rgba(15,23,42,.12) !important;
-  background: rgba(255,255,255,.78) !important;
-  color: #1f2937 !important;
-  box-shadow: 0 8px 24px rgba(15,23,42,.04);
-}
-
-/* === SAAS VISIBLE V1 END === */
 
 
 /* === TRUE ENTERPRISE SAAS V1 START === */
@@ -2568,3 +2461,18 @@ tbody tr:hover {
 /* Ensure proof banners stay gone */
 .LIVE_BUILD_PROOF_V1,
 
+
+
+/* === FINAL REMOVE PROOF BANNER === */
+.LIVE_BUILD_PROOF_V1,
+.saasBuildBadge {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+/* === END FINAL REMOVE PROOF BANNER === */
