@@ -1,23 +1,12 @@
 export type IntelligenceView =
-  | 'market'
-  | 'brief'
   | 'command'
   | 'investigations'
   | 'graph'
   | 'safety'
   | 'reimbursement'
   | 'model'
-  | 'evidence'
-  | 'data';
-
-
-
-
-
-
-
-
-
+  | 'data'
+  | 'brief';
 
 export interface IntelligenceMeta {
   runId: string;

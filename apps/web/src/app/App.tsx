@@ -7,8 +7,6 @@ import { EntityGraphView } from '../modules/entity-graph/EntityGraphView';
 import { SafetyRadar } from '../modules/safety-radar/SafetyRadar';
 import { ReimbursementRadar } from '../modules/reimbursement/ReimbursementRadar';
 import { ModelLab } from '../modules/model-lab/ModelLab';
-import { MarketEntryBrief } from '../modules/market-entry/MarketEntryBrief';
-import { EvidenceLedger } from '../modules/evidence/EvidenceLedger';
 import { DataHealth } from '../modules/data-health/DataHealth';
 import { ExecutiveBrief } from '../modules/executive-brief/ExecutiveBrief';
 import { navItems } from './navigation';
@@ -25,12 +23,8 @@ const snapshot: IntelligenceSnapshot = {
 };
 
 export function App() {
-  const [view, setView] = useState<IntelligenceView>('market');
-
-  const activeLabel = useMemo(
-    () => navItems.find((item) => item.id === view)?.label ?? 'Market Brief',
-    [view]
-  );
+  const [view, setView] = useState<IntelligenceView>('command');
+  const activeLabel = useMemo(() => navItems.find((item) => item.id === view)?.label ?? 'Command Center', [view]);
 
   return (
     <div className="productShell">
@@ -46,14 +40,8 @@ export function App() {
         <nav className="productNav" aria-label="Product navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
-
             return (
-              <button
-                key={item.id}
-                className={view === item.id ? 'active' : ''}
-                onClick={() => setView(item.id)}
-                type="button"
-              >
+              <button key={item.id} className={view === item.id ? 'active' : ''} onClick={() => setView(item.id)}>
                 <Icon size={16} />
                 {item.label}
               </button>
@@ -74,7 +62,6 @@ export function App() {
             <span className="sectionKicker">{activeLabel}</span>
             <h1>Texas Radiology AI Market</h1>
           </div>
-
           <div className="workspacePosture">
             <span><ShieldCheck size={15} /> Public-source demo</span>
             <span>No account required</span>
@@ -82,17 +69,13 @@ export function App() {
           </div>
         </section>
 
-        {view === 'market' && <MarketEntryBrief snapshot={snapshot} />}
-        {view === 'evidence' && <EvidenceLedger snapshot={snapshot} />}
-        {view === 'model' && <ModelLab />}
-        {view === 'data' && <DataHealth snapshot={snapshot} />}
-
-        {/* Hidden from focused v1 navigation, retained so legacy routes remain type-safe. */}
         {view === 'command' && <CommandCenter snapshot={snapshot} />}
         {view === 'investigations' && <Investigations snapshot={snapshot} />}
         {view === 'graph' && <EntityGraphView snapshot={snapshot} />}
         {view === 'safety' && <SafetyRadar snapshot={snapshot} />}
         {view === 'reimbursement' && <ReimbursementRadar snapshot={snapshot} />}
+        {view === 'model' && <ModelLab />}
+        {view === 'data' && <DataHealth snapshot={snapshot} />}
         {view === 'brief' && <ExecutiveBrief snapshot={snapshot} />}
       </main>
     </div>

@@ -48,7 +48,7 @@ const stagger = {
 
 export function MarketEntryBrief({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
   const opportunityScore = snapshot?.scores?.market ?? 72;
-  const evidenceScore = snapshot?.scores?.evidence ?? 86;
+  const evidenceScore = ((snapshot?.scores as any)?.evidence ?? snapshot?.scores?.market ?? 86);
   const safetyScore = snapshot?.scores?.safety ?? 58;
   const reimbursementScore = snapshot?.scores?.reimbursement ?? 64;
 
