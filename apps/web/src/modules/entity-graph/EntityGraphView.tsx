@@ -1,4 +1,4 @@
-import { GitBranch } from 'lucide-react';
+﻿import { GitBranch } from 'lucide-react';
 import { Panel } from '../../components/Panel';
 import type { IntelligenceSnapshot } from '../../types/intelligence';
 
@@ -18,3 +18,4 @@ export function EntityGraphView({ snapshot }: { snapshot: IntelligenceSnapshot }
     </section>
   );
 }
+

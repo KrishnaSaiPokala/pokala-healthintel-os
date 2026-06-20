@@ -1,4 +1,4 @@
-# Data Lineage
+﻿# Data Lineage
 
 ## Current certification status
 
@@ -34,3 +34,4 @@ The project does **not** claim that raw NPPES, CMS, openFDA, ClinicalTrials.gov,
 6. Train/evaluate baselines and temporal transformer models on reproducible feature sequences.
 
 See `data/source_manifest.json` for machine-readable lineage.
+

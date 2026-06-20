@@ -1,4 +1,4 @@
-# Model Card: Temporal Transformer Intelligence Layer
+﻿# Model Card: Temporal Transformer Intelligence Layer
 
 ## Model status
 
@@ -40,3 +40,4 @@ The evaluation plan requires deterministic rolling z-score rules, logistic or tr
 - Evidence lineage required.
 - Caveats surfaced in UI.
 - Model claims separated from clinical claims.
+

@@ -1,10 +1,10 @@
-# Basecamp7 Model Lab Sync
+﻿# Benchmark Phase 7 Model Lab Sync
 
 Generated: 2026-06-20T22:08:51.647147+00:00
 
-Basecamp7 syncs real Basecamp6 baseline outputs into frontend-readable JSON and attempts a real MLP baseline with early stopping.
+Benchmark Phase 7 syncs real Benchmark Phase 6 baseline outputs into frontend-readable JSON and attempts a real MLP baseline with early stopping.
 
-- Dataset: data\models\run_history_v4\basecamp4_shock_20260618_121556\enterprise_temporal_sequences_v4_shock.csv
+- Dataset: data\models\run_history_v4\Benchmark Phase4_shock_20260618_121556\enterprise_temporal_sequences_v4_shock.csv
 - Target: target_v4_opportunity_shock
 
 ## Results

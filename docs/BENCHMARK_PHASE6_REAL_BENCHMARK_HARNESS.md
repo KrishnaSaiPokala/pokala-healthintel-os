@@ -1,6 +1,6 @@
-# Basecamp6 Real Benchmark Harness
+﻿# Benchmark Phase 6 Real Benchmark Harness
 
-Basecamp6 adds the real benchmark harness needed to move beyond narrative and toward robust model proof.
+Benchmark Phase 6 adds the real benchmark harness needed to move beyond narrative and toward robust model proof.
 
 It can discover target-ready CSV/TSV datasets, run baseline models when a binary target is available, and produce benchmark manifests/reports.
 
@@ -24,3 +24,4 @@ Elite DL presentation is not naming famous models. It is showing baselines, temp
 ## Boundary
 
 Research benchmark harness only. No clinical decision support. No patient-level prediction.
+

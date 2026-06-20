@@ -185,3 +185,4 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
     </section>
   );
 }
+

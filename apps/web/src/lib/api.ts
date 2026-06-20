@@ -1,4 +1,4 @@
-import staticIntel from '../data/intelligence.json';
+﻿import staticIntel from '../data/intelligence.json';
 
 const apiBase = (import.meta as any).env?.VITE_API_BASE || '';
 
@@ -26,3 +26,4 @@ export async function createInvestigation(input: { title?: string; region?: stri
   if (!res.ok) throw new Error(`Create investigation failed: ${res.status}`);
   return res.json();
 }
+

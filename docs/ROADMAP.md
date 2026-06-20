@@ -43,3 +43,4 @@ Remaining: expanded real-source temporal matrix, GRU/LSTM baseline, transformer 
 Status: draft.
 
 Remaining: methods section aligned to real ingestion, model evaluation section, limitations section, reproducibility commands, figures, and final claim boundary.
+

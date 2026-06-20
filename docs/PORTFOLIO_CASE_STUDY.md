@@ -1,4 +1,4 @@
-# Portfolio Case Study — Pokala HealthIntel OS
+﻿# Portfolio Case Study â€” Pokala HealthIntel OS
 
 ## Problem
 
@@ -29,3 +29,4 @@ The model lab is a research benchmark, not validated forecasting. Its purpose is
 ## Reviewer takeaway
 
 This project demonstrates healthcare data judgment, evidence-boundary governance, model transparency, and deployed product communication.
+

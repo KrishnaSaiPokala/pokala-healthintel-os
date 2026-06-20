@@ -1,4 +1,4 @@
-export type IntelligenceView =
+﻿export type IntelligenceView =
   | 'command'
   | 'investigations'
   | 'graph'
@@ -78,3 +78,4 @@ export interface ScoreCardModel {
   tone: 'cyan' | 'green' | 'amber' | 'red';
   explanation: string;
 }
+

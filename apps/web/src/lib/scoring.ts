@@ -1,4 +1,4 @@
-import type { IntelligenceSnapshot, ScoreCardModel } from '../types/intelligence';
+﻿import type { IntelligenceSnapshot, ScoreCardModel } from '../types/intelligence';
 import { clampScore } from './format';
 
 export function buildScoreCards(snapshot: IntelligenceSnapshot): ScoreCardModel[] {
@@ -46,3 +46,4 @@ export function classifySignal(value: number): 'low' | 'moderate' | 'high' {
   if (value >= 50) return 'moderate';
   return 'low';
 }
+

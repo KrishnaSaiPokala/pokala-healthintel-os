@@ -1,4 +1,4 @@
-# Overnight Build Plan
+﻿# Overnight Build Plan
 
 ## Terminal 1
 
@@ -30,3 +30,4 @@ python scripts/monitor.py
 ## Scope discipline
 
 First launch focuses on AI Radiology Market + Safety Intelligence. Do not expand until this workflow feels complete.
+

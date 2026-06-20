@@ -59,3 +59,4 @@ The site does not train models live. That is intentional enterprise architecture
 HealthIntel OS may claim public-source healthcare intelligence, no-PHI architecture, evidence-linked executive casefiles, reproducible model/data artifacts, temporal modeling prototype, and public-market strategy support.
 
 HealthIntel OS must not claim clinical decision support, patient diagnosis, patient outcome prediction, HIPAA certification, production EHR integration, causal safety conclusions from passive reports, or a fully audited raw-data lake until raw-source certification is complete.
+

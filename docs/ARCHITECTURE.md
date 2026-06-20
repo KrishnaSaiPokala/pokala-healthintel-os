@@ -1,4 +1,4 @@
-# Pokala HealthIntel OS Architecture
+﻿# Pokala HealthIntel OS Architecture
 
 ## Product shape
 
@@ -39,3 +39,4 @@ Official APIs/downloads
 - GitHub Actions for scheduled data refresh
 - GitHub Pages or Cloudflare Pages static hosting
 - Optional local GPU training on GTX 1660 Ti
+

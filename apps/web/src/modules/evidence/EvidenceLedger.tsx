@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   CheckCircle2,
@@ -223,3 +223,4 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
     </motion.section>
   );
 }
+

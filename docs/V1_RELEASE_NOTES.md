@@ -1,4 +1,4 @@
-# Pokala HealthIntel OS v1.0 Candidate
+﻿# Pokala HealthIntel OS v1.0 Candidate
 
 Built: 2026-06-19 19:31 UTC
 
@@ -29,3 +29,4 @@ The flagship workflow is the Texas Radiology AI Market Entry Brief.
 ## Current model position
 
 The v4 shock benchmark is an experimental public-source signal test. Current evidence is weak-to-moderate and should be interpreted as a benchmark artifact, not validated forecasting performance.
+

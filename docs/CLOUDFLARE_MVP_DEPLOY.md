@@ -1,4 +1,4 @@
-# Pokala HealthIntel OS — Cloudflare Workers SaaS MVP Deploy
+﻿# Pokala HealthIntel OS â€” Cloudflare Workers SaaS MVP Deploy
 
 This deployment is not GitHub Pages. GitHub is only code storage.
 
@@ -88,3 +88,4 @@ Phase B: Worker serves frontend assets too. This is the next upgrade after the A
 Cloudflare Worker is the SaaS backend.
 D1 is the product database.
 Your laptop remains the overnight intelligence factory.
+

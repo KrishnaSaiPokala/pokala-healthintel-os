@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   color: #0f172a;
   background: #f5f7fb;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -174,7 +174,7 @@ button { cursor: pointer; }
 
 .heroGrid { display: grid; grid-template-columns: minmax(0, 1.35fr) 360px; gap: 18px; }
 
-.heroPanel, .summitPanel, .sectionIntro, .statCard, .iconCard, .modelCard, .bentoTile,
+.heroPanel, .advancedPanel, .sectionIntro, .statCard, .iconCard, .modelCard, .bentoTile,
 .ledgerShell, .sourceCard, .architectureFlow article, .twoPanel article, .caseGrid article {
   border: 1px solid rgba(15, 23, 42, 0.1);
   border-radius: 28px;
@@ -190,7 +190,7 @@ button { cursor: pointer; }
 }
 
 .heroPrimary p, .sectionIntro p, .bentoTile p, .statCard p, .iconCard p, .modelCard p,
-.summitPanel p, .ledgerDetail p, .sourceCard p, .twoPanel p, .architectureFlow p, .caseGrid p {
+.advancedPanel p, .ledgerDetail p, .sourceCard p, .twoPanel p, .architectureFlow p, .caseGrid p {
   color: #475569;
   font-weight: 720;
   line-height: 1.55;
@@ -204,7 +204,7 @@ button { cursor: pointer; }
 .actionRow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 .actionRow button { min-height: 43px; padding: 0 15px; }
 
-.summitPanel {
+.advancedPanel {
   display: grid;
   align-content: space-between;
   min-height: 330px;
@@ -215,7 +215,7 @@ button { cursor: pointer; }
   color: white;
 }
 
-.summitPanel span {
+.advancedPanel span {
   color: rgba(255, 255, 255, 0.68);
   font-size: 11px;
   font-weight: 950;
@@ -223,14 +223,14 @@ button { cursor: pointer; }
   text-transform: uppercase;
 }
 
-.summitPanel strong {
+.advancedPanel strong {
   color: white;
   font-size: 39px;
   line-height: 0.95;
   letter-spacing: -0.06em;
 }
 
-.summitPanel p { color: rgba(255, 255, 255, 0.72); }
+.advancedPanel p { color: rgba(255, 255, 255, 0.72); }
 
 .pulseLine {
   width: fit-content;
@@ -532,3 +532,4 @@ button { cursor: pointer; }
 @media (max-width: 1160px) {
   .benchmarkHeader, .benchmarkRow { grid-template-columns: 1fr; }
 }
+

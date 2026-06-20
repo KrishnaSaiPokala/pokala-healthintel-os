@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import type { LucideIcon, LucideProps } from 'lucide-react';
 import {
   Activity,
@@ -165,7 +165,7 @@ const evidenceRows: EvidenceRow[] = [
 ];
 
 const modelMetrics = [
-  { label: 'Run ID', value: 'basecamp4_shock_20260618_121556', note: 'reproducible benchmark reference' },
+  { label: 'Run ID', value: 'Benchmark Phase4_shock_20260618_121556', note: 'reproducible benchmark reference' },
   { label: 'Model family', value: 'Temporal transformer classifier', note: 'sequence benchmark candidate' },
   { label: 'Prediction target', value: 'Opportunity shock', note: 'public-data temporal target' },
   { label: 'Window / horizon', value: '24 / 3', note: 'temporal framing' },
@@ -379,7 +379,7 @@ function MarketBrief() {
           </div>
         </article>
 
-        <aside className="summitPanel">
+        <aside className="advancedPanel">
           <span>Reviewer signal</span>
           <strong>HIT maturity + DL evaluation discipline</strong>
           <p>
@@ -459,8 +459,8 @@ function ModelLab() {
 
   return (
     <div className="pageStack">
-      <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Real benchmark outputs are now connected to the public interface.">
-        Basecamp7 syncs actual Basecamp6 baseline results into the frontend and adds a first MLP baseline attempt with early stopping.
+      <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Transparent benchmark outputs are connected to the public interface.">
+        Benchmark Phase 7 syncs actual Benchmark Phase 6 baseline results into the frontend and adds a initial MLP baseline run with early stopping.
         The model layer remains a research benchmark, not validated forecasting.
       </SectionIntro>
 
@@ -478,7 +478,7 @@ function ModelLab() {
         <div className="benchmarkHeader">
           <div>
             <span className="eyebrow"><BarChart3 size={15} /> Synced benchmark table</span>
-            <h2>Baseline and early neural results</h2>
+            <h2>Benchmark results</h2>
             <p>
               Dataset: <strong>{benchmark?.dataset_used ?? 'not available'}</strong> / Target:{' '}
               <strong>{benchmark?.target_used ?? 'not available'}</strong>
@@ -486,7 +486,7 @@ function ModelLab() {
           </div>
           <aside>
             <span>Run</span>
-            <strong>{benchmark?.run_id ?? 'basecamp7_model_lab_sync'}</strong>
+            <strong>{benchmark?.run_id ?? 'Benchmark Phase 7_model_lab_sync'}</strong>
           </aside>
         </div>
 
@@ -513,8 +513,8 @@ function ModelLab() {
 
       <section className="twoPanel">
         <article>
-          <span className="eyebrow"><BrainCircuit size={15} /> Next deep models</span>
-          <h2>LSTM, GRU, TCN, transformers</h2>
+          <span className="eyebrow"><BrainCircuit size={15} /> Planned model extensions</span>
+          <h2>Sequence and transformer benchmarks</h2>
           <p>{plannedRows.join(' / ')}</p>
         </article>
         <article className="warningPanel">
@@ -638,7 +638,7 @@ export function App() {
           <div className="brandMark">P</div>
           <div>
             <span>Pokala HealthIntel OS</span>
-            <strong>Healthcare IT + deep learning evaluation workspace</strong>
+            <strong>Public healthcare intelligence workspace</strong>
           </div>
         </div>
 
@@ -669,7 +669,7 @@ export function App() {
           </div>
           <aside>
             <span>Reviewer summary</span>
-            <strong>Public data · HIT boundaries · DL benchmark transparency</strong>
+            <strong>Public data Â· HIT boundaries Â· DL benchmark transparency</strong>
           </aside>
         </section>
 
@@ -683,3 +683,4 @@ export function App() {
     </div>
   );
 }
+

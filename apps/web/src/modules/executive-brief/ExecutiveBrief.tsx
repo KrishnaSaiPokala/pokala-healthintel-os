@@ -1,4 +1,4 @@
-import { FileText } from 'lucide-react';
+﻿import { FileText } from 'lucide-react';
 import { Panel } from '../../components/Panel';
 import { computeCompositeOpportunity } from '../../lib/scoring';
 import { evidenceCoverage } from '../../lib/evidence';
@@ -40,3 +40,4 @@ export function ExecutiveBrief({ snapshot }: { snapshot: IntelligenceSnapshot })
     </section>
   );
 }
+

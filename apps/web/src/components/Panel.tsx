@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+﻿import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 
 interface PanelProps {
@@ -26,3 +26,4 @@ export function Panel({ title, eyebrow, icon: Icon, span = 12, className = '', c
     </section>
   );
 }
+

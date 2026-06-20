@@ -1,4 +1,4 @@
-import { AlertTriangle, ShieldCheck } from 'lucide-react';
+﻿import { AlertTriangle, ShieldCheck } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Panel } from '../../components/Panel';
 import { classifySignal } from '../../lib/scoring';
@@ -30,3 +30,4 @@ export function SafetyRadar({ snapshot }: { snapshot: IntelligenceSnapshot }) {
     </section>
   );
 }
+

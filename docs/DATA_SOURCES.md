@@ -1,4 +1,4 @@
-# Data Sources
+﻿# Data Sources
 
 This project avoids broad scraping. It prioritizes official APIs, official bulk downloads, and narrow public machine-readable files.
 
@@ -16,3 +16,4 @@ Initial sources:
 ## Rule
 
 No PHI. No login walls. No permission-gated datasets. No paid APIs. No broad crawling.
+

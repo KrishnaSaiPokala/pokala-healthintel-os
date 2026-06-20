@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+﻿import { createRoot } from 'react-dom/client';
 import './styles/global.css';
 import { App } from './app/App';
 
@@ -9,3 +9,4 @@ if (!root) {
 }
 
 createRoot(root).render(<App />);
+

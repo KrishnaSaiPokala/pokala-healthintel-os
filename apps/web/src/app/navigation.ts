@@ -1,4 +1,4 @@
-import {
+﻿import {
   BarChart3,
   BrainCircuit,
   Database,
@@ -27,3 +27,4 @@ export const navItems: NavItem[] = [
   { id: 'data', label: 'Data Health', icon: Database },
   { id: 'brief', label: 'Executive Brief', icon: FileText }
 ];
+

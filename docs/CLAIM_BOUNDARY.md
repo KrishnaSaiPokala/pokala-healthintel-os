@@ -1,4 +1,4 @@
-# Pokala HealthIntel OS Claim Boundary
+﻿# Pokala HealthIntel OS Claim Boundary
 
 Pokala HealthIntel OS is a public-data healthcare intelligence and portfolio demonstration system. It is designed to evaluate market, reimbursement, safety-signal, provider-density, innovation, and strategy questions using public or synthetic artifacts.
 
@@ -25,3 +25,4 @@ Pokala HealthIntel OS is a public-data healthcare intelligence and portfolio dem
 ## Required caveat language
 
 All scores are screening signals generated from public or demonstration artifacts. They require source review, domain review, and validation before any business, clinical, regulatory, or operational decision.
+

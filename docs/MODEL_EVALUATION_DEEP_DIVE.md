@@ -1,4 +1,4 @@
-# Model Evaluation Deep Dive — Basecamp5 Plan
+﻿# Model Evaluation Deep Dive â€” Benchmark Phase 5 Plan
 
 ## Goal
 
@@ -33,3 +33,4 @@ More epochs matter only with early stopping, checkpointing, validation tracking,
 ## Public claim boundary
 
 This remains a research benchmark unless externally validated. It is not clinical forecasting, CDS, or patient-level prediction.
+
