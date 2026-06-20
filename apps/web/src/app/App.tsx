@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react';
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon, LucideProps } from 'lucide-react';
 import {
   Activity,
   ArrowRight,
+  BarChart3,
   BrainCircuit,
   Building2,
   CheckCircle2,
   Clipboard,
   Database,
   FileSearch,
-  Gauge,
   GitBranch,
   Layers3,
   Lock,
@@ -20,12 +20,13 @@ import {
   ShieldCheck,
   Sparkles,
   Stethoscope,
+  TableProperties,
   Workflow,
   Zap
 } from 'lucide-react';
 import rawSnapshot from '../data/intelligence.json';
 
-type TabKey = 'market' | 'evidence' | 'model' | 'data' | 'architecture';
+type TabKey = 'market' | 'evidence' | 'model' | 'data' | 'architecture' | 'case';
 
 type Tab = {
   key: TabKey;
@@ -34,13 +35,24 @@ type Tab = {
   icon: LucideIcon;
 };
 
-type Claim = {
-  family: string;
-  title: string;
-  evidence: string;
+type EvidenceRow = {
+  domain: string;
+  claim: string;
+  source: string;
   supports: string;
   doesNotProve: string;
   boundary: string;
+  takeaway: string;
+};
+
+type DataRow = {
+  source: string;
+  role: string;
+  rows: string;
+  refresh: string;
+  phiRisk: string;
+  limitation: string;
+  certification: string;
 };
 
 const snapshot = rawSnapshot as any;
@@ -50,167 +62,581 @@ const tabs: Tab[] = [
   { key: 'evidence', label: 'Evidence Ledger', short: 'Evidence', icon: ShieldCheck },
   { key: 'model', label: 'Model Lab', short: 'Model', icon: BrainCircuit },
   { key: 'data', label: 'Data Health', short: 'Data', icon: Database },
-  { key: 'architecture', label: 'HIT Architecture', short: 'Architecture', icon: Network }
+  { key: 'architecture', label: 'HIT Architecture', short: 'Architecture', icon: Network },
+  { key: 'case', label: 'Case Study', short: 'Case', icon: FileSearch }
 ];
 
 const systemStats = [
-  { label: 'Claim-linked evidence rows', value: '172,228', detail: 'public-source evidence spine' },
+  { label: 'Claim-linked evidence rows', value: '172,228', detail: 'evidence spine rows' },
   { label: 'Dataset mart rows', value: '188,634', detail: 'bounded analytical marts' },
   { label: 'Dataset marts', value: '6', detail: 'source-family coverage' },
   { label: 'PHI posture', value: '0', detail: 'no patient-level data' }
 ];
 
-const hitSignals = [
-  'Public-source only',
-  'No PHI processing',
-  'Claim-boundary governance',
-  'Source lineage visible',
-  'Model limitations disclosed',
-  'Not clinical decision support'
-];
-
-const evidenceClaims: Claim[] = [
+const demoSkills = [
   {
-    family: 'Provider network',
-    title: 'Texas radiology market context is grounded in public provider and organizational signals.',
-    evidence: 'NPPES provider identity, specialty context, and public entity metadata.',
-    supports: 'Market structure, specialty density, diligence prioritization, and entity-level context.',
-    doesNotProve: 'Revenue, buyer intent, private contracts, patient demand, or adoption readiness.',
-    boundary: 'Public provider/entity context only. No PHI, no patient-level inference.'
+    title: 'Healthcare data engineering',
+    detail: 'Public healthcare sources are framed as bounded marts with source roles, caveats, and lineage status.',
+    icon: Database
   },
   {
-    family: 'Reimbursement',
-    title: 'CMS utilization and payment context can frame diligence pressure, but not economics.',
-    evidence: 'CMS public utilization/payment aggregates and derived mart-level summaries.',
-    supports: 'Aggregate reimbursement context, volume pressure, and service-line framing.',
-    doesNotProve: 'Profitability, negotiated rates, payer contracts, or patient-level economics.',
-    boundary: 'Aggregate public data only. Not a financial forecast.'
+    title: 'Evidence governance',
+    detail: 'Each claim is separated into evidence, support, what it does not prove, and the applicable boundary.',
+    icon: ShieldCheck
   },
   {
-    family: 'Safety signal',
-    title: 'openFDA / MAUDE reports are treated as safety-pressure context, not incidence.',
-    evidence: 'Passive adverse-event reports and device-event summaries.',
-    supports: 'Operational safety posture, reporting attention, and category-level caveat tracking.',
-    doesNotProve: 'Causality, incidence, comparative safety rate, or clinical risk.',
-    boundary: 'Passive reports are incomplete and cannot establish causation.'
+    title: 'Deep learning evaluation',
+    detail: 'Temporal benchmark metrics are presented with limitations rather than inflated product claims.',
+    icon: BrainCircuit
   },
   {
-    family: 'Deep learning',
-    title: 'The temporal model benchmark shows exploratory signal, not validated forecasting.',
-    evidence: 'Temporal benchmark runs, model cards, baseline pressure, ROC/PR metrics, and failure notes.',
-    supports: 'Reproducible experiment design, benchmark comparison, and transparent limitation disclosure.',
-    doesNotProve: 'Clinical utility, production readiness, causality, or patient-level prediction.',
-    boundary: 'Research benchmark only. Not CDS. Not deployed for care decisions.'
+    title: 'Compliance-aware product writing',
+    detail: 'No PHI, no patient-level inference, and no clinical-decision support language are used.',
+    icon: Lock
+  },
+  {
+    title: 'Cloud deployment',
+    detail: 'React/Vite frontend is built and deployed through Cloudflare Worker assets with validation gates.',
+    icon: ServerCog
+  },
+  {
+    title: 'Technical communication',
+    detail: 'Architecture, model limits, and data lineage are written for recruiters, professors, and reviewers.',
+    icon: TableProperties
   }
 ];
 
-const modelRows = [
-  { label: 'Best ROC-AUC', value: '0.6030', note: 'exploratory signal strength' },
-  { label: 'Best PR-AUC', value: '0.6230', note: 'class-imbalance aware metric' },
-  { label: 'Balanced accuracy', value: '0.5318', note: 'weak/moderate benchmark' },
-  { label: 'Benchmark posture', value: 'Research only', note: 'not validated forecasting' }
+const evidenceRows: EvidenceRow[] = [
+  {
+    domain: 'Provider network',
+    claim: 'Texas radiology market context can be evaluated using public provider and organizational signals.',
+    source: 'NPPES provider identity, taxonomy, and public entity metadata.',
+    supports: 'Provider density, specialty context, entity-level diligence, and market structure framing.',
+    doesNotProve: 'Revenue, buyer intent, clinical adoption, patient demand, or private contracting.',
+    boundary: 'Public provider/entity context only. No PHI and no patient-level inference.',
+    takeaway: 'Shows HIT judgment: useful public data, but bounded carefully.'
+  },
+  {
+    domain: 'Reimbursement',
+    claim: 'CMS utilization and payment aggregates can frame diligence pressure.',
+    source: 'CMS Medicare utilization/payment public aggregates and derived marts.',
+    supports: 'Aggregate reimbursement context, service-line pressure, and market-level signal triage.',
+    doesNotProve: 'Profitability, negotiated rates, payer mix, or patient-level economics.',
+    boundary: 'Aggregate public data only. Not a financial forecast.',
+    takeaway: 'Shows ability to use reimbursement context without overclaiming economics.'
+  },
+  {
+    domain: 'Safety signal',
+    claim: 'openFDA / MAUDE reports are useful as safety-pressure context, not incidence.',
+    source: 'Passive adverse-event and device-event public reports.',
+    supports: 'Reporting attention, safety posture, and operational caveat tracking.',
+    doesNotProve: 'Causality, incidence, comparative safety rates, or clinical risk.',
+    boundary: 'Passive reports are incomplete and cannot establish causation.',
+    takeaway: 'Shows mature safety-data interpretation in a healthcare IT setting.'
+  },
+  {
+    domain: 'Innovation signal',
+    claim: 'ClinicalTrials.gov can indicate research activity around a product area.',
+    source: 'Public trial registry records and trial metadata.',
+    supports: 'Research intensity, trial-stage context, and innovation landscape review.',
+    doesNotProve: 'Commercial traction, regulatory clearance, or clinical superiority.',
+    boundary: 'Registry context only; trial existence is not outcome proof.',
+    takeaway: 'Shows market-diligence use of public clinical research data.'
+  },
+  {
+    domain: 'Relationship context',
+    claim: 'CMS Open Payments can provide relationship-context signals.',
+    source: 'Public Open Payments disclosure data.',
+    supports: 'Industry relationship context and diligence questions.',
+    doesNotProve: 'Improper influence, procurement intent, or product endorsement.',
+    boundary: 'Disclosure context only; not an allegation system.',
+    takeaway: 'Shows careful interpretation of sensitive healthcare public data.'
+  },
+  {
+    domain: 'Deep learning benchmark',
+    claim: 'Temporal public-data benchmarks show exploratory signal, not validated forecasting.',
+    source: 'Model cards, run metadata, seed metrics, ROC/PR results, and failure notes.',
+    supports: 'Experiment design, reproducibility, baseline comparison, and transparent evaluation.',
+    doesNotProve: 'Clinical utility, causal effect, production forecasting, or patient-level prediction.',
+    boundary: 'Research benchmark only. Not clinical decision support.',
+    takeaway: 'Shows DL maturity: metrics plus restraint.'
+  }
 ];
 
-const dataSources = [
-  { name: 'NPPES', role: 'Provider identity and taxonomy context', posture: 'Public provider registry' },
-  { name: 'CMS utilization/payment', role: 'Aggregate reimbursement and service context', posture: 'Public CMS aggregate' },
-  { name: 'openFDA / MAUDE', role: 'Device-event and safety-pressure context', posture: 'Passive reports; not causal' },
-  { name: 'ClinicalTrials.gov', role: 'Innovation and research activity context', posture: 'Public trial registry' },
-  { name: 'CMS Open Payments', role: 'Industry-payment relationship context', posture: 'Public aggregate disclosure' },
-  { name: 'CDC / public demand signals', role: 'Population and regional pressure context', posture: 'Public population data' }
+const modelMetrics = [
+  { label: 'Run ID', value: 'basecamp4_shock_20260618_121556', note: 'reproducible benchmark reference' },
+  { label: 'Model family', value: 'Temporal transformer classifier', note: 'sequence benchmark candidate' },
+  { label: 'Prediction target', value: 'Opportunity shock', note: 'public-data temporal target' },
+  { label: 'Window / horizon', value: '24 / 3', note: 'temporal framing' },
+  { label: 'Seeds', value: '7 seeds', note: 'seed stability check' },
+  { label: 'Feature count', value: '213', note: 'mart-derived feature space' },
+  { label: 'Best ROC-AUC', value: '0.6030', note: 'exploratory signal only' },
+  { label: 'Best PR-AUC', value: '0.6230', note: 'class-imbalance aware metric' },
+  { label: 'Balanced accuracy', value: '0.5318', note: 'weak/moderate benchmark' },
+  { label: 'Public posture', value: 'Research only', note: 'not validated forecasting' }
+];
+
+const dataRows: DataRow[] = [
+  {
+    source: 'NPPES',
+    role: 'Provider identity, taxonomy, and organization context.',
+    rows: 'sample + mart rows',
+    refresh: 'Public source pull',
+    phiRisk: 'None in demo',
+    limitation: 'Registry identity context, not utilization or outcomes.',
+    certification: 'bounded'
+  },
+  {
+    source: 'CMS utilization/payment',
+    role: 'Aggregate reimbursement and service-line context.',
+    rows: 'mart-level aggregate',
+    refresh: 'Public CMS release',
+    phiRisk: 'None in demo',
+    limitation: 'No negotiated rates or patient-level economics.',
+    certification: 'bounded'
+  },
+  {
+    source: 'openFDA / MAUDE',
+    role: 'Device-event and passive safety-pressure context.',
+    rows: 'public event summaries',
+    refresh: 'Public API extract',
+    phiRisk: 'None in demo',
+    limitation: 'Passive reports cannot establish causality/incidence.',
+    certification: 'bounded'
+  },
+  {
+    source: 'ClinicalTrials.gov',
+    role: 'Innovation and trial activity context.',
+    rows: 'public registry sample',
+    refresh: 'Public registry pull',
+    phiRisk: 'None in demo',
+    limitation: 'Trial presence does not prove effectiveness.',
+    certification: 'bounded'
+  },
+  {
+    source: 'CMS Open Payments',
+    role: 'Relationship-context diligence signal.',
+    rows: 'public disclosure context',
+    refresh: 'Public CMS release',
+    phiRisk: 'None in demo',
+    limitation: 'Disclosure does not imply misconduct or endorsement.',
+    certification: 'bounded'
+  },
+  {
+    source: 'Derived model marts',
+    role: 'Temporal features for benchmark experiments.',
+    rows: '188,634 mart rows',
+    refresh: 'Pipeline-derived',
+    phiRisk: 'None in demo',
+    limitation: 'Feature marts support research benchmarks only.',
+    certification: 'pending raw certification'
+  }
 ];
 
 const architectureLayers = [
-  { layer: 'Source ingestion', icon: ServerCog, detail: 'Public source adapters, bounded ingestion, and raw-source certification tracking.' },
-  { layer: 'Evidence spine', icon: GitBranch, detail: 'Claim-linked rows with support, caveat, does-not-prove, and boundary fields.' },
-  { layer: 'Analytical marts', icon: Layers3, detail: 'Provider, utilization, safety, trial, and population marts for diligence workflows.' },
-  { layer: 'Model lab', icon: BrainCircuit, detail: 'Temporal benchmark runs with baselines, metrics, seed behavior, and failure disclosure.' },
-  { layer: 'Public interface', icon: Workflow, detail: 'Recruiter-facing React workspace focused on HIT maturity and DL evaluation judgment.' }
+  {
+    layer: 'Public source ingestion',
+    icon: ServerCog,
+    detail: 'Adapters pull public healthcare data from NPPES, CMS, openFDA, trial registries, and related sources.'
+  },
+  {
+    layer: 'Normalization and marts',
+    icon: Layers3,
+    detail: 'Source-specific records are shaped into bounded analytical marts with role-specific limitations.'
+  },
+  {
+    layer: 'Evidence spine',
+    icon: GitBranch,
+    detail: 'Claims are connected to evidence, caveats, does-not-prove fields, and healthcare-data boundaries.'
+  },
+  {
+    layer: 'Temporal features',
+    icon: Activity,
+    detail: 'Marts become time-aware feature windows for reproducible benchmark experiments.'
+  },
+  {
+    layer: 'Deep learning lab',
+    icon: BrainCircuit,
+    detail: 'Temporal models are compared using ROC/PR metrics, baseline pressure, seeds, and failure notes.'
+  },
+  {
+    layer: 'Public interface',
+    icon: Workflow,
+    detail: 'A recruiter-facing workspace explains HIT maturity, DL evaluation, and safe claim posture.'
+  }
+];
+
+const caseStudy = [
+  {
+    title: 'Problem',
+    detail: 'Healthcare market intelligence often mixes useful signals with unsafe claims. This project explores how to build a public-source diligence system that remains clear about evidence boundaries.'
+  },
+  {
+    title: 'Constraints',
+    detail: 'No PHI, no patient-level data, no clinical decision support, no causality claims from passive safety reports, and no inflated model claims.'
+  },
+  {
+    title: 'Build',
+    detail: 'React/Vite frontend, Cloudflare Worker deployment, public healthcare marts, evidence ledger, model-lab summaries, and validation scripts.'
+  },
+  {
+    title: 'Modeling approach',
+    detail: 'Temporal benchmark experiments test whether public healthcare signals contain weak but usable structure. Metrics are framed as research evidence only.'
+  },
+  {
+    title: 'Reviewer takeaway',
+    detail: 'The project demonstrates healthcare data judgment, product communication, and ML evaluation discipline in a deployed interface.'
+  }
 ];
 
 function copyText(text: string) {
   navigator.clipboard?.writeText(text).catch(() => undefined);
 }
 
-function StatCard({ label, value, detail }: { label: string; value: string; detail: string }) {
-  return <article className="statCard"><span>{label}</span><strong>{value}</strong><p>{detail}</p></article>;
+function IconCard({ icon: Icon, title, detail }: { icon: LucideIcon; title: string; detail: string }) {
+  return (
+    <article className="iconCard">
+      <Icon size={20} />
+      <strong>{title}</strong>
+      <p>{detail}</p>
+    </article>
+  );
 }
 
-function SectionIntro({ icon: Icon, eyebrow, title, children }: { icon: LucideIcon; eyebrow: string; title: string; children: React.ReactNode }) {
-  return <section className="sectionIntro"><span className="eyebrow"><Icon size={15} /> {eyebrow}</span><h2>{title}</h2><p>{children}</p></section>;
+function StatCard({ label, value, detail }: { label: string; value: string; detail: string }) {
+  return (
+    <article className="statCard">
+      <span>{label}</span>
+      <strong>{value}</strong>
+      <p>{detail}</p>
+    </article>
+  );
+}
+
+function SectionIntro({
+  icon: Icon,
+  eyebrow,
+  title,
+  children
+}: {
+  icon: LucideIcon;
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="sectionIntro">
+      <span className="eyebrow"><Icon size={15} /> {eyebrow}</span>
+      <h2>{title}</h2>
+      <p>{children}</p>
+    </section>
+  );
+}
+
+function MetricGrid() {
+  return (
+    <section className="statGrid">
+      {systemStats.map((stat) => <StatCard key={stat.label} {...stat} />)}
+    </section>
+  );
 }
 
 function MarketBrief() {
-  return <div className="pageStack">
-    <section className="heroGrid">
-      <article className="heroPanel heroPrimary">
-        <span className="eyebrow"><Stethoscope size={15} /> Healthcare IT intelligence</span>
-        <h1>Public healthcare intelligence for market diligence, evidence tracking, and model transparency.</h1>
-        <p>Pokala HealthIntel OS demonstrates healthcare data engineering, claim-boundary governance, and transparent deep learning evaluation using bounded public datasets only.</p>
-        <div className="chipRow">{hitSignals.map((item) => <span key={item}><CheckCircle2 size={14} /> {item}</span>)}</div>
-        <div className="actionRow">
-          <button type="button" onClick={() => copyText('Pokala HealthIntel OS: public-source Healthcare IT intelligence workspace for evidence-linked diligence, data lineage, and transparent model benchmarking. No PHI. Not clinical decision support.')}><Clipboard size={16} />Copy project summary</button>
-          <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>View system posture<ArrowRight size={16} /></button>
-        </div>
-      </article>
-      <aside className="summitPanel"><span>System posture</span><strong>HIT + DL portfolio artifact</strong><p>Built to show practical judgment: public data boundaries, lineage visibility, model transparency, and professional restraint.</p><div className="pulseLine"><i /> Deployed public workspace</div></aside>
-    </section>
-    <section className="statGrid">{systemStats.map((stat) => <StatCard key={stat.label} {...stat} />)}</section>
-    <section className="bentoGrid">
-      <article className="bentoTile large"><span className="eyebrow"><Gauge size={15} /> Recruiter-readable signal</span><h2>Complex healthcare data, presented with discipline.</h2><p>The site is designed to make the engineering maturity visible: source boundaries, evidence governance, no PHI, and model results that do not overclaim.</p><div className="meter"><i style={{ width: '84%' }} /></div></article>
-      <article className="bentoTile"><span>Healthcare IT</span><strong>Evidence governance</strong><p>Claims are tied to support, limitations, and source boundaries.</p></article>
-      <article className="bentoTile"><span>Deep learning</span><strong>Transparent evaluation</strong><p>Model metrics are shown with baseline pressure and caveats.</p></article>
-      <article className="bentoTile dark"><span>Boundary</span><strong>No PHI. No CDS.</strong><p>Public-source diligence only; not used for patient care decisions.</p></article>
-      <article className="bentoTile amber"><span>Professional judgment</span><strong>Honest limits</strong><p>The interface is built to prevent unsupported clinical or causal claims.</p></article>
-    </section>
-  </div>;
+  return (
+    <div className="pageStack">
+      <section className="heroGrid">
+        <article className="heroPanel heroPrimary">
+          <span className="eyebrow"><Stethoscope size={15} /> Healthcare IT intelligence</span>
+          <h1>Public healthcare intelligence for market diligence, evidence tracking, and model transparency.</h1>
+          <p>
+            Pokala HealthIntel OS demonstrates healthcare data engineering, claim-boundary governance,
+            and transparent deep learning evaluation using bounded public datasets only.
+          </p>
+
+          <div className="chipRow">
+            {['Public-source only', 'No PHI', 'Claim-boundary governance', 'Model limitations disclosed', 'Not CDS'].map((item) => (
+              <span key={item}><CheckCircle2 size={14} /> {item}</span>
+            ))}
+          </div>
+
+          <div className="actionRow">
+            <button
+              type="button"
+              onClick={() =>
+                copyText(
+                  'Built a deployed public-source Healthcare IT intelligence workspace combining React/Vite, Cloudflare Workers, healthcare data lineage, evidence-boundary governance, and transparent temporal model benchmarking. No PHI. Not clinical decision support.'
+                )
+              }
+            >
+              <Clipboard size={16} />
+              Copy recruiter summary
+            </button>
+            <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              View posture
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </article>
+
+        <aside className="summitPanel">
+          <span>Reviewer signal</span>
+          <strong>HIT maturity + DL evaluation discipline</strong>
+          <p>
+            Built to show practical judgment: public-data boundaries, lineage visibility,
+            model transparency, and professional restraint.
+          </p>
+          <div className="pulseLine"><i /> Deployed public workspace</div>
+        </aside>
+      </section>
+
+      <MetricGrid />
+
+      <SectionIntro icon={Sparkles} eyebrow="What this demonstrates" title="A portfolio artifact with real technical signal.">
+        The interface is designed so recruiters and reviewers can quickly see the engineering, healthcare-data,
+        modeling, and communication judgment behind the project.
+      </SectionIntro>
+
+      <section className="skillsGrid">
+        {demoSkills.map((skill) => <IconCard key={skill.title} {...skill} />)}
+      </section>
+    </div>
+  );
 }
 
 function EvidenceLedger() {
-  const [active, setActive] = useState(evidenceClaims[0].family);
-  const claim = useMemo(() => evidenceClaims.find((item) => item.family === active) ?? evidenceClaims[0], [active]);
-  return <div className="pageStack">
-    <SectionIntro icon={FileSearch} eyebrow="Evidence Ledger" title="Claim-boundary governance is the center of the system.">Every public-facing claim is separated into evidence, what it supports, what it does not prove, and the applicable healthcare data boundary.</SectionIntro>
-    <section className="ledgerShell">
-      <aside className="ledgerRail">{evidenceClaims.map((item) => <button key={item.family} type="button" className={item.family === active ? 'active' : ''} onClick={() => setActive(item.family)}>{item.family}</button>)}</aside>
-      <article className="ledgerDetail"><span>{claim.family}</span><h2>{claim.title}</h2><div className="claimMatrix">
-        <section><Microscope size={18} /><div><strong>Evidence</strong><p>{claim.evidence}</p></div></section>
-        <section><CheckCircle2 size={18} /><div><strong>Supports</strong><p>{claim.supports}</p></div></section>
-        <section><ShieldAlert size={18} /><div><strong>Does not prove</strong><p>{claim.doesNotProve}</p></div></section>
-        <section><Lock size={18} /><div><strong>Boundary</strong><p>{claim.boundary}</p></div></section>
-      </div></article>
-    </section>
-  </div>;
+  const [active, setActive] = useState(evidenceRows[0].domain);
+  const row = useMemo(() => evidenceRows.find((item) => item.domain === active) ?? evidenceRows[0], [active]);
+
+  return (
+    <div className="pageStack">
+      <SectionIntro icon={FileSearch} eyebrow="Evidence Ledger" title="Claim-boundary governance is the trust layer.">
+        Real healthcare intelligence is not just collecting sources. It is knowing what a source supports,
+        what it cannot prove, and where the claim boundary belongs.
+      </SectionIntro>
+
+      <section className="ledgerShell">
+        <aside className="ledgerRail">
+          {evidenceRows.map((item) => (
+            <button key={item.domain} type="button" className={item.domain === active ? 'active' : ''} onClick={() => setActive(item.domain)}>
+              {item.domain}
+            </button>
+          ))}
+        </aside>
+
+        <article className="ledgerDetail">
+          <span>{row.domain}</span>
+          <h2>{row.claim}</h2>
+
+          <div className="claimMatrix">
+            <section><Microscope size={18} /><div><strong>Source</strong><p>{row.source}</p></div></section>
+            <section><CheckCircle2 size={18} /><div><strong>Supports</strong><p>{row.supports}</p></div></section>
+            <section><ShieldAlert size={18} /><div><strong>Does not prove</strong><p>{row.doesNotProve}</p></div></section>
+            <section><Lock size={18} /><div><strong>Boundary</strong><p>{row.boundary}</p></div></section>
+            <section><Zap size={18} /><div><strong>Reviewer takeaway</strong><p>{row.takeaway}</p></div></section>
+          </div>
+        </article>
+      </section>
+
+      <section className="evidenceTable">
+        {evidenceRows.map((item) => (
+          <article key={item.domain}>
+            <span>{item.domain}</span>
+            <strong>{item.claim}</strong>
+            <p>{item.takeaway}</p>
+          </article>
+        ))}
+      </section>
+    </div>
+  );
 }
 
 function ModelLab() {
-  return <div className="pageStack">
-    <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Deep learning maturity means showing the limitation, not hiding it.">The model layer evaluates whether public healthcare signals contain usable temporal structure. Results are framed as an experimental benchmark, not clinical utility or validated forecasting.</SectionIntro>
-    <section className="statGrid">{modelRows.map((metric) => <article className="statCard" key={metric.label}><span>{metric.label}</span><strong>{metric.value}</strong><p>{metric.note}</p></article>)}</section>
-    <section className="modelNarrative"><article><span className="eyebrow"><Activity size={15} /> Evaluation posture</span><h2>What this proves</h2><p>Reproducible temporal benchmark construction, metric tracking, baseline awareness, and the ability to communicate weak-to-moderate model signal without overstating it.</p></article><article><span className="eyebrow"><ShieldAlert size={15} /> What it does not prove</span><h2>What this does not prove</h2><p>It does not prove clinical value, patient-level prediction, causality, incidence, or production forecasting readiness.</p></article></section>
-  </div>;
+  return (
+    <div className="pageStack">
+      <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Deep learning maturity means transparent evaluation, not inflated claims.">
+        The model layer evaluates whether public healthcare signals contain usable temporal structure.
+        Results are framed as an experimental benchmark, not validated forecasting.
+      </SectionIntro>
+
+      <section className="modelGrid">
+        {modelMetrics.map((metric) => (
+          <article className="modelCard" key={metric.label}>
+            <span>{metric.label}</span>
+            <strong>{metric.value}</strong>
+            <p>{metric.note}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="twoPanel">
+        <article>
+          <span className="eyebrow"><BarChart3 size={15} /> What this proves</span>
+          <h2>Benchmark discipline</h2>
+          <p>
+            Reproducible temporal benchmark construction, metric tracking, baseline awareness,
+            seed evaluation, and the ability to communicate weak-to-moderate signal honestly.
+          </p>
+        </article>
+        <article className="warningPanel">
+          <span className="eyebrow"><ShieldAlert size={15} /> What this does not prove</span>
+          <h2>No clinical or causal claim</h2>
+          <p>
+            The benchmark does not prove clinical value, patient-level prediction, causality,
+            incidence, or production forecasting readiness.
+          </p>
+        </article>
+      </section>
+    </div>
+  );
 }
 
 function DataHealth() {
-  return <div className="pageStack">
-    <SectionIntro icon={Database} eyebrow="Data Health" title="Healthcare data engineering is visible, not buried.">The workspace surfaces source roles, lineage posture, row counts, and caveats so reviewers can see how the public-data system is constructed.</SectionIntro>
-    <section className="sourceGrid">{dataSources.map((source) => <article className="sourceCard" key={source.name}><span>{source.posture}</span><strong>{source.name}</strong><p>{source.role}</p></article>)}</section>
-    <section className="bentoGrid compact"><article className="bentoTile dark"><span>Data posture</span><strong>Bounded public workspace</strong><p>No PHI. No patient-level identifiers. Public-source diligence only.</p></article><article className="bentoTile"><span>Lineage</span><strong>Explicit source roles</strong><p>Each source has a defined role and limitation in the workflow.</p></article><article className="bentoTile amber"><span>Certification</span><strong>Raw source certification pending</strong><p>Current artifact is bounded; it does not pretend to be a full raw data lake.</p></article></section>
-  </div>;
+  return (
+    <div className="pageStack">
+      <SectionIntro icon={Database} eyebrow="Data Health" title="Healthcare data engineering is visible, not buried.">
+        Data Health shows source roles, row posture, PHI risk, limitations, and certification state so reviewers can
+        evaluate the system like a real HIT artifact.
+      </SectionIntro>
+
+      <MetricGrid />
+
+      <section className="dataTable">
+        <div className="tableHeader">
+          <span>Source</span><span>Role</span><span>Rows</span><span>PHI risk</span><span>Limitation</span><span>Status</span>
+        </div>
+        {dataRows.map((row) => (
+          <article key={row.source}>
+            <strong>{row.source}</strong>
+            <p>{row.role}</p>
+            <p>{row.rows}</p>
+            <p>{row.phiRisk}</p>
+            <p>{row.limitation}</p>
+            <p>{row.certification}</p>
+          </article>
+        ))}
+      </section>
+    </div>
+  );
 }
 
 function Architecture() {
-  return <div className="pageStack">
-    <SectionIntro icon={Network} eyebrow="HIT Architecture" title="A compact architecture view for technical reviewers.">This page explains the system as a healthcare IT artifact: source ingestion, evidence governance, marts, model lab, and a public interface designed around safe boundaries.</SectionIntro>
-    <section className="architectureFlow">{architectureLayers.map((layer, index) => { const Icon = layer.icon; return <article key={layer.layer}><div className="stepNumber">{String(index + 1).padStart(2, '0')}</div><Icon size={21} /><strong>{layer.layer}</strong><p>{layer.detail}</p></article>; })}</section>
-  </div>;
+  return (
+    <div className="pageStack">
+      <SectionIntro icon={Network} eyebrow="HIT Architecture" title="A system walkthrough for technical interviews.">
+        This page explains the build as a healthcare IT system: ingestion, normalization, evidence governance,
+        temporal feature construction, model evaluation, and public deployment.
+      </SectionIntro>
+
+      <section className="architectureFlow">
+        {architectureLayers.map((layer, index) => {
+          const Icon = layer.icon;
+          return (
+            <article key={layer.layer}>
+              <div className="stepNumber">{String(index + 1).padStart(2, '0')}</div>
+              <Icon size={21} />
+              <strong>{layer.layer}</strong>
+              <p>{layer.detail}</p>
+            </article>
+          );
+        })}
+      </section>
+    </div>
+  );
+}
+
+function CaseStudy() {
+  return (
+    <div className="pageStack">
+      <SectionIntro icon={FileSearch} eyebrow="Portfolio case study" title="From public healthcare data to a deployed intelligence workspace.">
+        This case-study page frames the project for recruiters and reviewers: problem, constraints, design,
+        model evaluation, deployment, and next improvements.
+      </SectionIntro>
+
+      <section className="caseGrid">
+        {caseStudy.map((item) => (
+          <article key={item.title}>
+            <span>{item.title}</span>
+            <strong>{item.title}</strong>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="twoPanel">
+        <article>
+          <span className="eyebrow"><CheckCircle2 size={15} /> Strongest signal</span>
+          <h2>Judgment under constraints</h2>
+          <p>
+            The strongest part of this project is not a single metric. It is the system design:
+            useful public-data intelligence while refusing unsafe healthcare claims.
+          </p>
+        </article>
+        <article>
+          <span className="eyebrow"><Workflow size={15} /> Next improvement</span>
+          <h2>Move from demo to deeper product proof</h2>
+          <p>
+            The next layer would add deeper evidence-row browsing, source freshness metadata,
+            model run comparison, screenshots, and a README-driven recruiter package.
+          </p>
+        </article>
+      </section>
+    </div>
+  );
 }
 
 export function App() {
   const [tab, setTab] = useState<TabKey>('market');
   const activeTab = tabs.find((item) => item.key === tab) ?? tabs[0];
-  return <div className="appShell">
-    <header className="topbar"><div className="brand"><div className="brandMark">P</div><div><span>Pokala HealthIntel OS</span><strong>Healthcare IT + deep learning evaluation workspace</strong></div></div><nav className="navPills" aria-label="Main navigation">{tabs.map((item) => { const Icon = item.icon; return <button key={item.key} type="button" className={item.key === tab ? 'active' : ''} onClick={() => setTab(item.key)}><Icon size={16} /><span>{item.short}</span></button>; })}</nav><div className="trustPills" aria-label="Project posture"><span><ShieldCheck size={14} /> Public-source</span><span><Lock size={14} /> No PHI</span><span><Zap size={14} /> Deployed demo</span></div></header>
-    <main className="mainSurface"><section className="workspaceIntro"><div><span className="eyebrow"><Sparkles size={15} /> {activeTab.label}</span><h1>Healthcare IT intelligence with evidence governance and transparent model evaluation.</h1></div><aside><span>Reviewer summary</span><strong>Public data · HIT boundaries · DL benchmark transparency</strong></aside></section>{tab === 'market' && <MarketBrief />}{tab === 'evidence' && <EvidenceLedger />}{tab === 'model' && <ModelLab />}{tab === 'data' && <DataHealth />}{tab === 'architecture' && <Architecture />}</main>
-  </div>;
+
+  return (
+    <div className="appShell">
+      <header className="topbar">
+        <div className="brand">
+          <div className="brandMark">P</div>
+          <div>
+            <span>Pokala HealthIntel OS</span>
+            <strong>Healthcare IT + deep learning evaluation workspace</strong>
+          </div>
+        </div>
+
+        <nav className="navPills" aria-label="Main navigation">
+          {tabs.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button key={item.key} type="button" className={item.key === tab ? 'active' : ''} onClick={() => setTab(item.key)}>
+                <Icon size={16} />
+                <span>{item.short}</span>
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="trustPills" aria-label="Project posture">
+          <span><ShieldCheck size={14} /> Public-source</span>
+          <span><Lock size={14} /> No PHI</span>
+          <span><Zap size={14} /> Deployed demo</span>
+        </div>
+      </header>
+
+      <main className="mainSurface">
+        <section className="workspaceIntro">
+          <div>
+            <span className="eyebrow"><Sparkles size={15} /> {activeTab.label}</span>
+            <h1>Healthcare IT intelligence with evidence governance and transparent model evaluation.</h1>
+          </div>
+          <aside>
+            <span>Reviewer summary</span>
+            <strong>Public data · HIT boundaries · DL benchmark transparency</strong>
+          </aside>
+        </section>
+
+        {tab === 'market' && <MarketBrief />}
+        {tab === 'evidence' && <EvidenceLedger />}
+        {tab === 'model' && <ModelLab />}
+        {tab === 'data' && <DataHealth />}
+        {tab === 'architecture' && <Architecture />}
+        {tab === 'case' && <CaseStudy />}
+      </main>
+    </div>
+  );
 }
