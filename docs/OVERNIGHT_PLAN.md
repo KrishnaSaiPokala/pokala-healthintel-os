@@ -1,4 +1,4 @@
-﻿# Overnight Build Plan
+# Overnight Build Plan
 
 ## Terminal 1
 

@@ -1,4 +1,4 @@
-﻿import { Database } from 'lucide-react';
+import { Database } from 'lucide-react';
 import { Panel } from '../../components/Panel';
 import { formatNumber } from '../../lib/format';
 import type { IntelligenceSnapshot } from '../../types/intelligence';

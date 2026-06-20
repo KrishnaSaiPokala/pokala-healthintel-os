@@ -1,4 +1,4 @@
-﻿# Pokala HealthIntel OS v1.0 Candidate
+# Pokala HealthIntel OS v1.0 Candidate
 
 Built: 2026-06-19 19:31 UTC
 

@@ -1,4 +1,4 @@
-﻿import staticIntel from '../data/intelligence.json';
+import staticIntel from '../data/intelligence.json';
 
 const apiBase = (import.meta as any).env?.VITE_API_BASE || '';
 

@@ -1,4 +1,4 @@
-﻿export type IntelligenceView =
+export type IntelligenceView =
   | 'command'
   | 'investigations'
   | 'graph'

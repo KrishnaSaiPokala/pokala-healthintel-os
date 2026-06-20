@@ -1,4 +1,4 @@
-﻿import { Database, FileText, Search } from 'lucide-react';
+import { Database, FileText, Search } from 'lucide-react';
 import { Panel } from '../../components/Panel';
 import { summarizeEvidence } from '../../lib/evidence';
 import type { IntelligenceSnapshot } from '../../types/intelligence';

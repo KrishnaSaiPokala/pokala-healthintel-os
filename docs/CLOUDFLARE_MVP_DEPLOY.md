@@ -1,4 +1,4 @@
-﻿# Pokala HealthIntel OS â€” Cloudflare Workers SaaS MVP Deploy
+# Pokala HealthIntel OS â€” Cloudflare Workers SaaS MVP Deploy
 
 This deployment is not GitHub Pages. GitHub is only code storage.
 

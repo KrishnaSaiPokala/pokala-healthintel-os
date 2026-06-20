@@ -1,4 +1,4 @@
-﻿# Professional Language Sweep v1
+# Professional Language Sweep v1
 
 Removes internal patch/run wording from public-facing frontend and docs, replacing it with recruiter-facing product language.
 

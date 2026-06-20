@@ -1,4 +1,4 @@
-﻿import { BarChart3, Map } from 'lucide-react';
+import { BarChart3, Map } from 'lucide-react';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Panel } from '../../components/Panel';
 import type { IntelligenceSnapshot } from '../../types/intelligence';

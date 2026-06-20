@@ -1,4 +1,4 @@
-﻿# Benchmark Phase 5 Frontend Note
+# Benchmark Phase 5 Frontend Note
 
 This pack intentionally does not overwrite the visible frontend. It adds the robust model/data framework first.
 

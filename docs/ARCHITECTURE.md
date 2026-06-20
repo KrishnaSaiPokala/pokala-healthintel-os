@@ -1,4 +1,4 @@
-﻿# Pokala HealthIntel OS Architecture
+# Pokala HealthIntel OS Architecture
 
 ## Product shape
 

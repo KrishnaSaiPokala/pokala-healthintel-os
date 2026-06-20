@@ -1,4 +1,4 @@
-﻿# Benchmark Phase 6 Real Benchmark Harness
+# Benchmark Phase 6 Real Benchmark Harness
 
 Benchmark Phase 6 adds the real benchmark harness needed to move beyond narrative and toward robust model proof.
 

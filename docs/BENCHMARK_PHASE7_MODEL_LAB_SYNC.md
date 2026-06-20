@@ -1,4 +1,4 @@
-﻿# Benchmark Phase 7 Model Lab Sync
+# Benchmark Phase 7 Model Lab Sync
 
 Generated: 2026-06-20T22:08:51.647147+00:00
 

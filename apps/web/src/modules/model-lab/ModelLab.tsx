@@ -1,4 +1,4 @@
-﻿import { Brain, Cpu, Database, GitBranch, ShieldCheck } from 'lucide-react';
+import { Brain, Cpu, Database, GitBranch, ShieldCheck } from 'lucide-react';
 import { Panel } from '../../components/Panel';
 import modelCardRaw from '../../data/enterprise_model_card.json';
 import featureManifestRaw from '../../data/enterprise_temporal_manifest.json';

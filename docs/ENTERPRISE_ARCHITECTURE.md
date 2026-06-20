@@ -1,4 +1,4 @@
-﻿# Pokala HealthIntel OS — Enterprise Architecture
+# Pokala HealthIntel OS — Enterprise Architecture
 
 ## Positioning
 

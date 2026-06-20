@@ -1,4 +1,4 @@
-﻿# Data Expansion Plan â€” Benchmark Phase 5
+# Data Expansion Plan â€” Benchmark Phase 5
 
 ## Goal
 

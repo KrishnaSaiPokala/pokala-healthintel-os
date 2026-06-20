@@ -1,4 +1,4 @@
-﻿# Benchmark Phase 6 Real Benchmark Harness Report
+# Benchmark Phase 6 Real Benchmark Harness Report
 
 Generated: 2026-06-20T21:39:25.841639+00:00
 

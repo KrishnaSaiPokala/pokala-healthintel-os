@@ -1,4 +1,4 @@
-﻿import { Activity, Database, FileText, ShieldCheck } from 'lucide-react';
+import { Activity, Database, FileText, ShieldCheck } from 'lucide-react';
 import { evidenceCoverage } from '../../lib/evidence';
 import { formatNumber } from '../../lib/format';
 import { computeCompositeOpportunity } from '../../lib/scoring';

@@ -1,4 +1,4 @@
-﻿# Professional Language Sweep Report
+# Professional Language Sweep Report
 
 ## Status
 

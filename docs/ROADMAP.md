@@ -1,4 +1,4 @@
-﻿# HealthIntel OS Roadmap
+# HealthIntel OS Roadmap
 
 ## Phase 0 — Repository foundation
 

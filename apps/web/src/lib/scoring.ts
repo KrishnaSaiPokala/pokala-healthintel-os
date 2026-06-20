@@ -1,4 +1,4 @@
-﻿import type { IntelligenceSnapshot, ScoreCardModel } from '../types/intelligence';
+import type { IntelligenceSnapshot, ScoreCardModel } from '../types/intelligence';
 import { clampScore } from './format';
 
 export function buildScoreCards(snapshot: IntelligenceSnapshot): ScoreCardModel[] {

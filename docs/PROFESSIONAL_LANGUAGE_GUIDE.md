@@ -1,4 +1,4 @@
-﻿# Professional Language Guide
+# Professional Language Guide
 
 This project should read as a serious healthcare IT and model-evaluation artifact.
 

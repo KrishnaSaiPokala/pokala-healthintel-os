@@ -1,4 +1,4 @@
-﻿import type { ScoreCardModel } from '../types/intelligence';
+import type { ScoreCardModel } from '../types/intelligence';
 
 const toneLabel: Record<ScoreCardModel['tone'], string> = {
   cyan: 'Market',

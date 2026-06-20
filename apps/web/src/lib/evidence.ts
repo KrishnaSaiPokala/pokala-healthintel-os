@@ -1,4 +1,4 @@
-﻿import type { EvidenceItem, IntelligenceSnapshot } from '../types/intelligence';
+import type { EvidenceItem, IntelligenceSnapshot } from '../types/intelligence';
 
 export function evidenceRows(snapshot: IntelligenceSnapshot): number {
   return snapshot.evidence.reduce((total, item) => total + item.rows, 0);

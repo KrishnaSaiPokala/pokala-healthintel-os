@@ -1,4 +1,4 @@
-﻿# Deep Learning System Design
+# Deep Learning System Design
 
 ## Purpose
 

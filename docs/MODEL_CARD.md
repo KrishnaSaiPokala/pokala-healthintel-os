@@ -1,4 +1,4 @@
-﻿# Model Card: Temporal Transformer Intelligence Layer
+# Model Card: Temporal Transformer Intelligence Layer
 
 ## Model status
 

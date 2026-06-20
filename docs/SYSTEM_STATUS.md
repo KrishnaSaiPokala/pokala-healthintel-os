@@ -1,4 +1,4 @@
-﻿# System Status
+# System Status
 
 ## Current deployment
 
