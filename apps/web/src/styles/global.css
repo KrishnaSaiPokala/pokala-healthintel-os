@@ -1658,3 +1658,22 @@ body {
   background: rgba(22, 163, 74, 0.08);
   color: #166534;
 }
+
+/* === Leakage Clean Audit Caution Repair === */
+
+.cautionAuditPanel {
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  background:
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.13), transparent 24rem),
+    rgba(255, 255, 255, 0.97);
+}
+
+.cautionAuditPanel .benchmarkHeader aside strong {
+  color: #b45309;
+  text-transform: uppercase;
+}
+
+.cautionAuditPanel .leaderboardNote {
+  background: rgba(245, 158, 11, 0.10);
+  color: #92400e;
+}

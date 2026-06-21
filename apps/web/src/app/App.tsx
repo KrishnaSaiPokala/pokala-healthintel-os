@@ -593,11 +593,11 @@ function ModelLab() {
       </section>
 
 
-      <section className="benchmarkPanel cleanAuditPanel">
+      <section className="benchmarkPanel cleanAuditPanel cautionAuditPanel">
         <div className="benchmarkHeader">
           <div>
             <span className="eyebrow"><ShieldCheck size={15} /> Leakage-Clean Audit</span>
-            <h2>Green audit benchmark v2</h2>
+            <h2>Leakage-clean audit benchmark v2</h2>
             <p>
               Clean benchmark excludes target, future, next, lead, lookahead, outcome, and near-target proxy features before rerunning the model suite.
             </p>
@@ -632,8 +632,8 @@ function ModelLab() {
         </section>
 
         <div className="leaderboardNote">
-          Green audit means the current tabular benchmark surface removed obvious target/future/next leakage names and near-target proxy features.
-          It does not claim clinical utility; the next summit layer is walk-forward validation over true temporal tensors.
+          Leakage-clean audit removed obvious target/future/next leakage names and near-target proxy features, but the clean benchmark still requires caution because performance remains near-perfect.
+          It does not claim clinical utility. The next summit layer is walk-forward validation over true temporal tensors before treating this as clean predictive proof.
         </div>
       </section>
 
@@ -732,7 +732,8 @@ function cleanAuditLevel() {
 function cleanBestModel() {
   return cleanBenchmark?.best_model ?? {};
 }
-\nfunction bestOvernightModel() {
+
+function bestOvernightModel() {
   return overnightModels()
     .filter((row: any) => typeof row?.summary?.roc_auc?.mean === 'number')
     .sort((a: any, b: any) => b.summary.roc_auc.mean - a.summary.roc_auc.mean)[0] ?? {};
