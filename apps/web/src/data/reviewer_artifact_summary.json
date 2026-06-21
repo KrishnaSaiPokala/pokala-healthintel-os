@@ -1,0 +1,17 @@
+{
+  "artifact": "Pokala HealthIntel OS",
+  "positioning": "Public healthcare intelligence workspace with evidence governance, public-source lineage, and transparent model benchmarking.",
+  "boundaries": [
+    "No PHI",
+    "Not clinical decision support",
+    "No patient-level prediction",
+    "Research benchmark only"
+  ],
+  "reviewer_takeaway": [
+    "Healthcare IT product thinking",
+    "Evidence-linked claim governance",
+    "Public-source data lineage",
+    "Model benchmark discipline",
+    "Deployment and validation discipline"
+  ]
+}

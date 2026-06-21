@@ -1,4 +1,4 @@
-# Recruiter Brief â€” Pokala HealthIntel OS
+# Recruiter Brief  Pokala HealthIntel OS
 
 Pokala HealthIntel OS is a deployed public-source Healthcare IT intelligence workspace combining:
 

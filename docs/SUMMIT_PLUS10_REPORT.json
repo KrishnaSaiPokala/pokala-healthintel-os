@@ -1,0 +1,18 @@
+{
+  "generated_at_utc": "2026-06-20T23:59:51.284053+00:00",
+  "changed_files": [
+    "README.md",
+    "apps/web/src/app/App.tsx",
+    "apps/web/src/data/reviewer_artifact_summary.json",
+    "apps/web/src/lib/evidence.ts",
+    "apps/web/src/modules/evidence/EvidenceLedger.tsx",
+    "apps/web/src/modules/market-entry/MarketEntryBrief.tsx",
+    "apps/web/src/styles/global.css",
+    "apps/web/src/vite-env.d.ts",
+    "docs/CLOUDFLARE_MVP_DEPLOY.md",
+    "docs/PROJECT_INDEX.md",
+    "docs/REVIEWER_GUIDE.md",
+    "docs/TECHNICAL_CASE_STUDY.md"
+  ],
+  "boundary": "Copy, docs, and presentation only. Metrics were not invented or altered."
+}
