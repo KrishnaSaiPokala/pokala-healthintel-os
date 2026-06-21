@@ -3,6 +3,7 @@ import { Panel } from '../../components/Panel';
 import modelCardRaw from '../../data/enterprise_model_card.json';
 import featureManifestRaw from '../../data/enterprise_temporal_manifest.json';
 import runHistoryRaw from '../../data/enterprise_run_history.json';
+import overnightBenchmarkRaw from '../../data/deep_benchmark_overnight.json';
 import type { IntelligenceSnapshot } from '../../types/intelligence';
 
 type AnyRecord = Record<string, any>;
@@ -10,6 +11,7 @@ type AnyRecord = Record<string, any>;
 const card = modelCardRaw as AnyRecord;
 const manifest = featureManifestRaw as AnyRecord;
 const runHistory = runHistoryRaw as AnyRecord[];
+const overnightBenchmark = overnightBenchmarkRaw as AnyRecord;
 
 function fmt(value: unknown) {
   if (value === null || value === undefined || value === '') return '—';
@@ -39,9 +41,37 @@ function bestRow() {
   return rows.length ? rows[0] : {};
 }
 
+function overnightModels() {
+  return Array.isArray(overnightBenchmark.models) ? overnightBenchmark.models : [];
+}
+
+function summaryMetric(row: AnyRecord, key: string) {
+  const value = row?.summary?.[key]?.mean;
+  if (value === null || value === undefined || value === '') return '—';
+  return typeof value === 'number' ? value.toFixed(4) : String(value);
+}
+
+function completedSeeds(row: AnyRecord) {
+  return row?.summary?.completed_seeds ?? row?.per_seed?.length ?? '—';
+}
+
+function failedSeeds(row: AnyRecord) {
+  return row?.summary?.failed_seeds ?? 0;
+}
+
+function bestOvernightModel() {
+  const models = overnightModels();
+  return models
+    .filter((row: AnyRecord) => typeof row?.summary?.roc_auc?.mean === 'number')
+    .sort((a: AnyRecord, b: AnyRecord) => b.summary.roc_auc.mean - a.summary.roc_auc.mean)[0];
+}
+
+
 export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
   const rows = topRows();
   const best = bestRow();
+  const overnightRows = overnightModels();
+  const overnightBest = bestOvernightModel() ?? {};
 
   const bestModel = card.best_model_by_rmse ?? card.best_model_by_roc_auc ?? best.model ?? 'Not reported';
   const target = card.target ?? manifest.target ?? 'target_next_composite_opportunity';
@@ -82,6 +112,85 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
               <strong>{metric(best, 'f1')}</strong>
             </article>
           </div>
+        </div>
+      </Panel>
+
+
+      <Panel span={12} title="Overnight Core DL Benchmark" eyebrow="210-run multi-seed suite" icon={Cpu}>
+        <div className="modelVerdict overnightBenchmarkPanel">
+          <div className="modelVerdictCopy">
+            <span className="sectionKicker">Committed benchmark artifact</span>
+            <h2>{fmt(overnightBest.model_id ?? '10 model families / 21 seeds each')}</h2>
+            <p>
+              Overnight benchmark completed across {fmt(overnightRows.length)} model families and {fmt((overnightRows.length || 0) * 21)} seed runs on {fmt(overnightBenchmark.source_dataset)}.
+              The target is {fmt(overnightBenchmark.target_column)} with {fmt(overnightBenchmark.dataset?.rows_after_class_filter)} rows and {fmt(overnightBenchmark.dataset?.feature_count)} engineered features.
+            </p>
+
+            <div className="verdictBanner">
+              <strong>Best mean ROC-AUC</strong>
+              <span>
+                {fmt(overnightBest.model_id)} reported mean ROC-AUC {summaryMetric(overnightBest, 'roc_auc')} across {fmt(completedSeeds(overnightBest))} completed seeds.
+                These are benchmark signals only: no PHI, not clinical decision support, and not a patient-level prediction claim.
+              </span>
+            </div>
+          </div>
+
+          <div className="modelScoreboard">
+            <article>
+              <span>Model families</span>
+              <strong>{fmt(overnightRows.length)}</strong>
+            </article>
+            <article>
+              <span>Completed runs</span>
+              <strong>{fmt(overnightRows.reduce((sum: number, row: AnyRecord) => sum + Number(completedSeeds(row) || 0), 0))}</strong>
+            </article>
+            <article>
+              <span>Failed runs</span>
+              <strong>{fmt(overnightRows.reduce((sum: number, row: AnyRecord) => sum + Number(failedSeeds(row) || 0), 0))}</strong>
+            </article>
+            <article>
+              <span>Best ROC-AUC</span>
+              <strong>{summaryMetric(overnightBest, 'roc_auc')}</strong>
+            </article>
+          </div>
+        </div>
+
+        <div className="leaderboardNote">
+          Overnight suite includes sklearn MLP, PyTorch MLP, residual MLP, wide-deep MLP, LSTM, GRU, TCN-style Conv1D, Transformer Encoder, CNN-MLP hybrid, and gated MLP. Sequence-family models are architecture benchmarks over single-step tabular tensors until a future phase constructs true temporal tensors.
+        </div>
+
+        <div className="modelTableWrap">
+          <table className="modelTable polishedTable">
+            <thead>
+              <tr>
+                <th>Model family</th>
+                <th>Framework</th>
+                <th>Seeds</th>
+                <th>ROC-AUC mean</th>
+                <th>PR-AUC mean</th>
+                <th>F1 mean</th>
+                <th>Balanced Acc.</th>
+                <th>Runtime mean</th>
+              </tr>
+            </thead>
+            <tbody>
+              {overnightRows.map((row: AnyRecord) => (
+                <tr key={row.model_id}>
+                  <td>
+                    <strong>{fmt(row.model_id)}</strong>
+                    <small>{fmt(row.model_family)}</small>
+                  </td>
+                  <td>{fmt(row.framework)}</td>
+                  <td>{fmt(completedSeeds(row))} / 21</td>
+                  <td>{summaryMetric(row, 'roc_auc')}</td>
+                  <td>{summaryMetric(row, 'pr_auc')}</td>
+                  <td>{summaryMetric(row, 'f1_macro')}</td>
+                  <td>{summaryMetric(row, 'balanced_accuracy')}</td>
+                  <td>{row?.summary?.runtime_seconds?.mean ? `${row.summary.runtime_seconds.mean}s` : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </Panel>
 
