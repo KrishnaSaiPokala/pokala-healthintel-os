@@ -15,7 +15,7 @@ export function evidenceCoverage(snapshot: IntelligenceSnapshot): string {
 }
 
 export function summarizeEvidence(item: EvidenceItem): string {
-  return `${item.source} Â· ${item.freshness} Â· ${item.rows.toLocaleString()} rows`;
+  return `${item.source} / ${item.freshness} / ${item.rows.toLocaleString()} rows`;
 }
 
 export function exportEvidenceMarkdown(snapshot: IntelligenceSnapshot): string {

@@ -669,7 +669,7 @@ export function App() {
           </div>
           <aside>
             <span>Reviewer summary</span>
-            <strong>Public data Â· HIT boundaries Â· DL benchmark transparency</strong>
+            <strong>Public data / HIT boundaries / transparent model benchmarks</strong>
           </aside>
         </section>
 
