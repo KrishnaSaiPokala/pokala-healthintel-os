@@ -59,12 +59,12 @@ type DataRow = {
 const snapshot = rawSnapshot as any;
 
 const tabs: Tab[] = [
-  { key: 'market', label: 'Market Brief', short: 'Market', icon: Building2 },
-  { key: 'evidence', label: 'Evidence Ledger', short: 'Evidence', icon: ShieldCheck },
-  { key: 'model', label: 'Model Lab', short: 'Model', icon: BrainCircuit },
-  { key: 'data', label: 'Data Health', short: 'Data', icon: Database },
-  { key: 'architecture', label: 'HIT Architecture', short: 'Architecture', icon: Network },
-  { key: 'case', label: 'Case Study', short: 'Case', icon: FileSearch }
+  { key: 'market', label: 'Market Intelligence', short: 'Market', icon: Building2 },
+  { key: 'evidence', label: 'Evidence Governance', short: 'Evidence', icon: ShieldCheck },
+  { key: 'model', label: 'Benchmark Lab', short: 'Model', icon: BrainCircuit },
+  { key: 'data', label: 'Data Lineage', short: 'Data', icon: Database },
+  { key: 'architecture', label: 'System Architecture', short: 'Architecture', icon: Network },
+  { key: 'case', label: 'Implementation Brief', short: 'Case', icon: FileSearch }
 ];
 
 const systemStats = [
@@ -102,7 +102,7 @@ const demoSkills = [
   },
   {
     title: 'Technical communication',
-    detail: 'Architecture, model limits, and data lineage are written for recruiters, professors, and reviewers.',
+    detail: 'Architecture, model limits, and data lineage are written for technical stakeholders, professors, and technical stakeholders.',
     icon: TableProperties
   }
 ];
@@ -355,7 +355,7 @@ function MarketBrief() {
           </p>
 
           <div className="chipRow">
-            {['Public-source only', 'No PHI', 'Claim-boundary governance', 'Model limitations disclosed', 'Not CDS'].map((item) => (
+            {['Public-source only', 'No PHI', 'Claim-boundary controls', 'Model limits disclosed', 'Non-clinical use'].map((item) => (
               <span key={item}><CheckCircle2 size={14} /> {item}</span>
             ))}
           </div>
@@ -380,11 +380,11 @@ function MarketBrief() {
         </article>
 
         <aside className="advancedPanel">
-          <span>Reviewer signal</span>
-          <strong>HIT maturity + model evaluation discipline</strong>
+          <span>Governance posture</span>
+          <strong>Evidence governance / data lineage / model benchmarking</strong>
           <p>
-            Built to show practical judgment: public-data boundaries, lineage visibility,
-            model transparency, and professional restraint.
+            Built for source-bound analysis: public-data boundaries, lineage visibility,
+            transparent model benchmarking, and explicit claim boundaries.
           </p>
           <div className="pulseLine"><i /> Deployed public workspace</div>
         </aside>
@@ -393,7 +393,7 @@ function MarketBrief() {
       <MetricGrid />
 
       <SectionIntro icon={Sparkles} eyebrow="What this demonstrates" title="Evidence-linked healthcare intelligence.">
-        The interface is designed so technical reviewers can quickly see the engineering, healthcare-data,
+        The interface is designed so technical technical stakeholders can quickly see the engineering, healthcare-data,
         modeling, and communication judgment behind the project.
       </SectionIntro>
 
@@ -410,7 +410,7 @@ function EvidenceLedger() {
 
   return (
     <div className="pageStack">
-      <SectionIntro icon={FileSearch} eyebrow="Evidence Ledger" title="Claim-boundary governance is the trust layer.">
+      <SectionIntro icon={FileSearch} eyebrow="Evidence Governance" title="Claim-boundary controls is the trust layer.">
         Real healthcare intelligence is not just collecting sources. It is knowing what a source supports,
         what it cannot prove, and where the claim boundary belongs.
       </SectionIntro>
@@ -459,7 +459,7 @@ function ModelLab() {
 
   return (
     <div className="pageStack">
-      <SectionIntro icon={BrainCircuit} eyebrow="Model Lab" title="Transparent benchmark outputs are connected to the public interface.">
+      <SectionIntro icon={BrainCircuit} eyebrow="Benchmark Lab" title="Transparent benchmark outputs are connected to the public interface.">
         Benchmark Phase 7 syncs actual Benchmark Phase 6 baseline results into the frontend and adds a initial MLP baseline run with early stopping.
         The model layer remains a research benchmark, not validated forecasting.
       </SectionIntro>
@@ -536,8 +536,8 @@ function formatMetric(value: unknown) {
 function DataHealth() {
   return (
     <div className="pageStack">
-      <SectionIntro icon={Database} eyebrow="Data Health" title="Healthcare data engineering is visible, not buried.">
-        Data Health shows source roles, row posture, PHI risk, limitations, and certification state so reviewers can
+      <SectionIntro icon={Database} eyebrow="Data Lineage" title="Healthcare data engineering is visible, not buried.">
+        Data Lineage shows source roles, row posture, PHI risk, limitations, and certification state so technical stakeholders can
         evaluate the system like a real HIT artifact.
       </SectionIntro>
 
@@ -565,7 +565,7 @@ function DataHealth() {
 function Architecture() {
   return (
     <div className="pageStack">
-      <SectionIntro icon={Network} eyebrow="HIT Architecture" title="A system walkthrough for technical interviews.">
+      <SectionIntro icon={Network} eyebrow="System Architecture" title="A system walkthrough for technical interviews.">
         This page explains the build as a healthcare IT system: ingestion, normalization, evidence governance,
         temporal feature construction, model evaluation, and public deployment.
       </SectionIntro>
@@ -591,7 +591,7 @@ function CaseStudy() {
   return (
     <div className="pageStack">
       <SectionIntro icon={FileSearch} eyebrow="Portfolio case study" title="From public healthcare data to a deployed intelligence workspace.">
-        This case-study page frames the project for technical reviewers: problem, constraints, design,
+        This case-study page frames the project for technical technical stakeholders: problem, constraints, design,
         model evaluation, deployment, and next improvements.
       </SectionIntro>
 

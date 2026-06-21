@@ -106,7 +106,7 @@ export function MarketEntryBrief({ snapshot }: { snapshot?: IntelligenceSnapshot
           >
             <span>Recommendation</span>
             <strong>Investigate entry</strong>
-            <small>Confidence: medium-low · evidence-backed, not causal</small>
+            <small>Confidence: medium-low / evidence-backed, not causal</small>
             <div className="decisionPulse">
               <i />
               Public-data diligence mode

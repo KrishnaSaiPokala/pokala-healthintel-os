@@ -102,5 +102,5 @@
   ],
   "claim_boundary": "Research benchmark only. No PHI. Not clinical decision support. No patient-level prediction.",
   "public_label": "Transparent model benchmark summary",
-  "reviewer_positioning": "Research benchmark outputs with explicit claim boundaries."
+  "stakeholder_positioning": "Research benchmark outputs with explicit claim boundaries."
 }

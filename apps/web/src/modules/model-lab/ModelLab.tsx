@@ -49,7 +49,7 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
 
   return (
     <section className="gridPage modelLab modelLabPolished">
-      <Panel span={12} title="V4 Shock Benchmark" eyebrow="Model Lab" icon={Brain}>
+      <Panel span={12} title="V4 Shock Benchmark" eyebrow="Benchmark Lab" icon={Brain}>
         <div className="modelVerdict">
           <div className="modelVerdictCopy">
             <span className="sectionKicker">Artifact-backed benchmark</span>
@@ -116,7 +116,7 @@ export function ModelLab({ snapshot }: { snapshot?: IntelligenceSnapshot }) {
           </article>
           <article>
             <span>Device</span>
-            <strong>{fmt(card.device)} · CUDA {card.cuda_available ? 'available' : 'off'}</strong>
+            <strong>{fmt(card.device)} / CUDA {card.cuda_available ? 'available' : 'off'}</strong>
           </article>
         </div>
       </Panel>

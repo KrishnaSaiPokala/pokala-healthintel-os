@@ -23,7 +23,7 @@ export function SafetyRadar({ snapshot }: { snapshot: IntelligenceSnapshot }) {
 
       <Panel span={4} title="Safety interpretation" icon={ShieldCheck}>
         <p className="largeText">
-          Safety momentum is <b>{safetyClass}</b>. The platform flags acceleration rather than absolute event count, so reviewers can inspect underlying evidence before acting.
+          Safety momentum is <b>{safetyClass}</b>. The platform flags acceleration rather than absolute event count, so technical stakeholders can inspect underlying evidence before acting.
         </p>
         <div className="callout warning">Not a clinical safety determination. This is a public adverse-event signal review layer.</div>
       </Panel>

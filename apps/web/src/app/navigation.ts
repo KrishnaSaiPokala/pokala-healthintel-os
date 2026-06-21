@@ -23,8 +23,8 @@ export const navItems: NavItem[] = [
   { id: 'graph', label: 'Entity Graph', icon: GitBranch },
   { id: 'safety', label: 'Safety Radar', icon: Radar },
   { id: 'reimbursement', label: 'Reimbursement', icon: BarChart3 },
-  { id: 'model', label: 'Model Lab', icon: BrainCircuit },
-  { id: 'data', label: 'Data Health', icon: Database },
+  { id: 'model', label: 'Benchmark Lab', icon: BrainCircuit },
+  { id: 'data', label: 'Data Lineage', icon: Database },
   { id: 'brief', label: 'Executive Brief', icon: FileText }
 ];
 

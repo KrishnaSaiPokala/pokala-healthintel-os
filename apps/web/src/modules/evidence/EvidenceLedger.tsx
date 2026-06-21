@@ -79,7 +79,7 @@ const claims: EvidenceClaim[] = [
     mart: 'enterprise_model_card + run_history_v4',
     supports: 'Transparent weak/moderate signal testing and reproducibility.',
     doesNotProve: 'Production-grade predictive validity or clinical utility.',
-    boundary: 'Model Lab is experimental public-source benchmarking.',
+    boundary: 'Benchmark Lab is experimental public-source benchmarking.',
     confidence: 'Exploratory',
     rows: '2,388 model windows'
   }
@@ -120,7 +120,7 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
 
   return (
     <motion.section className="gridPage evidenceConsole" initial="initial" animate="animate">
-      <Panel span={12} title="Evidence Ledger" eyebrow="Trust spine" icon={ShieldCheck}>
+      <Panel span={12} title="Evidence Governance" eyebrow="Trust spine" icon={ShieldCheck}>
         <motion.div className="evidenceHero" {...cardMotion}>
           <div>
             <span className="sectionKicker">Claim-to-source discipline</span>
