@@ -157,7 +157,7 @@ const evidenceRows: EvidenceRow[] = [
   },
   {
     domain: 'Deep learning benchmark',
-    claim: 'Temporal public-data benchmarks show exploratory signal, not validated forecasting.',
+    claim: 'Temporal public-data benchmarks show exploratory signal, not a forecasting claim.',
     source: 'Model cards, run metadata, seed metrics, ROC/PR results, and failure notes.',
     supports: 'Experiment design, reproducibility, baseline comparison, and transparent evaluation.',
     doesNotProve: 'Clinical utility, causal effect, production forecasting, or patient-level prediction.',
@@ -167,16 +167,16 @@ const evidenceRows: EvidenceRow[] = [
 ];
 
 const modelMetrics = [
-  { label: 'Run ID', value: 'Benchmark Phase4_shock_20260618_121556', note: 'reproducible benchmark reference' },
-  { label: 'Model family', value: 'Temporal transformer classifier', note: 'sequence benchmark candidate' },
+  { label: 'Legacy run ID', value: 'Phase 4 shock benchmark', note: 'retained for lineage' },
+  { label: 'Model family', value: 'Earlier temporal benchmark candidate', note: 'legacy sequence candidate' },
   { label: 'Prediction target', value: 'Opportunity shock', note: 'public-data temporal target' },
   { label: 'Window / horizon', value: '24 / 3', note: 'temporal framing' },
   { label: 'Seeds', value: '7 seeds', note: 'seed stability check' },
   { label: 'Feature count', value: '213', note: 'mart-derived feature space' },
   { label: 'Best ROC-AUC', value: '0.6030', note: 'exploratory signal only' },
   { label: 'Best PR-AUC', value: '0.6230', note: 'class-imbalance aware metric' },
-  { label: 'Balanced accuracy', value: '0.5318', note: 'weak/moderate benchmark' },
-  { label: 'Public posture', value: 'Research only', note: 'not validated forecasting' }
+  { label: 'Balanced accuracy', value: '0.5318', note: 'legacy exploratory signal' },
+  { label: 'Public posture', value: 'Benchmark only', note: 'not a forecasting claim' }
 ];
 
 const dataRows: DataRow[] = [
@@ -464,13 +464,13 @@ function ModelLab() {
 
   return (
     <div className="pageStack">
-      <SectionIntro icon={BrainCircuit} eyebrow="Benchmark Lab" title="Transparent benchmark outputs are connected to the public interface.">
+      <SectionIntro icon={BrainCircuit} eyebrow="Benchmark Lab" title="Core benchmark outputs are connected to the public interface.">
         Benchmark Phase 7 syncs actual Benchmark Phase 6 baseline results into the frontend and adds a initial MLP baseline run with early stopping.
-        The model layer remains a research benchmark, not validated forecasting.
+        The model layer remains a research benchmark, not a forecasting claim.
       </SectionIntro>
 
 
-      <section className="benchmarkPanel">
+      <section className="benchmarkPanel primaryBenchmarkPanel">
         <div className="benchmarkHeader">
           <div>
             <span className="eyebrow"><BrainCircuit size={15} /> Overnight Core DL Benchmark</span>
@@ -495,7 +495,7 @@ function ModelLab() {
           <article className="modelCard">
             <span>Completed seed runs</span>
             <strong>{overnightCompleted}</strong>
-            <p>21 seeds per model family, committed as a reproducible benchmark artifact.</p>
+            <p>21 seeds per model family, committed as a reproducible benchmark suite.</p>
           </article>
           <article className="modelCard">
             <span>Failed seed runs</span>
@@ -542,11 +542,11 @@ function ModelLab() {
         ))}
       </section>
 
-      <section className="benchmarkPanel">
+      <section className="benchmarkPanel legacyBenchmarkPanel">
         <div className="benchmarkHeader">
           <div>
-            <span className="eyebrow"><BarChart3 size={15} /> Synced benchmark table</span>
-            <h2>Benchmark results</h2>
+            <span className="eyebrow"><BarChart3 size={15} /> Legacy baseline snapshot</span>
+            <h2>Earlier exploratory results</h2>
             <p>
               Dataset: <strong>{benchmark?.dataset_used ?? 'not available'}</strong> / Target:{' '}
               <strong>{benchmark?.target_used ?? 'not available'}</strong>
@@ -581,8 +581,8 @@ function ModelLab() {
 
       <section className="twoPanel">
         <article>
-          <span className="eyebrow"><BrainCircuit size={15} /> Planned model extensions</span>
-          <h2>Sequence and transformer benchmarks</h2>
+          <span className="eyebrow"><BrainCircuit size={15} /> Next technical phase</span>
+          <h2>True temporal tensors and retrieval layer</h2>
           <p>{plannedRows.join(' / ')}</p>
         </article>
         <article className="warningPanel">
