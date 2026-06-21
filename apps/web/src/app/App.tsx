@@ -263,7 +263,7 @@ const architectureLayers = [
   {
     layer: 'Public interface',
     icon: Workflow,
-    detail: 'A recruiter-facing workspace explains HIT maturity, DL evaluation, and safe claim posture.'
+    detail: 'A recruiter-facing workspace explains HIT maturity, model evaluation, and safe claim posture.'
   }
 ];
 
@@ -347,11 +347,11 @@ function MarketBrief() {
     <div className="pageStack">
       <section className="heroGrid">
         <article className="heroPanel heroPrimary">
-          <span className="eyebrow"><Stethoscope size={15} /> Healthcare IT intelligence</span>
-          <h1>Public healthcare intelligence for market diligence, evidence tracking, and model transparency.</h1>
+          <span className="eyebrow"><Stethoscope size={15} /> Healthcare intelligence workspace</span>
+          <h1>A public-source workspace for healthcare market analysis, evidence-linked claims, and transparent model benchmarking.</h1>
           <p>
             Pokala HealthIntel OS demonstrates healthcare data engineering, claim-boundary governance,
-            and transparent deep learning evaluation using bounded public datasets only.
+            and transparent model evaluation using bounded public datasets only.
           </p>
 
           <div className="chipRow">
@@ -365,7 +365,7 @@ function MarketBrief() {
               type="button"
               onClick={() =>
                 copyText(
-                  'Built a deployed public-source Healthcare IT intelligence workspace combining React/Vite, Cloudflare Workers, healthcare data lineage, evidence-boundary governance, and transparent temporal model benchmarking. No PHI. Not clinical decision support.'
+                  'Built a deployed public-source Healthcare intelligence workspace workspace combining React/Vite, Cloudflare Workers, healthcare data lineage, evidence-boundary governance, and transparent temporal model benchmarking. No PHI. Not clinical decision support.'
                 )
               }
             >
@@ -381,7 +381,7 @@ function MarketBrief() {
 
         <aside className="advancedPanel">
           <span>Reviewer signal</span>
-          <strong>HIT maturity + DL evaluation discipline</strong>
+          <strong>HIT maturity + model evaluation discipline</strong>
           <p>
             Built to show practical judgment: public-data boundaries, lineage visibility,
             model transparency, and professional restraint.
@@ -392,8 +392,8 @@ function MarketBrief() {
 
       <MetricGrid />
 
-      <SectionIntro icon={Sparkles} eyebrow="What this demonstrates" title="A portfolio artifact with real technical signal.">
-        The interface is designed so recruiters and reviewers can quickly see the engineering, healthcare-data,
+      <SectionIntro icon={Sparkles} eyebrow="What this demonstrates" title="Evidence-linked healthcare intelligence.">
+        The interface is designed so technical reviewers can quickly see the engineering, healthcare-data,
         modeling, and communication judgment behind the project.
       </SectionIntro>
 
@@ -591,7 +591,7 @@ function CaseStudy() {
   return (
     <div className="pageStack">
       <SectionIntro icon={FileSearch} eyebrow="Portfolio case study" title="From public healthcare data to a deployed intelligence workspace.">
-        This case-study page frames the project for recruiters and reviewers: problem, constraints, design,
+        This case-study page frames the project for technical reviewers: problem, constraints, design,
         model evaluation, deployment, and next improvements.
       </SectionIntro>
 
@@ -665,10 +665,10 @@ export function App() {
         <section className="workspaceIntro">
           <div>
             <span className="eyebrow"><Sparkles size={15} /> {activeTab.label}</span>
-            <h1>Healthcare IT intelligence with evidence governance and transparent model evaluation.</h1>
+            <h1>Healthcare intelligence workspace with evidence governance and transparent model evaluation.</h1>
           </div>
           <aside>
-            <span>Reviewer summary</span>
+            <span>System overview</span>
             <strong>Public data / HIT boundaries / transparent model benchmarks</strong>
           </aside>
         </section>
