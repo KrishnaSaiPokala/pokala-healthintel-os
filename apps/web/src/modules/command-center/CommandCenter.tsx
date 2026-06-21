@@ -48,12 +48,10 @@ export function CommandCenter({ snapshot }: { snapshot: IntelligenceSnapshot }) 
     <section className="casefile">
       <section className="caseHero">
         <div className="caseHeroCopy">
-          <span className="sectionKicker">Enterprise public demo ? no-PHI evidence workspace</span>
+          <span className="sectionKicker">Public-source healthcare intelligence workspace</span>
           <h2>Should an AI imaging workflow company enter the Texas radiology market?</h2>
           <p>
-            HealthIntel OS turns public healthcare data into a structured decision brief: market motion,
-            reimbursement pressure, safety momentum, and evidence lineage. The product is intentionally
-            accountless, public-data-only, and safe for recruiter/researcher review.
+            HealthIntel OS turns public healthcare data into a structured decision brief: market motion, reimbursement pressure, safety momentum, and evidence lineage. The workspace is intentionally accountless, public-data-only, and bounded for public technical review.
           </p>
 
           <div className="caseHeroActions">
@@ -152,17 +150,16 @@ export function CommandCenter({ snapshot }: { snapshot: IntelligenceSnapshot }) 
         </article>
 
         <article className="narrativeCard">
-          <span className="sectionKicker">Public demo posture</span>
-          <h3>Enterprise feel without accounts or PHI.</h3>
+          <span className="sectionKicker">Deployment posture</span>
+          <h3>Product-grade posture without accounts or PHI.</h3>
           <p>
-            This is a public, no-login artifact. The enterprise posture comes from transparency, lineage,
-            model boundaries, system status, and exportable evidence?not user accounts.
+            This is a public, no-login workspace. The product posture comes from transparency, lineage, model boundaries, system status, and exportable evidence, not user accounts.
           </p>
 
           <div className="postureGrid" id="system-posture">
             <span>Cloudflare Worker</span>
             <span>Static React assets</span>
-            <span>D1 demo API</span>
+            <span>D1-backed API</span>
             <span>Public-source data</span>
             <span>No patient data</span>
             <span>No clinical claims</span>

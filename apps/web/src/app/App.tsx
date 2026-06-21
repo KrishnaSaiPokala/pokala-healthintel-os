@@ -86,12 +86,12 @@ const demoSkills = [
     icon: ShieldCheck
   },
   {
-    title: 'Deep learning evaluation',
+    title: 'Benchmark governance',
     detail: 'Temporal benchmark metrics are presented with limitations rather than inflated product claims.',
     icon: BrainCircuit
   },
   {
-    title: 'Compliance-aware product writing',
+    title: 'Healthcare claim boundaries',
     detail: 'No PHI, no patient-level inference, and no clinical-decision support language are used.',
     icon: Lock
   },
@@ -101,8 +101,8 @@ const demoSkills = [
     icon: ServerCog
   },
   {
-    title: 'Technical communication',
-    detail: 'Architecture, model limits, and data lineage are written for technical stakeholders, professors, and technical stakeholders.',
+    title: 'Architecture communication',
+    detail: 'Architecture, model limits, and data lineage are written as product-facing system controls.',
     icon: TableProperties
   }
 ];
@@ -115,7 +115,7 @@ const evidenceRows: EvidenceRow[] = [
     supports: 'Provider density, specialty context, entity-level diligence, and market structure framing.',
     doesNotProve: 'Revenue, buyer intent, clinical adoption, patient demand, or private contracting.',
     boundary: 'Public provider/entity context only. No PHI and no patient-level inference.',
-    takeaway: 'Shows HIT judgment: useful public data, but bounded carefully.'
+    takeaway: 'Keeps provider-market analysis tied to public-source context and explicit claim limits.'
   },
   {
     domain: 'Reimbursement',
@@ -124,7 +124,7 @@ const evidenceRows: EvidenceRow[] = [
     supports: 'Aggregate reimbursement context, service-line pressure, and market-level signal triage.',
     doesNotProve: 'Profitability, negotiated rates, payer mix, or patient-level economics.',
     boundary: 'Aggregate public data only. Not a financial forecast.',
-    takeaway: 'Shows ability to use reimbursement context without overclaiming economics.'
+    takeaway: 'Frames reimbursement signals as market context, not private economics or forecasted revenue.'
   },
   {
     domain: 'Safety signal',
@@ -133,7 +133,7 @@ const evidenceRows: EvidenceRow[] = [
     supports: 'Reporting attention, safety posture, and operational caveat tracking.',
     doesNotProve: 'Causality, incidence, comparative safety rates, or clinical risk.',
     boundary: 'Passive reports are incomplete and cannot establish causation.',
-    takeaway: 'Shows mature safety-data interpretation in a healthcare IT setting.'
+    takeaway: 'Treats passive safety reports as governance context, not incidence or causality.'
   },
   {
     domain: 'Innovation signal',
@@ -160,7 +160,7 @@ const evidenceRows: EvidenceRow[] = [
     supports: 'Experiment design, reproducibility, baseline comparison, and transparent evaluation.',
     doesNotProve: 'Clinical utility, causal effect, production forecasting, or patient-level prediction.',
     boundary: 'Research benchmark only. Not clinical decision support.',
-    takeaway: 'Shows DL maturity: metrics plus restraint.'
+    takeaway: 'Reports benchmark metrics with explicit limitations and non-clinical-use boundaries.'
   }
 ];
 
@@ -183,7 +183,7 @@ const dataRows: DataRow[] = [
     role: 'Provider identity, taxonomy, and organization context.',
     rows: 'sample + mart rows',
     refresh: 'Public source pull',
-    phiRisk: 'None in demo',
+    phiRisk: 'No PHI in source',
     limitation: 'Registry identity context, not utilization or outcomes.',
     certification: 'bounded'
   },
@@ -192,7 +192,7 @@ const dataRows: DataRow[] = [
     role: 'Aggregate reimbursement and service-line context.',
     rows: 'mart-level aggregate',
     refresh: 'Public CMS release',
-    phiRisk: 'None in demo',
+    phiRisk: 'No PHI in source',
     limitation: 'No negotiated rates or patient-level economics.',
     certification: 'bounded'
   },
@@ -201,7 +201,7 @@ const dataRows: DataRow[] = [
     role: 'Device-event and passive safety-pressure context.',
     rows: 'public event summaries',
     refresh: 'Public API extract',
-    phiRisk: 'None in demo',
+    phiRisk: 'No PHI in source',
     limitation: 'Passive reports cannot establish causality/incidence.',
     certification: 'bounded'
   },
@@ -210,7 +210,7 @@ const dataRows: DataRow[] = [
     role: 'Innovation and trial activity context.',
     rows: 'public registry sample',
     refresh: 'Public registry pull',
-    phiRisk: 'None in demo',
+    phiRisk: 'No PHI in source',
     limitation: 'Trial presence does not prove effectiveness.',
     certification: 'bounded'
   },
@@ -219,7 +219,7 @@ const dataRows: DataRow[] = [
     role: 'Relationship-context diligence signal.',
     rows: 'public disclosure context',
     refresh: 'Public CMS release',
-    phiRisk: 'None in demo',
+    phiRisk: 'No PHI in source',
     limitation: 'Disclosure does not imply misconduct or endorsement.',
     certification: 'bounded'
   },
@@ -228,7 +228,7 @@ const dataRows: DataRow[] = [
     role: 'Temporal features for benchmark experiments.',
     rows: '188,634 mart rows',
     refresh: 'Pipeline-derived',
-    phiRisk: 'None in demo',
+    phiRisk: 'No PHI in source',
     limitation: 'Feature marts support research benchmarks only.',
     certification: 'pending raw certification'
   }
@@ -263,7 +263,7 @@ const architectureLayers = [
   {
     layer: 'Public interface',
     icon: Workflow,
-    detail: 'A recruiter-facing workspace explains HIT maturity, model evaluation, and safe claim posture.'
+    detail: 'A public-source workspace explains HIT maturity, model evaluation, and safe claim posture.'
   }
 ];
 
@@ -285,8 +285,8 @@ const caseStudy = [
     detail: 'Temporal benchmark experiments test whether public healthcare signals contain weak but usable structure. Metrics are framed as research evidence only.'
   },
   {
-    title: 'Reviewer takeaway',
-    detail: 'The project demonstrates healthcare data judgment, product communication, and ML evaluation discipline in a deployed interface.'
+    title: 'Operational takeaway',
+    detail: 'The system connects public data, evidence boundaries, model benchmarks, and deployment controls in one operational workspace.'
   }
 ];
 
@@ -350,8 +350,7 @@ function MarketBrief() {
           <span className="eyebrow"><Stethoscope size={15} /> Healthcare intelligence workspace</span>
           <h1>A public-source workspace for healthcare market analysis, evidence-linked claims, and transparent model benchmarking.</h1>
           <p>
-            Pokala HealthIntel OS demonstrates healthcare data engineering, claim-boundary governance,
-            and transparent model evaluation using bounded public datasets only.
+            Pokala HealthIntel OS organizes public healthcare datasets, source-linked evidence, benchmark outputs, and claim boundaries inside a deployed intelligence workspace.
           </p>
 
           <div className="chipRow">
@@ -370,7 +369,7 @@ function MarketBrief() {
               }
             >
               <Clipboard size={16} />
-              Copy recruiter summary
+              Copy system summary
             </button>
             <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               View posture
@@ -392,7 +391,7 @@ function MarketBrief() {
 
       <MetricGrid />
 
-      <SectionIntro icon={Sparkles} eyebrow="What this demonstrates" title="Evidence-linked healthcare intelligence.">
+      <SectionIntro icon={Sparkles} eyebrow="System capabilities" title="Evidence-linked healthcare intelligence.">
         The interface is designed so technical technical stakeholders can quickly see the engineering, healthcare-data,
         modeling, and communication judgment behind the project.
       </SectionIntro>
@@ -433,7 +432,7 @@ function EvidenceLedger() {
             <section><CheckCircle2 size={18} /><div><strong>Supports</strong><p>{row.supports}</p></div></section>
             <section><ShieldAlert size={18} /><div><strong>Does not prove</strong><p>{row.doesNotProve}</p></div></section>
             <section><Lock size={18} /><div><strong>Boundary</strong><p>{row.boundary}</p></div></section>
-            <section><Zap size={18} /><div><strong>Reviewer takeaway</strong><p>{row.takeaway}</p></div></section>
+            <section><Zap size={18} /><div><strong>Operational takeaway</strong><p>{row.takeaway}</p></div></section>
           </div>
         </article>
       </section>
@@ -590,7 +589,7 @@ function Architecture() {
 function CaseStudy() {
   return (
     <div className="pageStack">
-      <SectionIntro icon={FileSearch} eyebrow="Portfolio case study" title="From public healthcare data to a deployed intelligence workspace.">
+      <SectionIntro icon={FileSearch} eyebrow="Implementation brief" title="From public healthcare data to a deployed intelligence workspace.">
         This case-study page frames the project for technical technical stakeholders: problem, constraints, design,
         model evaluation, deployment, and next improvements.
       </SectionIntro>
@@ -608,18 +607,18 @@ function CaseStudy() {
       <section className="twoPanel">
         <article>
           <span className="eyebrow"><CheckCircle2 size={15} /> Strongest signal</span>
-          <h2>Judgment under constraints</h2>
+          <h2>Governed analysis under constraints</h2>
           <p>
-            The strongest part of this project is not a single metric. It is the system design:
+            The core value is the system design:
             useful public-data intelligence while refusing unsafe healthcare claims.
           </p>
         </article>
         <article>
           <span className="eyebrow"><Workflow size={15} /> Next improvement</span>
-          <h2>Move from demo to deeper product proof</h2>
+          <h2>Next system hardening step</h2>
           <p>
             The next layer would add deeper evidence-row browsing, source freshness metadata,
-            model run comparison, screenshots, and a README-driven recruiter package.
+            model run comparison, screenshots, and a README-driven review package.
           </p>
         </article>
       </section>
@@ -657,7 +656,7 @@ export function App() {
         <div className="trustPills" aria-label="Project posture">
           <span><ShieldCheck size={14} /> Public-source</span>
           <span><Lock size={14} /> No PHI</span>
-          <span><Zap size={14} /> Deployed demo</span>
+          <span><Zap size={14} /> Deployed workspace</span>
         </div>
       </header>
 
@@ -665,11 +664,11 @@ export function App() {
         <section className="workspaceIntro">
           <div>
             <span className="eyebrow"><Sparkles size={15} /> {activeTab.label}</span>
-            <h1>Healthcare intelligence workspace with evidence governance and transparent model evaluation.</h1>
+            <h1>Healthcare intelligence workspace for evidence governance, data lineage, and model benchmarking.</h1>
           </div>
           <aside>
             <span>System overview</span>
-            <strong>Public data / HIT boundaries / transparent model benchmarks</strong>
+            <strong>Public data / claim boundaries / transparent model benchmarks</strong>
           </aside>
         </section>
 

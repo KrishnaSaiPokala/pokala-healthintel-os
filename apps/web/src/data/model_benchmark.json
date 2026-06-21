@@ -79,7 +79,7 @@
         "pr_auc": 0.9996638857201486,
         "brier_score": 0.00684913702093744
       },
-      "notes": "Real sklearn MLP baseline with early stopping; one seed only, not final DL claim."
+      "notes": "Real sklearn MLP baseline with early stopping; one seed only, not a final model claim."
     }
   ],
   "planned_deep_models": [

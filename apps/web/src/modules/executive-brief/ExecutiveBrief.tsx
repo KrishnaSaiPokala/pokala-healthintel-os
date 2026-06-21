@@ -14,7 +14,7 @@ export function ExecutiveBrief({ snapshot }: { snapshot: IntelligenceSnapshot })
         <div className="briefHero">
           <h3>Pokala HealthIntel OS</h3>
           <p className="largeText">
-            A browser-native healthcare intelligence SaaS that converts public evidence into market, safety, reimbursement, and AI-risk dossiers. It demonstrates platform engineering, health data engineering, and applied AI architecture without PHI, paid APIs, or a hosted backend bill.
+            A browser-native healthcare intelligence workspace that converts public evidence into market, safety, reimbursement, and AI-risk dossiers. It combines platform engineering, healthcare data engineering, and applied model governance without PHI or clinical decision-support claims.
           </p>
           <div className="metricRow">
             <div className="metric"><span>Composite opportunity</span><strong>{formatScore(composite)}</strong></div>

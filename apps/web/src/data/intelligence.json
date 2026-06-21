@@ -9,7 +9,7 @@
     "datasetMarts": 6,
     "datasetRows": 188634,
     "lineageStatus": "claim-linked evidence rows verified against static artifact; raw-source ingestion pending",
-    "dataCertification": "public-demo summary marts; raw source snapshots not yet committed"
+    "dataCertification": "public summary marts; raw source snapshots not yet committed"
   },
   "scores": {
     "market": 100.0,
@@ -148,37 +148,37 @@
       "name": "NPPES Provider Index",
       "rows": 41670,
       "status": "loaded",
-      "freshness": "public demo mart"
+      "freshness": "public mart"
     },
     {
       "name": "openFDA Device Events",
       "rows": 68765,
       "status": "loaded",
-      "freshness": "public demo mart"
+      "freshness": "public mart"
     },
     {
       "name": "ClinicalTrials.gov Summary",
       "rows": 7228,
       "status": "loaded",
-      "freshness": "public demo mart"
+      "freshness": "public mart"
     },
     {
       "name": "CMS Utilization Mart",
       "rows": 55406,
       "status": "loaded",
-      "freshness": "public demo mart"
+      "freshness": "public mart"
     },
     {
       "name": "Open Payments Summary",
       "rows": 12538,
       "status": "loaded",
-      "freshness": "public demo mart"
+      "freshness": "public mart"
     },
     {
       "name": "OCR Breach Signals",
       "rows": 3027,
       "status": "loaded",
-      "freshness": "public demo mart"
+      "freshness": "public mart"
     }
   ],
   "evidence": [
