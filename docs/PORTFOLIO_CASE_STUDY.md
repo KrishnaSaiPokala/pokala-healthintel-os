@@ -1,4 +1,4 @@
-# Portfolio Case Study  Pokala HealthIntel OS
+# Portfolio Case Study â€” Pokala HealthIntel OS
 
 ## Problem
 

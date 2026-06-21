@@ -1,4 +1,4 @@
-# Model Evaluation Deep Dive  Benchmark Phase 5 Plan
+# Model Evaluation Deep Dive â€” Benchmark Phase 5 Plan
 
 ## Goal
 

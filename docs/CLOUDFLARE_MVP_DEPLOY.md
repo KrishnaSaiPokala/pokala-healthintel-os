@@ -1,11 +1,11 @@
-# Pokala HealthIntel OS  Cloudflare Workers SaaS MVP Deploy
+# Pokala HealthIntel OS â€” Cloudflare Workers SaaS MVP Deploy
 
 This deployment is not GitHub Pages. GitHub is only code storage.
 
 Production surface:
 
 ```text
-https: / pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev
+https://pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev
 ```
 
 ## 1. Build full-power local artifacts
@@ -57,7 +57,7 @@ npx wrangler deploy
 Expected URL:
 
 ```text
-https: / pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev
+https://pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev
 ```
 
 Check:
@@ -76,7 +76,7 @@ Phase A: Worker API live, local frontend points to it:
 
 ```powershell
 cd ..\web
-$env:VITE_API_BASE="https: / pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev"
+$env:VITE_API_BASE="https://pokala-healthintel-os.<your-cloudflare-subdomain>.workers.dev"
 npm install
 npm run dev
 ```

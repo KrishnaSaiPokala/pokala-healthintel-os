@@ -113,7 +113,8 @@ export function EvidenceLedger({ snapshot }: { snapshot?: IntelligenceSnapshot }
 
     try {
       await navigator.clipboard.writeText(text);
-    } catch { / Clipboard may be blocked in some browser contexts.
+    } catch {
+      // Clipboard may be blocked in some browser contexts.
     }
   };
 

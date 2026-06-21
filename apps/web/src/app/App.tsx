@@ -263,7 +263,7 @@ const architectureLayers = [
   {
     layer: 'Public interface',
     icon: Workflow,
-    detail: 'A recruiter-facing workspace explains HIT maturity, model evaluation, and safe claim posture.'
+    detail: 'A recruiter-facing workspace explains HIT maturity, DL evaluation, and safe claim posture.'
   }
 ];
 
@@ -381,7 +381,7 @@ function MarketBrief() {
 
         <aside className="advancedPanel">
           <span>Reviewer signal</span>
-          <strong>HIT maturity + model evaluation discipline</strong>
+          <strong>HIT maturity + DL evaluation discipline</strong>
           <p>
             Built to show practical judgment: public-data boundaries, lineage visibility,
             model transparency, and professional restraint.
@@ -665,11 +665,11 @@ export function App() {
         <section className="workspaceIntro">
           <div>
             <span className="eyebrow"><Sparkles size={15} /> {activeTab.label}</span>
-            <h1>Healthcare IT intelligence with evidence governance and transparent model benchmarking.</h1>
+            <h1>Healthcare IT intelligence with evidence governance and transparent model evaluation.</h1>
           </div>
           <aside>
             <span>Reviewer summary</span>
-            <strong>Public data  /  HIT boundaries  /  transparent model benchmarks</strong>
+            <strong>Public data Â· HIT boundaries Â· DL benchmark transparency</strong>
           </aside>
         </section>
 

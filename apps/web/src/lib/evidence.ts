@@ -15,7 +15,7 @@ export function evidenceCoverage(snapshot: IntelligenceSnapshot): string {
 }
 
 export function summarizeEvidence(item: EvidenceItem): string {
-  return `${item.source}  /  ${item.freshness}  /  ${item.rows.toLocaleString()} rows`;
+  return `${item.source} Â· ${item.freshness} Â· ${item.rows.toLocaleString()} rows`;
 }
 
 export function exportEvidenceMarkdown(snapshot: IntelligenceSnapshot): string {
@@ -27,7 +27,7 @@ export function exportEvidenceMarkdown(snapshot: IntelligenceSnapshot): string {
     `Refresh: ${snapshot.meta.refresh}`,
     '',
     '## Evidence Claims',
-    ...snapshot.evidence.map((item) => `- **${item.claim}**  ${summarizeEvidence(item)}`),
+    ...snapshot.evidence.map((item) => `- **${item.claim}** â€” ${summarizeEvidence(item)}`),
     '',
     '## Claim Boundary',
     'This export is for public-data market, safety, reimbursement, and strategy intelligence. It is not clinical decision support, diagnosis, treatment guidance, HIPAA certification, or production EHR integration evidence.'

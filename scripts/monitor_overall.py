@@ -88,16 +88,16 @@ def main():
 
         bar_width = 36
         filled = int(bar_width * pct / 100)
-        bar = "ï¿½" * filled + "ï¿½" * (bar_width - filled)
+        bar = "¦" * filled + "¦" * (bar_width - filled)
 
         clear()
-        print("POKALA HEALTHINTEL OS ï¿½ OVERNIGHT RUN MONITOR")
+        print("POKALA HEALTHINTEL OS — OVERNIGHT RUN MONITOR")
         print("=" * 72)
         print(f"Repo: {ROOT}")
         print(f"Log : {log if log else 'no log found yet'}")
         print("-" * 72)
         print(f"Overall: [{bar}] {pct:5.1f}%")
-        print(f"Stage  : {last_stage}/{total_stages} ï¿½ {stage_name}")
+        print(f"Stage  : {last_stage}/{total_stages} — {stage_name}")
         print(f"Elapsed: {fmt_seconds(elapsed)}")
         print(f"ETA    : {fmt_seconds(remaining) if remaining else 'calculating...'}")
         print("-" * 72)

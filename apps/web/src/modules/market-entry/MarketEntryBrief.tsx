@@ -63,7 +63,8 @@ export function MarketEntryBrief({ snapshot }: { snapshot?: IntelligenceSnapshot
 
     try {
       await navigator.clipboard.writeText(text);
-    } catch { / Clipboard may be blocked in some browser contexts. The UI remains usable.
+    } catch {
+      // Clipboard may be blocked in some browser contexts. The UI remains usable.
     }
   };
 
