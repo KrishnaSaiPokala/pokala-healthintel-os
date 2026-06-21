@@ -592,6 +592,51 @@ function ModelLab() {
         ))}
       </section>
 
+
+      <section className="benchmarkPanel cleanAuditPanel">
+        <div className="benchmarkHeader">
+          <div>
+            <span className="eyebrow"><ShieldCheck size={15} /> Leakage-Clean Audit</span>
+            <h2>Green audit benchmark v2</h2>
+            <p>
+              Clean benchmark excludes target, future, next, lead, lookahead, outcome, and near-target proxy features before rerunning the model suite.
+            </p>
+          </div>
+          <aside>
+            <span>Audit level</span>
+            <strong>{cleanAuditLevel()}</strong>
+          </aside>
+        </div>
+
+        <section className="modelGrid">
+          <article className="modelCard">
+            <span>Clean seed runs</span>
+            <strong>{cleanBenchmark?.completed_seed_runs ?? '-'}</strong>
+            <p>Completed after leakage-style feature removal.</p>
+          </article>
+          <article className="modelCard">
+            <span>Failed runs</span>
+            <strong>{cleanBenchmark?.failed_seed_runs ?? '-'}</strong>
+            <p>Seed failures in the clean benchmark.</p>
+          </article>
+          <article className="modelCard">
+            <span>Clean feature count</span>
+            <strong>{cleanBenchmark?.cleaning?.clean_feature_count ?? '-'}</strong>
+            <p>Features retained after name and correlation filtering.</p>
+          </article>
+          <article className="modelCard">
+            <span>Best clean model</span>
+            <strong>{cleanBestModel()?.model_id ?? '-'}</strong>
+            <p>Best clean model by mean ROC-AUC.</p>
+          </article>
+        </section>
+
+        <div className="leaderboardNote">
+          Green audit means the current tabular benchmark surface removed obvious target/future/next leakage names and near-target proxy features.
+          It does not claim clinical utility; the next summit layer is walk-forward validation over true temporal tensors.
+        </div>
+      </section>
+
       <section className="benchmarkPanel legacyBenchmarkPanel">
         <div className="benchmarkHeader">
           <div>
@@ -679,7 +724,15 @@ function auditTopFeature() {
   return leakageAudit?.top_single_feature_scores?.[0]?.feature ?? '-';
 }
 
-function bestOvernightModel() {
+
+function cleanAuditLevel() {
+  return cleanAudit?.warning_level ?? 'pending';
+}
+
+function cleanBestModel() {
+  return cleanBenchmark?.best_model ?? {};
+}
+\nfunction bestOvernightModel() {
   return overnightModels()
     .filter((row: any) => typeof row?.summary?.roc_auc?.mean === 'number')
     .sort((a: any, b: any) => b.summary.roc_auc.mean - a.summary.roc_auc.mean)[0] ?? {};
