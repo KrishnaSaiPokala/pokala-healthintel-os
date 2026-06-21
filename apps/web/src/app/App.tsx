@@ -26,6 +26,8 @@ import {
 } from 'lucide-react';
 import rawSnapshot from '../data/intelligence.json';
 import modelBenchmark from '../data/model_benchmark.json';
+import cleanBenchmarkRaw from '../data/deep_benchmark_leakage_clean.json';
+import cleanLeakageAuditRaw from '../data/model_leakage_audit_clean.json';
 import overnightBenchmarkRaw from '../data/deep_benchmark_overnight.json';
 import leakageAuditRaw from '../data/model_leakage_audit.json';
 
@@ -59,6 +61,8 @@ type DataRow = {
 };
 
 const snapshot = rawSnapshot as any;
+const cleanBenchmark = cleanBenchmarkRaw as any;
+const cleanAudit = cleanLeakageAuditRaw as any;
 const overnightBenchmark = overnightBenchmarkRaw as any;
 const leakageAudit = leakageAuditRaw as any;
 
