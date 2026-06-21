@@ -27,6 +27,7 @@ import {
 import rawSnapshot from '../data/intelligence.json';
 import modelBenchmark from '../data/model_benchmark.json';
 import overnightBenchmarkRaw from '../data/deep_benchmark_overnight.json';
+import leakageAuditRaw from '../data/model_leakage_audit.json';
 
 type TabKey = 'market' | 'evidence' | 'model' | 'data' | 'architecture' | 'case';
 
@@ -59,6 +60,7 @@ type DataRow = {
 
 const snapshot = rawSnapshot as any;
 const overnightBenchmark = overnightBenchmarkRaw as any;
+const leakageAudit = leakageAuditRaw as any;
 
 const tabs: Tab[] = [
   { key: 'market', label: 'Market Intelligence', short: 'Market', icon: Building2 },
@@ -532,6 +534,54 @@ function ModelLab() {
         </div>
       </section>
 
+
+      <section className="benchmarkPanel auditBenchmarkPanel">
+        <div className="benchmarkHeader">
+          <div>
+            <span className="eyebrow"><ShieldCheck size={15} /> Leakage & Stability Audit</span>
+            <h2>Benchmark credibility checks</h2>
+            <p>
+              The overnight run is paired with a lightweight leakage and stability audit. This does not replace full temporal validation, but it makes the benchmark posture more honest and reviewable.
+            </p>
+          </div>
+          <aside>
+            <span>Audit posture</span>
+            <strong>{leakageAudit?.warning_level ?? 'unknown'}</strong>
+          </aside>
+        </div>
+
+        <section className="auditGrid">
+          <article className="auditCard">
+            <span>Completed seed runs</span>
+            <strong>{leakageAudit?.completed_seed_runs ?? '-'}</strong>
+            <p>Stability is reported across the committed overnight run.</p>
+          </article>
+          <article className="auditCard">
+            <span>High-risk feature flags</span>
+            <strong>{auditCount('high_risk_single_feature_flags')}</strong>
+            <p>Single-feature AUC/correlation heuristic for leakage-risk review.</p>
+          </article>
+          <article className="auditCard">
+            <span>Name heuristic flags</span>
+            <strong>{auditCount('name_heuristic_flags')}</strong>
+            <p>Features with target/outcome/future/shock-like names.</p>
+          </article>
+          <article className="auditCard">
+            <span>Top single-feature score</span>
+            <strong>{auditTopFeature()}</strong>
+            <p>Highest-scoring single feature under the lightweight audit.</p>
+          </article>
+        </section>
+
+        <ul className="auditList">
+          {(leakageAudit?.findings ?? []).slice(0, 5).map((finding: string) => (
+            <li key={finding}>{finding}</li>
+          ))}
+        </ul>
+      </section>
+
+
+
       <section className="modelGrid">
         {modelMetrics.map((metric) => (
           <article className="modelCard" key={metric.label}>
@@ -617,6 +667,16 @@ function completedSeeds(row: any) {
 
 function failedSeeds(row: any) {
   return Number(row?.summary?.failed_seeds ?? 0);
+}
+
+
+function auditCount(key: string) {
+  const value = leakageAudit?.[key];
+  return Array.isArray(value) ? value.length : Number(value ?? 0);
+}
+
+function auditTopFeature() {
+  return leakageAudit?.top_single_feature_scores?.[0]?.feature ?? '-';
 }
 
 function bestOvernightModel() {

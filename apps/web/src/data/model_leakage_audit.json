@@ -1,0 +1,640 @@
+{
+  "audit_name": "Benchmark leakage and stability audit",
+  "status": "completed",
+  "warning_level": "red",
+  "source_dataset": "data/models/run_history_v4/basecamp4_shock_20260618_121556/enterprise_temporal_sequences_v4_shock.csv",
+  "target_column": "target_v4_opportunity_shock",
+  "raw_rows": 2700,
+  "audited_rows": 2700,
+  "numeric_features": 227,
+  "audited_features": 227,
+  "model_families": 10,
+  "completed_seed_runs": 210,
+  "failed_seed_runs": 0,
+  "best_model": {
+    "model_id": "torch_transformer_encoder_21_seed",
+    "family": "TransformerEncoder",
+    "framework": "PyTorch",
+    "completed_seeds": 21,
+    "failed_seeds": 0,
+    "roc_auc_mean": 0.997803,
+    "roc_auc_std": 0.004658,
+    "pr_auc_mean": 0.995636,
+    "f1_macro_mean": 0.982315,
+    "balanced_accuracy_mean": 0.981603
+  },
+  "stability_leaderboard": [
+    {
+      "model_id": "torch_transformer_encoder_21_seed",
+      "family": "TransformerEncoder",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.997803,
+      "roc_auc_std": 0.004658,
+      "pr_auc_mean": 0.995636,
+      "f1_macro_mean": 0.982315,
+      "balanced_accuracy_mean": 0.981603
+    },
+    {
+      "model_id": "torch_residual_mlp_21_seed",
+      "family": "ResidualMLP",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.996085,
+      "roc_auc_std": 0.005629,
+      "pr_auc_mean": 0.991126,
+      "f1_macro_mean": 0.980147,
+      "balanced_accuracy_mean": 0.980923
+    },
+    {
+      "model_id": "torch_mlp_21_seed",
+      "family": "MLP",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.995378,
+      "roc_auc_std": 0.006549,
+      "pr_auc_mean": 0.989761,
+      "f1_macro_mean": 0.974807,
+      "balanced_accuracy_mean": 0.971514
+    },
+    {
+      "model_id": "torch_wide_deep_mlp_21_seed",
+      "family": "WideDeepMLP",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.993803,
+      "roc_auc_std": 0.00782,
+      "pr_auc_mean": 0.988235,
+      "f1_macro_mean": 0.981405,
+      "balanced_accuracy_mean": 0.979616
+    },
+    {
+      "model_id": "torch_tcn_21_seed",
+      "family": "TCN",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.99235,
+      "roc_auc_std": 0.008298,
+      "pr_auc_mean": 0.981726,
+      "f1_macro_mean": 0.978788,
+      "balanced_accuracy_mean": 0.978528
+    },
+    {
+      "model_id": "torch_cnn_mlp_hybrid_21_seed",
+      "family": "CNNMLPHybrid",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.992207,
+      "roc_auc_std": 0.006296,
+      "pr_auc_mean": 0.985708,
+      "f1_macro_mean": 0.976989,
+      "balanced_accuracy_mean": 0.974604
+    },
+    {
+      "model_id": "torch_gated_mlp_21_seed",
+      "family": "GatedMLP",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.991599,
+      "roc_auc_std": 0.007823,
+      "pr_auc_mean": 0.983247,
+      "f1_macro_mean": 0.97644,
+      "balanced_accuracy_mean": 0.972003
+    },
+    {
+      "model_id": "sklearn_mlp_21_seed",
+      "family": "MLP",
+      "framework": "scikit-learn",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.988952,
+      "roc_auc_std": 0.007439,
+      "pr_auc_mean": 0.979718,
+      "f1_macro_mean": 0.971587,
+      "balanced_accuracy_mean": 0.969635
+    },
+    {
+      "model_id": "torch_lstm_21_seed",
+      "family": "LSTM",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.988061,
+      "roc_auc_std": 0.007736,
+      "pr_auc_mean": 0.974786,
+      "f1_macro_mean": 0.946967,
+      "balanced_accuracy_mean": 0.940982
+    },
+    {
+      "model_id": "torch_gru_21_seed",
+      "family": "GRU",
+      "framework": "PyTorch",
+      "completed_seeds": 21,
+      "failed_seeds": 0,
+      "roc_auc_mean": 0.986829,
+      "roc_auc_std": 0.008459,
+      "pr_auc_mean": 0.971588,
+      "f1_macro_mean": 0.939721,
+      "balanced_accuracy_mean": 0.935598
+    }
+  ],
+  "name_heuristic_flags": [
+    {
+      "feature": "composite_opportunity",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "target_next_composite_opportunity",
+      "reason_terms": [
+        "next",
+        "opportunity",
+        "target"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_lag1",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_lag3",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_lag6",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_roll3_mean",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_roll6_mean",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_roll12_mean",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_roll6_std",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_velocity1",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "composite_opportunity_velocity3",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_lag1",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_lag3",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_lag6",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_roll3_mean",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_roll6_mean",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_roll12_mean",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_roll6_std",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_velocity1",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "opportunity_pressure_ratio_velocity3",
+      "reason_terms": [
+        "opportunity"
+      ]
+    },
+    {
+      "feature": "future_composite_h3",
+      "reason_terms": [
+        "future"
+      ]
+    },
+    {
+      "feature": "future_market_h3",
+      "reason_terms": [
+        "future"
+      ]
+    },
+    {
+      "feature": "future_safety_h3",
+      "reason_terms": [
+        "future"
+      ]
+    },
+    {
+      "feature": "future_reimbursement_h3",
+      "reason_terms": [
+        "future"
+      ]
+    },
+    {
+      "feature": "future_device_h3",
+      "reason_terms": [
+        "future"
+      ]
+    },
+    {
+      "feature": "future_trial_h3",
+      "reason_terms": [
+        "future"
+      ]
+    },
+    {
+      "feature": "shock_score_raw",
+      "reason_terms": [
+        "shock"
+      ]
+    }
+  ],
+  "high_risk_single_feature_flags": [
+    {
+      "feature": "shock_score_raw",
+      "abs_corr_to_target": 0.379452,
+      "mutual_info": 0.563475,
+      "single_feature_auc_or_inverted_auc": 1.0,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_composite_h3",
+      "abs_corr_to_target": 0.389627,
+      "mutual_info": 0.534897,
+      "single_feature_auc_or_inverted_auc": 0.973102,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_reimbursement_h3",
+      "abs_corr_to_target": 0.391771,
+      "mutual_info": 0.411026,
+      "single_feature_auc_or_inverted_auc": 0.96216,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_trial_h3",
+      "abs_corr_to_target": 0.391771,
+      "mutual_info": 0.41459,
+      "single_feature_auc_or_inverted_auc": 0.962132,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_market_h3",
+      "abs_corr_to_target": 0.400586,
+      "mutual_info": 0.462163,
+      "single_feature_auc_or_inverted_auc": 0.954241,
+      "risk": "high"
+    }
+  ],
+  "medium_risk_single_feature_flags": [
+    {
+      "feature": "period_index",
+      "abs_corr_to_target": 0.258145,
+      "mutual_info": 0.53268,
+      "single_feature_auc_or_inverted_auc": 0.671175,
+      "risk": "medium"
+    },
+    {
+      "feature": "reimbursement_x_market_roll6_std",
+      "abs_corr_to_target": 0.110503,
+      "mutual_info": 0.202161,
+      "single_feature_auc_or_inverted_auc": 0.62729,
+      "risk": "medium"
+    },
+    {
+      "feature": "future_composite_h3",
+      "abs_corr_to_target": 0.132208,
+      "mutual_info": 0.238874,
+      "single_feature_auc_or_inverted_auc": 0.627061,
+      "risk": "medium"
+    },
+    {
+      "feature": "future_market_h3",
+      "abs_corr_to_target": 0.125097,
+      "mutual_info": 0.245163,
+      "single_feature_auc_or_inverted_auc": 0.619103,
+      "risk": "medium"
+    },
+    {
+      "feature": "market_x_cms_payment_roll12_mean",
+      "abs_corr_to_target": 0.076404,
+      "mutual_info": 0.200462,
+      "single_feature_auc_or_inverted_auc": 0.56192,
+      "risk": "medium"
+    },
+    {
+      "feature": "market_signal_roll12_mean",
+      "abs_corr_to_target": 0.076404,
+      "mutual_info": 0.206265,
+      "single_feature_auc_or_inverted_auc": 0.561907,
+      "risk": "medium"
+    },
+    {
+      "feature": "composite_opportunity_roll12_mean",
+      "abs_corr_to_target": 0.073384,
+      "mutual_info": 0.225743,
+      "single_feature_auc_or_inverted_auc": 0.554567,
+      "risk": "medium"
+    },
+    {
+      "feature": "market_minus_safety_roll12_mean",
+      "abs_corr_to_target": 0.065881,
+      "mutual_info": 0.229425,
+      "single_feature_auc_or_inverted_auc": 0.546525,
+      "risk": "medium"
+    }
+  ],
+  "top_single_feature_scores": [
+    {
+      "feature": "shock_score_raw",
+      "abs_corr_to_target": 0.379452,
+      "mutual_info": 0.563475,
+      "single_feature_auc_or_inverted_auc": 1.0,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_composite_h3",
+      "abs_corr_to_target": 0.389627,
+      "mutual_info": 0.534897,
+      "single_feature_auc_or_inverted_auc": 0.973102,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_reimbursement_h3",
+      "abs_corr_to_target": 0.391771,
+      "mutual_info": 0.411026,
+      "single_feature_auc_or_inverted_auc": 0.96216,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_trial_h3",
+      "abs_corr_to_target": 0.391771,
+      "mutual_info": 0.41459,
+      "single_feature_auc_or_inverted_auc": 0.962132,
+      "risk": "high"
+    },
+    {
+      "feature": "delta_market_h3",
+      "abs_corr_to_target": 0.400586,
+      "mutual_info": 0.462163,
+      "single_feature_auc_or_inverted_auc": 0.954241,
+      "risk": "high"
+    },
+    {
+      "feature": "future_trial_h3",
+      "abs_corr_to_target": 0.280972,
+      "mutual_info": 0.161442,
+      "single_feature_auc_or_inverted_auc": 0.809246,
+      "risk": "low"
+    },
+    {
+      "feature": "future_reimbursement_h3",
+      "abs_corr_to_target": 0.238635,
+      "mutual_info": 0.166243,
+      "single_feature_auc_or_inverted_auc": 0.694651,
+      "risk": "low"
+    },
+    {
+      "feature": "period_index",
+      "abs_corr_to_target": 0.258145,
+      "mutual_info": 0.53268,
+      "single_feature_auc_or_inverted_auc": 0.671175,
+      "risk": "medium"
+    },
+    {
+      "feature": "year",
+      "abs_corr_to_target": 0.251465,
+      "mutual_info": 0.109348,
+      "single_feature_auc_or_inverted_auc": 0.666563,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_month_roll6_std",
+      "abs_corr_to_target": 0.178273,
+      "mutual_info": 0.07716,
+      "single_feature_auc_or_inverted_auc": 0.660719,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_month_roll3_mean",
+      "abs_corr_to_target": 0.146824,
+      "mutual_info": 0.034358,
+      "single_feature_auc_or_inverted_auc": 0.651817,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_6mo_lag1",
+      "abs_corr_to_target": 0.111808,
+      "mutual_info": 0.063682,
+      "single_feature_auc_or_inverted_auc": 0.651485,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo",
+      "abs_corr_to_target": 0.146824,
+      "mutual_info": 0.032217,
+      "single_feature_auc_or_inverted_auc": 0.651269,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_momentum_norm",
+      "abs_corr_to_target": 0.132574,
+      "mutual_info": 0.042962,
+      "single_feature_auc_or_inverted_auc": 0.65036,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo_roll3_mean",
+      "abs_corr_to_target": 0.112264,
+      "mutual_info": 0.059996,
+      "single_feature_auc_or_inverted_auc": 0.649331,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_month_roll6_mean",
+      "abs_corr_to_target": 0.117039,
+      "mutual_info": 0.054736,
+      "single_feature_auc_or_inverted_auc": 0.648984,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_6mo",
+      "abs_corr_to_target": 0.117039,
+      "mutual_info": 0.058561,
+      "single_feature_auc_or_inverted_auc": 0.648848,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_6mo_lag6",
+      "abs_corr_to_target": 0.175204,
+      "mutual_info": 0.046715,
+      "single_feature_auc_or_inverted_auc": 0.647274,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_month_roll12_mean",
+      "abs_corr_to_target": 0.151937,
+      "mutual_info": 0.05074,
+      "single_feature_auc_or_inverted_auc": 0.643501,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_6mo_roll3_mean",
+      "abs_corr_to_target": 0.113816,
+      "mutual_info": 0.064606,
+      "single_feature_auc_or_inverted_auc": 0.643248,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo_roll6_mean",
+      "abs_corr_to_target": 0.113816,
+      "mutual_info": 0.07507,
+      "single_feature_auc_or_inverted_auc": 0.642899,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo_lag1",
+      "abs_corr_to_target": 0.098664,
+      "mutual_info": 0.029308,
+      "single_feature_auc_or_inverted_auc": 0.641532,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo_roll6_std",
+      "abs_corr_to_target": 0.12794,
+      "mutual_info": 0.074268,
+      "single_feature_auc_or_inverted_auc": 0.639188,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo_roll12_mean",
+      "abs_corr_to_target": 0.153516,
+      "mutual_info": 0.103294,
+      "single_feature_auc_or_inverted_auc": 0.638958,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_6mo_roll6_mean",
+      "abs_corr_to_target": 0.129406,
+      "mutual_info": 0.072529,
+      "single_feature_auc_or_inverted_auc": 0.638618,
+      "risk": "low"
+    },
+    {
+      "feature": "market_signal_roll6_std",
+      "abs_corr_to_target": 0.174785,
+      "mutual_info": 0.162247,
+      "single_feature_auc_or_inverted_auc": 0.63855,
+      "risk": "low"
+    },
+    {
+      "feature": "market_x_cms_payment_roll6_std",
+      "abs_corr_to_target": 0.174785,
+      "mutual_info": 0.167129,
+      "single_feature_auc_or_inverted_auc": 0.638528,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_3mo_lag6",
+      "abs_corr_to_target": 0.144928,
+      "mutual_info": 0.037845,
+      "single_feature_auc_or_inverted_auc": 0.637557,
+      "risk": "low"
+    },
+    {
+      "feature": "reimbursement_proxy_norm_roll6_std",
+      "abs_corr_to_target": 0.169244,
+      "mutual_info": 0.078394,
+      "single_feature_auc_or_inverted_auc": 0.632704,
+      "risk": "low"
+    },
+    {
+      "feature": "trial_starts_6mo_roll6_std",
+      "abs_corr_to_target": 0.169244,
+      "mutual_info": 0.069675,
+      "single_feature_auc_or_inverted_auc": 0.632684,
+      "risk": "low"
+    }
+  ],
+  "findings": [
+    "Overnight benchmark completed 210 seed runs across 10 model families with 0 failed seeds.",
+    "Best ROC-AUC model is torch_transformer_encoder_21_seed with mean ROC-AUC 0.997803.",
+    "High single-feature leakage-risk candidates detected: 5. These should be reviewed before making stronger forecasting claims.",
+    "Feature-name heuristic found 28 fields with target/outcome/future/shock-like terms; review them before asserting causal or forecasting strength.",
+    "Current LSTM/GRU/TCN/Transformer results are architecture benchmarks over single-step tabular tensors, not final true temporal sequence validation."
+  ],
+  "boundary": {
+    "no_phi": true,
+    "not_clinical_decision_support": true,
+    "not_patient_level_prediction_claim": true,
+    "not_final_temporal_validation": true
+  }
+}
